@@ -1,0 +1,72 @@
+<questions>
+    <question>
+        <text>What is the capital of France?</text>
+        <answer correct="true">Paris</answer>
+        <answer>London</answer>
+        <answer>Berlin</answer>
+        <answer>Madrid</answer>
+    </question>
+    <question>
+        <text>Who painted the Mona Lisa?</text>
+        <answer correct="true">Leonardo da Vinci</answer>
+        <answer>Picasso</answer>
+        <answer>Van Gogh</answer>
+        <answer>Rembrandt</answer>
+    </question>
+    <question>
+        <text>What is the largest planet in our solar system?</text>
+        <answer correct="true">Jupiter</answer>
+        <answer>Saturn</answer>
+        <answer>Earth</answer>
+        <answer>Mars</answer>
+    </question>
+    <question>
+        <text>Which element has the chemical symbol O?</text>
+        <answer correct="true">Oxygen</answer>
+        <answer>Gold</answer>
+        <answer>Osmium</answer>
+        <answer>Hydrogen</answer>
+    </question>
+    <question>
+        <text>In which year did the Titanic sink?</text>
+        <answer correct="true">1912</answer>
+        <answer>1914</answer>
+        <answer>1905</answer>
+        <answer>1920</answer>
+    </question>
+    <question>
+        <text>Who wrote the play "Romeo and Juliet"?</text>
+        <answer correct="true">William Shakespeare</answer>
+        <answer>Charles Dickens</answer>
+        <answer>Jane Austen</answer>
+        <answer>Mark Twain</answer>
+    </question>
+    <question>
+        <text>What is the hardest natural substance on Earth?</text>
+        <answer correct="true">Diamond</answer>
+        <answer>Gold</answer>
+        <answer>Iron</answer>
+        <answer>Platinum</answer>
+    </question>
+    <question>
+        <text>Which country is known as the Land of the Rising Sun?</text>
+        <answer correct="true">Japan</answer>
+        <answer>China</answer>
+        <answer>Thailand</answer>
+        <answer>India</answer>
+    </question>
+    <question>
+        <text>What is the main ingredient in guacamole?</text>
+        <answer correct="true">Avocado</answer>
+        <answer>Tomato</answer>
+        <answer>Cucumber</answer>
+        <answer>Pepper</answer>
+    </question>
+    <question>
+        <text>Who discovered penicillin?</text>
+        <answer correct="true">Alexander Fleming</answer>
+        <answer>Marie Curie</answer>
+        <answer>Isaac Newton</answer>
+        <answer>Albert Einstein</answer>
+    </question>
+</questions>
