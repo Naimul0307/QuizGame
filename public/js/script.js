@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.location.pathname.endsWith('game.html')) {
         const startBtn = document.getElementById('start-btn');
         const gameContent = document.getElementById('game-content');
-        const timerDisplay = document.getElementById('time-left');
+        const timerDisplay = document.getElementById('timer');
         const questionContainer = document.getElementById('question');
         const answersContainer = document.getElementById('answers');
         const nextQuestionBtn = document.getElementById('next-question-btn');
@@ -202,19 +202,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 endGame();
             }
         }
+    // Function to end the game
+function endGame() {
+    clearInterval(timer); // Stop the timer
+    gameContent.style.display = 'none';
+    
+    // Calculate score
+    const score = calculateScore();
 
-        // Function to end the game
-        function endGame() {
-            clearInterval(timer); // Stop the timer
-            gameContent.style.display = 'none';
-            // Display game summary or redirect to results page
-            const score = calculateScore();
-            const summaryMessage = `Game Over! Your score is ${score}.`;
-            alert(summaryMessage);
-            // Optionally, redirect to a results page or allow replay
-            // window.location.href = 'results.html'; // Redirect to results page
-        }
+    // Save user info and score to localStorage
+    const userName = localStorage.getItem('userName');
+    const userEmail = localStorage.getItem('userEmail');
+    const userNumber = localStorage.getItem('userNumber');
+    localStorage.setItem('score', score);
 
+    // Redirect to results page
+    window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}`;
+}
         // Function to calculate score (example logic)
         function calculateScore() {
             let correctAnswers = 0;
