@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Function to load questions from XML
         function loadQuestions() {
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'questions.xml', true);
+            xhr.open('GET', '/public/xml/questions.xml', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     const xmlData = xhr.responseXML;
