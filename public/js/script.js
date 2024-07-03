@@ -191,6 +191,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 answersContainer.appendChild(answerElement);
             });
+
+            // Add touch event listeners to answers
+            answersContainer.querySelectorAll('.answer').forEach(answerElement => {
+                answerElement.addEventListener('touchstart', function(event) {
+                    handleAnswerClick(Array.from(answersContainer.children).indexOf(this), this.dataset.correct === 'true');
+                });
+            });
         }
 
         // Function to handle answer click or key press
