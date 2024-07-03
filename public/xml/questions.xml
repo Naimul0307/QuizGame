@@ -69,4 +69,592 @@
         <answer>Isaac Newton</answer>
         <answer>Albert Einstein</answer>
     </question>
+    <question>
+        <text>What is the tallest mountain in the world?</text>
+        <answer correct="true">Mount Everest</answer>
+        <answer>Mount Kilimanjaro</answer>
+        <answer>K2</answer>
+        <answer>Mount Fuji</answer>
+    </question>
+    <question>
+        <text>Which planet is known as the Red Planet?</text>
+        <answer correct="true">Mars</answer>
+        <answer>Venus</answer>
+        <answer>Jupiter</answer>
+        <answer>Saturn</answer>
+    </question>
+    <question>
+        <text>Who was the first President of the United States?</text>
+        <answer correct="true">George Washington</answer>
+        <answer>Thomas Jefferson</answer>
+        <answer>Abraham Lincoln</answer>
+        <answer>John Adams</answer>
+    </question>
+    <question>
+        <text>What is the largest mammal in the world?</text>
+        <answer correct="true">Blue whale</answer>
+        <answer>Elephant</answer>
+        <answer>Giraffe</answer>
+        <answer>Whale shark</answer>
+    </question>
+    <question>
+        <text>Which language is primarily spoken in Brazil?</text>
+        <answer correct="true">Portuguese</answer>
+        <answer>Spanish</answer>
+        <answer>English</answer>
+        <answer>French</answer>
+    </question>
+    <question>
+        <text>Who developed the theory of relativity?</text>
+        <answer correct="true">Albert Einstein</answer>
+        <answer>Isaac Newton</answer>
+        <answer>Nikola Tesla</answer>
+        <answer>Galileo Galilei</answer>
+    </question>
+    <question>
+        <text>Which ocean is the largest?</text>
+        <answer correct="true">Pacific Ocean</answer>
+        <answer>Atlantic Ocean</answer>
+        <answer>Indian Ocean</answer>
+        <answer>Arctic Ocean</answer>
+    </question>
+    <question>
+        <text>What is the capital city of Japan?</text>
+        <answer correct="true">Tokyo</answer>
+        <answer>Kyoto</answer>
+        <answer>Osaka</answer>
+        <answer>Nagoya</answer>
+    </question>
+    <question>
+        <text>Who wrote the novel "1984"?</text>
+        <answer correct="true">George Orwell</answer>
+        <answer>Aldous Huxley</answer>
+        <answer>Ray Bradbury</answer>
+        <answer>Jules Verne</answer>
+    </question>
+    <question>
+        <text>Which country won the FIFA World Cup in 2018?</text>
+        <answer correct="true">France</answer>
+        <answer>Brazil</answer>
+        <answer>Germany</answer>
+        <answer>Argentina</answer>
+    </question>
+    <question>
+        <text>What is the chemical symbol for gold?</text>
+        <answer correct="true">Au</answer>
+        <answer>Ag</answer>
+        <answer>Pb</answer>
+        <answer>Fe</answer>
+    </question>
+    <question>
+        <text>Which organ is responsible for pumping blood throughout the body?</text>
+        <answer correct="true">Heart</answer>
+        <answer>Liver</answer>
+        <answer>Lung</answer>
+        <answer>Kidney</answer>
+    </question>
+    <question>
+        <text>What is the largest desert in the world?</text>
+        <answer correct="true">Sahara Desert</answer>
+        <answer>Gobi Desert</answer>
+        <answer>Arabian Desert</answer>
+        <answer>Thar Desert</answer>
+    </question>
+    <question>
+        <text>Who invented the telephone?</text>
+        <answer correct="true">Alexander Graham Bell</answer>
+        <answer>Thomas Edison</answer>
+        <answer>Nikola Tesla</answer>
+        <answer>Guglielmo Marconi</answer>
+    </question>
+    <question>
+        <text>What is the currency of Japan?</text>
+        <answer correct="true">Yen</answer>
+        <answer>Won</answer>
+        <answer>Yuan</answer>
+        <answer>Rupee</answer>
+    </question>
+    <question>
+        <text>Which planet is closest to the Sun?</text>
+        <answer correct="true">Mercury</answer>
+        <answer>Venus</answer>
+        <answer>Earth</answer>
+        <answer>Mars</answer>
+    </question>
+    <question>
+        <text>Who was the first man to step on the moon?</text>
+        <answer correct="true">Neil Armstrong</answer>
+        <answer>Buzz Aldrin</answer>
+        <answer>Michael Collins</answer>
+        <answer>Yuri Gagarin</answer>
+    </question>
+    <question>
+        <text>What is the largest island in the world?</text>
+        <answer correct="true">Greenland</answer>
+        <answer>New Guinea</answer>
+        <answer>Borneo</answer>
+        <answer>Madagascar</answer>
+    </question>
+    <question>
+        <text>Who wrote the novel "Moby Dick"?</text>
+        <answer correct="true">Herman Melville</answer>
+        <answer>Mark Twain</answer>
+        <answer>Jules Verne</answer>
+        <answer>Charles Dickens</answer>
+    </question>
+    <question>
+        <text>What is the capital of Australia?</text>
+        <answer correct="true">Canberra</answer>
+        <answer>Sydney</answer>
+        <answer>Melbourne</answer>
+        <answer>Brisbane</answer>
+    </question>
+    <question>
+        <text>Which gas do plants absorb from the atmosphere?</text>
+        <answer correct="true">Carbon dioxide</answer>
+        <answer>Oxygen</answer>
+        <answer>Nitrogen</answer>
+        <answer>Hydrogen</answer>
+    </question>
+    <question>
+        <text>Who discovered gravity when he saw a falling apple?</text>
+        <answer correct="true">Isaac Newton</answer>
+        <answer>Galileo Galilei</answer>
+        <answer>Albert Einstein</answer>
+        <answer>Johannes Kepler</answer>
+    </question>
+    <question>
+        <text>What is the largest ocean on Earth?</text>
+        <answer correct="true">Pacific Ocean</answer>
+        <answer>Atlantic Ocean</answer>
+        <answer>Indian Ocean</answer>
+        <answer>Southern Ocean</answer>
+    </question>
+    <question>
+        <text>Who wrote the play "Hamlet"?</text>
+        <answer correct="true">William Shakespeare</answer>
+        <answer>Christopher Marlowe</answer>
+        <answer>Ben Jonson</answer>
+        <answer>Thomas Kyd</answer>
+    </question>
+    <question>
+        <text>What is the capital of Italy?</text>
+        <answer correct="true">Rome</answer>
+        <answer>Venice</answer>
+        <answer>Florence</answer>
+        <answer>Milan</answer>
+    </question>
+    <question>
+        <text>Who was the first woman to win a Nobel Prize?</text>
+        <answer correct="true">Marie Curie</answer>
+        <answer>Mother Teresa</answer>
+        <answer>Jane Addams</answer>
+        <answer>Rosalind Franklin</answer>
+    </question>
+    <question>
+        <text>Which element has the chemical symbol H?</text>
+        <answer correct="true">Hydrogen</answer>
+        <answer>Helium</answer>
+        <answer>Hafnium</answer>
+        <answer>Holmium</answer>
+    </question>
+    <question>
+        <text>What is the smallest country in the world by area?</text>
+        <answer correct="true">Vatican City</answer>
+        <answer>Monaco</answer>
+        <answer>San Marino</answer>
+        <answer>Liechtenstein</answer>
+    </question>
+    <question>
+        <text>Who painted the ceiling of the Sistine Chapel?</text>
+        <answer correct="true">Michelangelo</answer>
+        <answer>Leonardo da Vinci</answer>
+        <answer>Raphael</answer>
+        <answer>Donatello</answer>
+    </question>
+    <question>
+        <text>What is the chemical symbol for water?</text>
+        <answer correct="true">H2O</answer>
+        <answer>O2</answer>
+        <answer>CO2</answer>
+        <answer>NaCl</answer>
+    </question>
+    <question>
+        <text>Which planet is known as the Evening Star?</text>
+        <answer correct="true">Venus</answer>
+        <answer>Mars</answer>
+        <answer>Jupiter</answer>
+        <answer>Saturn</answer>
+    </question>
+    <question>
+        <text>Who developed the polio vaccine?</text>
+        <answer correct="true">Jonas Salk</answer>
+        <answer>Louis Pasteur</answer>
+        <answer>Alexander Fleming</answer>
+        <answer>Edward Jenner</answer>
+    </question>
+    <question>
+        <text>What is the main language spoken in Argentina?</text>
+        <answer correct="true">Spanish</answer>
+        <answer>Portuguese</answer>
+        <answer>English</answer>
+        <answer>French</answer>
+    </question>
+    <question>
+        <text>Which country is the largest by area?</text>
+        <answer correct="true">Russia</answer>
+        <answer>Canada</answer>
+        <answer>China</answer>
+        <answer>United States</answer>
+    </question>
+    <question>
+        <text>Who wrote "Pride and Prejudice"?</text>
+        <answer correct="true">Jane Austen</answer>
+        <answer>Charlotte Bronte</answer>
+        <answer>Emily Bronte</answer>
+        <answer>George Eliot</answer>
+    </question>
+    <question>
+        <text>What is the capital of Canada?</text>
+        <answer correct="true">Ottawa</answer>
+        <answer>Toronto</answer>
+        <answer>Vancouver</answer>
+        <answer>Montreal</answer>
+    </question>
+    <question>
+        <text>Which organ is responsible for filtering blood in the human body?</text>
+        <answer correct="true">Kidney</answer>
+        <answer>Heart</answer>
+        <answer>Liver</answer>
+        <answer>Lung</answer>
+    </question>
+    <question>
+        <text>Who was the first President of the United States?</text>
+        <answer correct="true">George Washington</answer>
+        <answer>Thomas Jefferson</answer>
+        <answer>Abraham Lincoln</answer>
+        <answer>John Adams</answer>
+    </question>
+    <question>
+        <text>Which planet is known as the Red Planet?</text>
+        <answer correct="true">Mars</answer>
+        <answer>Venus</answer>
+        <answer>Jupiter</answer>
+        <answer>Saturn</answer>
+    </question>
+    <question>
+        <text>Who discovered penicillin?</text>
+        <answer correct="true">Alexander Fleming</answer>
+        <answer>Marie Curie</answer>
+        <answer>Isaac Newton</answer>
+        <answer>Albert Einstein</answer>
+    </question>
+    <question>
+        <text>Which element has the chemical symbol O?</text>
+        <answer correct="true">Oxygen</answer>
+        <answer>Gold</answer>
+        <answer>Osmium</answer>
+        <answer>Hydrogen</answer>
+    </question>
+    <question>
+        <text>What is the hardest natural substance on Earth?</text>
+        <answer correct="true">Diamond</answer>
+        <answer>Gold</answer>
+        <answer>Iron</answer>
+        <answer>Platinum</answer>
+    </question>
+    <question>
+        <text>What is the largest planet in our solar system?</text>
+        <answer correct="true">Jupiter</answer>
+        <answer>Saturn</answer>
+        <answer>Earth</answer>
+        <answer>Mars</answer>
+    </question>
+    <question>
+        <text>Who wrote the play "Romeo and Juliet"?</text>
+        <answer correct="true">William Shakespeare</answer>
+        <answer>Charles Dickens</answer>
+        <answer>Jane Austen</answer>
+        <answer>Mark Twain</answer>
+    </question>
+    <question>
+        <text>In which year did the Titanic sink?</text>
+        <answer correct="true">1912</answer>
+        <answer>1914</answer>
+        <answer>1905</answer>
+        <answer>1920</answer>
+    </question>
+    <question>
+        <text>Who painted the Mona Lisa?</text>
+        <answer correct="true">Leonardo da Vinci</answer>
+        <answer>Picasso</answer>
+        <answer>Van Gogh</answer>
+        <answer>Rembrandt</answer>
+    </question>
+    <question>
+        <text>What is the capital of France?</text>
+        <answer correct="true">Paris</answer>
+        <answer>London</answer>
+        <answer>Berlin</answer>
+        <answer>Madrid</answer>
+    </question>
+    <question>
+        <text>Which country is known as the Land of the Rising Sun?</text>
+        <answer correct="true">Japan</answer>
+        <answer>China</answer>
+        <answer>Thailand</answer>
+        <answer>India</answer>
+    </question>
+    <question>
+        <text>What is the main ingredient in guacamole?</text>
+        <answer correct="true">Avocado</answer>
+        <answer>Tomato</answer>
+        <answer>Cucumber</answer>
+        <answer>Pepper</answer>
+    </question>
+    <question>
+        <text>Who discovered penicillin?</text>
+        <answer correct="true">Alexander Fleming</answer>
+        <answer>Marie Curie</answer>
+        <answer>Isaac Newton</answer>
+        <answer>Albert Einstein</answer>
+    </question>
+    <question>
+        <text>What is the tallest mountain in the world?</text>
+        <answer correct="true">Mount Everest</answer>
+        <answer>Mount Kilimanjaro</answer>
+        <answer>K2</answer>
+        <answer>Mount Fuji</answer>
+    </question>
+    <question>
+        <text>Who was the first President of the United States?</text>
+        <answer correct="true">George Washington</answer>
+        <answer>Thomas Jefferson</answer>
+        <answer>Abraham Lincoln</answer>
+        <answer>John Adams</answer>
+    </question>
+    <question>
+        <text>What is the largest mammal in the world?</text>
+        <answer correct="true">Blue whale</answer>
+        <answer>Elephant</answer>
+        <answer>Giraffe</answer>
+        <answer>Whale shark</answer>
+    </question>
+    <question>
+        <text>Which language is primarily spoken in Brazil?</text>
+        <answer correct="true">Portuguese</answer>
+        <answer>Spanish</answer>
+        <answer>English</answer>
+        <answer>French</answer>
+    </question>
+    <question>
+        <text>Who developed the theory of relativity?</text>
+        <answer correct="true">Albert Einstein</answer>
+        <answer>Isaac Newton</answer>
+        <answer>Nikola Tesla</answer>
+        <answer>Galileo Galilei</answer>
+    </question>
+    <question>
+        <text>Which ocean is the largest?</text>
+        <answer correct="true">Pacific Ocean</answer>
+        <answer>Atlantic Ocean</answer>
+        <answer>Indian Ocean</answer>
+        <answer>Southern Ocean</answer>
+    </question>
+    <question>
+        <text>Who wrote the play "Hamlet"?</text>
+        <answer correct="true">William Shakespeare</answer>
+        <answer>Christopher Marlowe</answer>
+        <answer>Ben Jonson</answer>
+        <answer>Thomas Kyd</answer>
+    </question>
+    <question>
+        <text>What is the capital of Italy?</text>
+        <answer correct="true">Rome</answer>
+        <answer>Venice</answer>
+        <answer>Florence</answer>
+        <answer>Milan</answer>
+    </question>
+    <question>
+        <text>Who was the first woman to win a Nobel Prize?</text>
+        <answer correct="true">Marie Curie</answer>
+        <answer>Mother Teresa</answer>
+        <answer>Jane Addams</answer>
+        <answer>Rosalind Franklin</answer>
+    </question>
+    <question>
+        <text>Which element has the chemical symbol H?</text>
+        <answer correct="true">Hydrogen</answer>
+        <answer>Helium</answer>
+        <answer>Hafnium</answer>
+        <answer>Holmium</answer>
+    </question>
+    <question>
+        <text>What is the smallest country in the world by area?</text>
+        <answer correct="true">Vatican City</answer>
+        <answer>Monaco</answer>
+        <answer>San Marino</answer>
+        <answer>Liechtenstein</answer>
+    </question>
+    <question>
+        <text>Who painted the ceiling of the Sistine Chapel?</text>
+        <answer correct="true">Michelangelo</answer>
+        <answer>Leonardo da Vinci</answer>
+        <answer>Raphael</answer>
+        <answer>Donatello</answer>
+    </question>
+    <question>
+        <text>What is the chemical symbol for water?</text>
+        <answer correct="true">H2O</answer>
+        <answer>O2</answer>
+        <answer>CO2</answer>
+        <answer>NaCl</answer>
+    </question>
+    <question>
+        <text>Which planet is known as the Evening Star?</text>
+        <answer correct="true">Venus</answer>
+        <answer>Mars</answer>
+        <answer>Jupiter</answer>
+        <answer>Saturn</answer>
+    </question>
+    <question>
+        <text>Who developed the polio vaccine?</text>
+        <answer correct="true">Jonas Salk</answer>
+        <answer>Louis Pasteur</answer>
+        <answer>Alexander Fleming</answer>
+        <answer>Edward Jenner</answer>
+    </question>
+    <question>
+        <text>What is the main language spoken in Argentina?</text>
+        <answer correct="true">Spanish</answer>
+        <answer>Portuguese</answer>
+        <answer>English</answer>
+        <answer>French</answer>
+    </question>
+    <question>
+        <text>Which country is the largest by area?</text>
+        <answer correct="true">Russia</answer>
+        <answer>Canada</answer>
+        <answer>China</answer>
+        <answer>United States</answer>
+    </question>
+    <question>
+        <text>Who wrote "Pride and Prejudice"?</text>
+        <answer correct="true">Jane Austen</answer>
+        <answer>Charlotte Bronte</answer>
+        <answer>Emily Bronte</answer>
+        <answer>George Eliot</answer>
+    </question>
+    <question>
+        <text>What is the capital of Canada?</text>
+        <answer correct="true">Ottawa</answer>
+        <answer>Toronto</answer>
+        <answer>Vancouver</answer>
+        <answer>Montreal</answer>
+    </question>
+    <question>
+        <text>Which organ is responsible for filtering blood in the human body?</text>
+        <answer correct="true">Kidney</answer>
+        <answer>Heart</answer>
+        <answer>Liver</answer>
+        <answer>Lung</answer>
+    </question>
+    <question>
+        <text>Who was the first President of the United States?</text>
+        <answer correct="true">George Washington</answer>
+        <answer>Thomas Jefferson</answer>
+        <answer>Abraham Lincoln</answer>
+        <answer>John Adams</answer>
+    </question>
+    <question>
+        <text>Which planet is known as the Red Planet?</text>
+        <answer correct="true">Mars</answer>
+        <answer>Venus</answer>
+        <answer>Jupiter</answer>
+        <answer>Saturn</answer>
+    </question>
+    <question>
+        <text>Who discovered penicillin?</text>
+        <answer correct="true">Alexander Fleming</answer>
+        <answer>Marie Curie</answer>
+        <answer>Isaac Newton</answer>
+        <answer>Albert Einstein</answer>
+    </question>
+    <question>
+        <text>Which element has the chemical symbol O?</text>
+        <answer correct="true">Oxygen</answer>
+        <answer>Gold</answer>
+        <answer>Osmium</answer>
+        <answer>Hydrogen</answer>
+    </question>
+    <question>
+        <text>What is the hardest natural substance on Earth?</text>
+        <answer correct="true">Diamond</answer>
+        <answer>Gold</answer>
+        <answer>Iron</answer>
+        <answer>Platinum</answer>
+    </question>
+    <question>
+        <text>What is the largest planet in our solar system?</text>
+        <answer correct="true">Jupiter</answer>
+        <answer>Saturn</answer>
+        <answer>Earth</answer>
+        <answer>Mars</answer>
+    </question>
+    <question>
+        <text>Who wrote the play "Romeo and Juliet"?</text>
+        <answer correct="true">William Shakespeare</answer>
+        <answer>Charles Dickens</answer>
+        <answer>Jane Austen</answer>
+        <answer>Mark Twain</answer>
+    </question>
+    <question>
+        <text>In which year did the Titanic sink?</text>
+        <answer correct="true">1912</answer>
+        <answer>1914</answer>
+        <answer>1905</answer>
+        <answer>1920</answer>
+    </question>
+    <question>
+        <text>Who painted the Mona Lisa?</text>
+        <answer correct="true">Leonardo da Vinci</answer>
+        <answer>Picasso</answer>
+        <answer>Van Gogh</answer>
+        <answer>Rembrandt</answer>
+    </question>
+    <question>
+        <text>What is the capital of France?</text>
+        <answer correct="true">Paris</answer>
+        <answer>London</answer>
+        <answer>Berlin</answer>
+        <answer>Madrid</answer>
+    </question>
+    <question>
+        <text>Which country is known as the Land of the Rising Sun?</text>
+        <answer correct="true">Japan</answer>
+        <answer>China</answer>
+        <answer>Thailand</answer>
+        <answer>India</answer>
+    </question>
+    <question>
+        <text>What is the main ingredient in guacamole?</text>
+        <answer correct="true">Avocado</answer>
+        <answer>Tomato</answer>
+        <answer>Cucumber</answer>
+        <answer>Pepper</answer>
+    </question>
+    <question>
+        <text>Who discovered penicillin?</text>
+        <answer correct="true">Alexander Fleming</answer>
+        <answer>Marie Curie</answer>
+        <answer>Isaac Newton</answer>
+        <answer>Albert Einstein</answer>
+    </question>
+    <question>
+        <text>What is the tallest mountain in the world?</text>
+        <answer correct="true">Mount Everest</answer>
+        <answer>Mount Kilimanjaro</answer>
+        <answer>K2</answer>
+        <answer>Mount Fuji</answer>
+    </question>
 </questions>

@@ -193,39 +193,55 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-// Function to handle answer click
-function handleAnswerClick(index, correct) {
-    const selectedAnswer = {
-        question: questions[currentQuestionIndex].question,
-        answer: questions[currentQuestionIndex].answers[index].text,
-        correct: correct
-    };
-    userAnswers.push(selectedAnswer);
+        // Function to handle answer click or key press
+        function handleAnswerClick(index, correct) {
+            const selectedAnswer = {
+                question: questions[currentQuestionIndex].question,
+                answer: questions[currentQuestionIndex].answers[index].text,
+                correct: correct
+            };
+            userAnswers.push(selectedAnswer);
 
-    // Remove 'selected' class from all answers
-    const answerElements = document.querySelectorAll('.answer');
-    answerElements.forEach(answerElement => {
-        answerElement.classList.remove('selected');
-    });
+            // Remove 'selected' class from all answers
+            const answerElements = document.querySelectorAll('.answer');
+            answerElements.forEach(answerElement => {
+                answerElement.classList.remove('selected');
+            });
 
-    // Add 'selected' class to the clicked answer
-    answersContainer.children[index].classList.add('selected');
+            // Add 'selected' class to the clicked answer
+            answersContainer.children[index].classList.add('selected');
 
-    if (!correct) {
-        endGame();
-        return;
-    }
+            if (!correct) {
+                endGame();
+                return;
+            }
 
-    // Proceed to next question automatically
-    setTimeout(function () {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) {
-            displayQuestion();
-        } else {
-            endGame();
+            // Proceed to next question automatically
+            setTimeout(function() {
+                currentQuestionIndex++;
+                if (currentQuestionIndex < questions.length) {
+                    displayQuestion();
+                } else {
+                    endGame();
+                }
+            }, 1000); // Adjust delay as needed for any transition or animation
         }
-    }, 1000); // Adjust delay as needed for any transition or animation
-}
+
+        // Function to add key press event listeners
+        function addKeyListeners() {
+            document.addEventListener('keydown', function(event) {
+                const key = event.key.toLowerCase();
+                const keyMapping = { 'a': 0, 'b': 1, 'c': 2, 'd': 3 };
+                if (key in keyMapping) {
+                    const index = keyMapping[key];
+                    if (index < answersContainer.children.length) {
+                        const correct = answersContainer.children[index].dataset.correct === 'true';
+                        handleAnswerClick(index, correct);
+                    }
+                }
+            });
+        }
+
         // Function to end the game
         function endGame() {
             clearInterval(timer); // Stop the timer
