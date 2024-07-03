@@ -76,8 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let timer;
         let gameTimeInSeconds = localStorage.getItem('gameTime') * 60 || 300; // Default 5 minutes
         let userAnswers = [];
+        let questionsCount = parseInt(localStorage.getItem('questionsCount')) || 4; // Default to 4 questions
 
-        // Function to load questions from XML
+        // Function to load questions from XML and select random subset
         function loadQuestions() {
             const xhr = new XMLHttpRequest();
             xhr.open('GET', '/public/xml/questions.xml', true);
@@ -91,12 +92,18 @@ document.addEventListener('DOMContentLoaded', function() {
             xhr.send();
         }
 
-        // Function to parse questions from XML
+        // Function to parse questions from XML and select random subset
         function parseQuestions(xml) {
             const questionNodes = xml.getElementsByTagName('question');
             let parsedQuestions = [];
-            for (let i = 0; i < questionNodes.length; i++) {
-                const questionNode = questionNodes[i];
+
+            // Shuffle array to get random order
+            const shuffledQuestions = shuffle(Array.from(questionNodes));
+
+            // Select the first questionsCount questions from shuffled list
+            const selectedQuestions = shuffledQuestions.slice(0, questionsCount);
+
+            selectedQuestions.forEach(questionNode => {
                 const questionText = questionNode.getElementsByTagName('text')[0].textContent;
                 const answers = [];
                 const answerNodes = questionNode.getElementsByTagName('answer');
@@ -106,8 +113,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     answers.push({ text: answerText, correct: isCorrect });
                 }
                 parsedQuestions.push({ question: questionText, answers: answers });
-            }
+            });
+
             return parsedQuestions;
+        }
+
+        // Function to shuffle array (Fisher-Yates shuffle)
+        function shuffle(array) {
+            let currentIndex = array.length, randomIndex;
+
+            // While there remain elements to shuffle...
+            while (currentIndex !== 0) {
+
+                // Pick a remaining element...
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+
+                // And swap it with the current element.
+                [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+            }
+
+            return array;
         }
 
         // Function to start the game
