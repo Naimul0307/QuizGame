@@ -5,22 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Game Results</title>
     <link rel="stylesheet" href="/public/css/styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Quiz Game Results</h1>
-        <div id="user-info">
-            <h2>User Info:</h2>
-            <p><strong>Name:</strong> <span id="user-name"></span></p>
-            <p><strong>Email:</strong> <span id="user-email"></span></p>
-            <p><strong>Number:</strong> <span id="user-number"></span></p>
-        </div>
-        <div id="score">
-            <h2>Score:</h2>
-            <p><strong>Your score is:</strong> <span id="user-score"></span></p>
-        </div>
+        <table id="users-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Number</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="users-list">
+                <!-- User rows will be dynamically added here -->
+            </tbody>
+        </table>
+        <button class="back-button" onclick="goBack()">Back to Home</button>
     </div>
-
     <script src="/public/js/results.js"></script>
 </body>
 </html>

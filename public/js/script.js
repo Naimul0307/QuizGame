@@ -62,6 +62,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Event listener for changing color on settings option select
+    const colorOptions = document.querySelectorAll('.color-option');
+
+    colorOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            const color = option.dataset.color;
+            document.body.style.backgroundColor = color; // Change background color
+            // Optionally, you can save the selected color for future use
+            localStorage.setItem('backgroundColor', color);
+        });
+    });
+
+    // Restore saved background color from localStorage
+    const savedColor = localStorage.getItem('backgroundColor');
+    if (savedColor) {
+        document.body.style.backgroundColor = savedColor;
+    }
+
     // Game logic for game.html
     if (window.location.pathname.endsWith('game.html')) {
         const startBtn = document.getElementById('start-btn');
@@ -69,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const timerDisplay = document.getElementById('timer');
         const questionContainer = document.getElementById('question');
         const answersContainer = document.getElementById('answers');
-        const nextQuestionBtn = document.getElementById('next-question-btn');
 
         let questions = [];
         let currentQuestionIndex = 0;
@@ -176,49 +193,61 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Function to handle answer click
-        function handleAnswerClick(index, correct) {
-            const selectedAnswer = {
-                question: questions[currentQuestionIndex].question,
-                answer: questions[currentQuestionIndex].answers[index].text,
-                correct: correct
-            };
-            userAnswers.push(selectedAnswer);
-            if (!correct) {
-                endGame();
-                return;
-            }
-            nextQuestionBtn.style.display = 'block';
-            // Optionally, provide visual feedback for correct/incorrect answers
+// Function to handle answer click
+function handleAnswerClick(index, correct) {
+    const selectedAnswer = {
+        question: questions[currentQuestionIndex].question,
+        answer: questions[currentQuestionIndex].answers[index].text,
+        correct: correct
+    };
+    userAnswers.push(selectedAnswer);
+
+    // Remove 'selected' class from all answers
+    const answerElements = document.querySelectorAll('.answer');
+    answerElements.forEach(answerElement => {
+        answerElement.classList.remove('selected');
+    });
+
+    // Add 'selected' class to the clicked answer
+    answersContainer.children[index].classList.add('selected');
+
+    if (!correct) {
+        endGame();
+        return;
+    }
+
+    // Proceed to next question automatically
+    setTimeout(function () {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) {
+            displayQuestion();
+        } else {
+            endGame();
         }
-
-        // Function to move to the next question
-        function nextQuestion() {
-            currentQuestionIndex++;
-            if (currentQuestionIndex < questions.length) {
-                displayQuestion();
-                nextQuestionBtn.style.display = 'none';
-            } else {
-                endGame();
-            }
-        }
-    // Function to end the game
-function endGame() {
-    clearInterval(timer); // Stop the timer
-    gameContent.style.display = 'none';
-    
-    // Calculate score
-    const score = calculateScore();
-
-    // Save user info and score to localStorage
-    const userName = localStorage.getItem('userName');
-    const userEmail = localStorage.getItem('userEmail');
-    const userNumber = localStorage.getItem('userNumber');
-    localStorage.setItem('score', score);
-
-    // Redirect to results page
-    window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}`;
+    }, 1000); // Adjust delay as needed for any transition or animation
 }
+        // Function to end the game
+        function endGame() {
+            clearInterval(timer); // Stop the timer
+            
+            // Calculate score
+            const score = calculateScore();
+        
+            // Save user info and score to localStorage
+            const userName = localStorage.getItem('userName');
+            const userEmail = localStorage.getItem('userEmail');
+            const userNumber = localStorage.getItem('userNumber');
+        
+            const user = { name: userName, email: userEmail, number: userNumber, score: score };
+            
+            // Store user data in an array in localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+            // Redirect to results page
+            window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}`;
+        }
+
         // Function to calculate score (example logic)
         function calculateScore() {
             let correctAnswers = 0;
@@ -233,11 +262,6 @@ function endGame() {
         // Event listener for Start button
         startBtn.addEventListener('click', function() {
             loadQuestions();
-        });
-
-        // Event listener for Next Question button
-        nextQuestionBtn.addEventListener('click', function() {
-            nextQuestion();
         });
     }
 });

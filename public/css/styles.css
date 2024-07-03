@@ -29,3 +29,8 @@ button {
 .answer:hover {
     background-color: #f0f0f0;
 }
+
+.answer.selected {
+    background-color: #4CAF50; /* Green background color */
+    color: white; /* White text color */
+}
