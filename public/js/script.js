@@ -230,38 +230,85 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-        // Function to handle answer click or key press
-        function handleAnswerClick(index, correct) {
-            const selectedAnswer = {
-                question: questions[currentQuestionIndex].question,
-                answer: questions[currentQuestionIndex].answers[index].text,
-                correct: correct
-            };
-            userAnswers.push(selectedAnswer);
+// Function to handle answer click
+function handleAnswerClick(index, correct) {
+    handleAnswerSelection(index, correct);
+}
 
-            // Remove 'selected' class from all answers
-            const answerElements = document.querySelectorAll('.answer');
-            answerElements.forEach(answerElement => {
-                answerElement.classList.remove('selected');
-            });
+// Function to handle touch events for answering questions
+function handleAnswerTouch(index, correct) {
+    handleAnswerSelection(index, correct);
+}
 
-            // Add 'selected' class to the clicked answer
-            answersContainer.children[index].classList.add('selected');
+// Function to handle keyboard events for answering questions
+function handleAnswerKeystroke(index, correct) {
+    handleAnswerSelection(index, correct);
+}
 
-            if (!correct) {
-                endGame();
-                return;
-            }
+// Function to handle answer selection (used by click, touch, and keystroke)
+function handleAnswerSelection(index, correct) {
+    const selectedAnswer = {
+        question: questions[currentQuestionIndex].question,
+        answer: questions[currentQuestionIndex].answers[index].text,
+        correct: correct
+    };
+    userAnswers.push(selectedAnswer);
 
-            // Proceed to next question automatically
-            setTimeout(function() {
-                if (shownQuestionIndices.size === questions.length) {
-                    endGame();
-                } else {
-                    displayQuestion();
-                }
-            }, 1000); // Adjust delay as needed for any transition or animation
+    // Remove 'selected' class from all answers
+    const answerElements = document.querySelectorAll('.answer');
+    answerElements.forEach(answerElement => {
+        answerElement.classList.remove('selected');
+    });
+
+    // Add 'selected' class to the selected answer
+    answersContainer.children[index].classList.add('selected');
+
+    if (!correct) {
+        endGame();
+        return;
+    }
+
+    // Proceed to next question automatically
+    setTimeout(function() {
+        if (shownQuestionIndices.size === questions.length) {
+            endGame();
+        } else {
+            displayQuestion();
         }
+    }, 1000); // Adjust delay as needed for any transition or animation
+}
+
+// Event listeners for answers
+const answerElements = document.querySelectorAll('.answer');
+answerElements.forEach((answerElement, index) => {
+    // Click event listener for mouse clicks
+    answerElement.addEventListener('click', function() {
+        handleAnswerClick(index, questions[currentQuestionIndex].answers[index].correct);
+    });
+
+    // Touch event listener for touch events
+    answerElement.addEventListener('touchstart', function(event) {
+        event.preventDefault(); // Prevent default touch behavior
+        handleAnswerTouch(index, questions[currentQuestionIndex].answers[index].correct);
+    });
+});
+
+// Event listener for keyboard events
+document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    // Example: Map keys '1', '2', '3' to answer indices (adjust as needed)
+    if (key === 'A' || key === 'a') {
+        handleAnswerKeystroke(0, questions[currentQuestionIndex].answers[0].correct);
+    } else if (key === 'B' || key === 'b') {
+        handleAnswerKeystroke(1, questions[currentQuestionIndex].answers[1].correct);
+    } else if (key === 'C' || key === 'c') {
+        handleAnswerKeystroke(2, questions[currentQuestionIndex].answers[2].correct);
+    } else if (key === 'D' || key === 'd') {
+        handleAnswerKeystroke(3, questions[currentQuestionIndex].answers[3].correct);
+    } 
+    // Add more key mappings for additional answers if needed
+});
+
 
         // Function to end the game
         function endGame() {
