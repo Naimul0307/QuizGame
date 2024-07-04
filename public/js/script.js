@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 200); // Match CSS fade transition duration
         }, 3000);
     }
-    
 
     // Event listener for Settings button
     if (settingsBtn) {
@@ -116,6 +115,9 @@ document.addEventListener('DOMContentLoaded', function() {
         let userAnswers = [];
         let questionsCount = parseInt(localStorage.getItem('questionsCount')) || 4; // Default to 4 questions
 
+        // Set to keep track of shown question indices
+        let shownQuestionIndices = new Set();
+
         // Function to load questions from XML and select random subset
         function loadQuestions() {
             const xhr = new XMLHttpRequest();
@@ -199,7 +201,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Function to display the current question
         function displayQuestion() {
-            const currentQuestion = questions[currentQuestionIndex];
+            // Ensure all questions are exhausted
+            if (shownQuestionIndices.size === questions.length) {
+                endGame();
+                return;
+            }
+
+            let nextIndex;
+            do {
+                nextIndex = Math.floor(Math.random() * questions.length);
+            } while (shownQuestionIndices.has(nextIndex));
+
+            shownQuestionIndices.add(nextIndex);
+
+            const currentQuestion = questions[nextIndex];
             questionContainer.textContent = currentQuestion.question;
             answersContainer.innerHTML = ''; // Clear previous answers
             currentQuestion.answers.forEach((answer, index) => {
@@ -246,11 +261,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Proceed to next question automatically
             setTimeout(function() {
-                currentQuestionIndex++;
-                if (currentQuestionIndex < questions.length) {
-                    displayQuestion();
-                } else {
+                if (shownQuestionIndices.size === questions.length) {
                     endGame();
+                } else {
+                    displayQuestion();
                 }
             }, 1000); // Adjust delay as needed for any transition or animation
         }
