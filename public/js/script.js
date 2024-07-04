@@ -269,21 +269,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000); // Adjust delay as needed for any transition or animation
         }
 
-        // Function to add key press event listeners
-        function addKeyListeners() {
-            document.addEventListener('keydown', function(event) {
-                const key = event.key.toLowerCase();
-                const keyMapping = { 'a': 0, 'b': 1, 'c': 2, 'd': 3 };
-                if (key in keyMapping) {
-                    const index = keyMapping[key];
-                    if (index < answersContainer.children.length) {
-                        const correct = answersContainer.children[index].dataset.correct === 'true';
-                        handleAnswerClick(index, correct);
-                    }
-                }
-            });
-        }
-
         // Function to end the game
         function endGame() {
             clearInterval(timer); // Stop the timer
