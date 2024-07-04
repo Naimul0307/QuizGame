@@ -55,4 +55,95 @@
         <answer>Thailand</answer>
         <answer>India</answer>
     </question>
+    <question>
+        <text>What is the boiling point of water?</text>
+        <answer correct="true">100°C</answer>
+        <answer>90°C</answer>
+        <answer>110°C</answer>
+        <answer>120°C</answer>
+    </question>
+    <question>
+        <text>What is the smallest prime number?</text>
+        <answer correct="true">2</answer>
+        <answer>1</answer>
+        <answer>3</answer>
+        <answer>5</answer>
+    </question>
+    <question>
+        <text>Which ocean is the largest?</text>
+        <answer correct="true">Pacific Ocean</answer>
+        <answer>Atlantic Ocean</answer>
+        <answer>Indian Ocean</answer>
+        <answer>Arctic Ocean</answer>
+    </question>
+    <question>
+        <text>Which planet is known as the Red Planet?</text>
+        <answer correct="true">Mars</answer>
+        <answer>Earth</answer>
+        <answer>Venus</answer>
+        <answer>Jupiter</answer>
+    </question>
+    <question>
+        <text>What is the chemical symbol for water?</text>
+        <answer correct="true">H2O</answer>
+        <answer>O2</answer>
+        <answer>CO2</answer>
+        <answer>HO</answer>
+    </question>
+    <question>
+        <text>Which country is home to the kangaroo?</text>
+        <answer correct="true">Australia</answer>
+        <answer>India</answer>
+        <answer>Brazil</answer>
+        <answer>South Africa</answer>
+    </question>
+    <question>
+        <text>Which planet is closest to the Sun?</text>
+        <answer correct="true">Mercury</answer>
+        <answer>Venus</answer>
+        <answer>Earth</answer>
+        <answer>Mars</answer>
+    </question>
+    <question>
+        <text>What is the largest mammal in the world?</text>
+        <answer correct="true">Blue Whale</answer>
+        <answer>Elephant</answer>
+        <answer>Giraffe</answer>
+        <answer>Shark</answer>
+    </question>
+    <question>
+        <text>What is the primary language spoken in Spain?</text>
+        <answer correct="true">Spanish</answer>
+        <answer>English</answer>
+        <answer>French</answer>
+        <answer>Portuguese</answer>
+    </question>
+    <question>
+        <text>Which continent is known as the Dark Continent?</text>
+        <answer correct="true">Africa</answer>
+        <answer>Asia</answer>
+        <answer>South America</answer>
+        <answer>Australia</answer>
+    </question>
+    <question>
+        <text>What do bees collect and use to make honey?</text>
+        <answer correct="true">Nectar</answer>
+        <answer>Pollen</answer>
+        <answer>Water</answer>
+        <answer>Leaves</answer>
+    </question>
+    <question>
+        <text>What is the largest organ in the human body?</text>
+        <answer correct="true">Skin</answer>
+        <answer>Heart</answer>
+        <answer>Liver</answer>
+        <answer>Brain</answer>
+    </question>
+    <question>
+        <text>What color is the sky on a clear day?</text>
+        <answer correct="true">Blue</answer>
+        <answer>Green</answer>
+        <answer>Yellow</answer>
+        <answer>Red</answer>
+    </question>
 </questions>

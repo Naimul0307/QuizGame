@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Game</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
 </head>
 <body>
     <div class="container-fluid">
         <div class="section">
             <div id="game-container" class="container">
+                <div id="timer" class="text-center">Time: <span id="time-left"></span></div>
                 <button id="start-btn" class="btn btn-primary">Start Game</button>
                 <div id="game-content" style="display: none;">
-                    <div id="timer">Time: <span id="time-left"></span></div>
                     <div id="question"></div>
                     <div id="answers"></div>
                 </div>
@@ -23,6 +23,6 @@
         </div>
     </div>
     <!-- Bootstrap JS and your custom script -->
-    <script src="/public/js/script.js"></script>
+    <script src="../public/js/script.js"></script>
 </body>
 </html>

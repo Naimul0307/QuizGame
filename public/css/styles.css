@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     font-size: 18px; /* Adjust base font size */
     font-weight: 400;
-    background-image: url('/public/background/game_bg.jpg'); /* Background image URL */
+    background-image: url('../background/game_bg.jpg'); /* Background image URL */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent background image from repeating */
@@ -126,7 +126,7 @@ input[type=number] {
     left: 0;
     width: 100%; /* Cover full width */
     height: 100%; /* Cover full height */
-    background-image: url('/public/background/game_bg.jpg'); /* Background image URL */
+    background-image: url('../background/game_bg.jpg'); /* Background image URL */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent background image from repeating */
@@ -150,4 +150,27 @@ input[type=number] {
     to {
         opacity: 1;
     }
+}
+
+
+/* Custom styles for the timer */
+#timer {
+    font-size: 2rem;
+    background: linear-gradient(30deg, rgba(103, 190, 32, 0.747), rgba(4, 83, 168, 0.8)); /* Gradient background with opacity */
+    color: #fff;
+    padding: 15px;
+    border-radius: 50%;
+    width: 150px; /* Adjust width as needed */
+    height: 150px; /* Adjust height as needed */
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 20px; /* Adjust top margin as needed */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#time-left {
+    font-size: 3rem; /* Increased font size */
+    font-weight: bold;
 }

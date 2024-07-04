@@ -1,0 +1,13 @@
+{
+  "name": "electron-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-win": "electron-packager . electron-app --platform=win32 --arch=x64 --out=dist --electron-version=16.0.5 --icon=icons8-rockstar-games-50.png --overwrite"
+  },
+  "devDependencies": {
+    "electron": "^16.0.5",
+    "electron-packager": "^16.4.0"
+  }
+}
