@@ -1,16 +1,12 @@
 Quiz_Game/
 ├── public/
+│   ├── background/
 │   ├── css/
 │   ├── js/
-│   ├── images/
-│   ├── audio/
 │   └── xml/
 │       └── questions.xml
 ├── templates/
 │   ├── index.html
 │   ├── game.html
-│   ├── editor.html
 │   ├── result.html
-├── config.json
-├── app.py
-└── requirements.txt
+
