@@ -32,7 +32,7 @@ body {
     background-color: rgba(148, 224, 125, 0.11); /* Darker semi-transparent background */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 0 20px rgba(207, 124, 124, 0.3); /* Shadow for depth */
-    font-size: 1.2em; /* Increase font size within the section */
+    font-size: 30px; /* Increase font size within the section */
     color: #ffffff; /* Text color for content inside section */
 }
 
@@ -88,6 +88,16 @@ body {
     margin-top: 20px;
 }
 
+/* Adjust input text size */
+input[type=text], 
+input[type=email], 
+input[type=tel], 
+input[type=number] {
+    font-size: 1.2em; /* Adjust input text size */
+    padding: 10px; /* Adjust input padding */
+    border-radius: 5px; /* Rounded corners for inputs */
+}
+
 @media (max-width: 768px) {
     .section {
         padding: 30px; /* Adjust padding for smaller screens */
@@ -110,25 +120,34 @@ body {
 
 
 .alert {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Initially hide alert */
+    position: fixed; /* Fixed positioning to cover the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%; /* Cover full width */
+    height: 100%; /* Cover full height */
+    background-image: url('/public/background/game_bg.jpg'); /* Background image URL */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
     z-index: 1000;
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 100px; /* Adjust font size */
+    color: #4CAF50;
 }
 
-.alert-message {
-    font-size: 18px;
-    text-align: center;
+.alert.show {
+    display: flex;
+    animation: fadeIn 0.5s ease;
 }
 
-.alert-button {
-    display: block;
-    margin-top: 10px;
-    text-align: center;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

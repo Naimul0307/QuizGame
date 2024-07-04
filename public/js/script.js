@@ -12,6 +12,25 @@ document.addEventListener('DOMContentLoaded', function() {
     const userNumberInput = document.getElementById('user-number');
     const userSubmitBtn = document.getElementById('submit-user-info');
 
+    function showAlert(message) {
+        const alertElement = document.createElement('div');
+        alertElement.className = 'alert alert-dismissible fade show';
+        alertElement.innerHTML = `
+            <strong>${message}</strong>
+        `;
+        document.body.appendChild(alertElement);
+    
+        // Automatically close alert after 3 seconds
+        setTimeout(function() {
+            alertElement.classList.remove('show');
+            alertElement.classList.add('fade');
+            setTimeout(function() {
+                alertElement.remove();
+            }, 200); // Match CSS fade transition duration
+        }, 3000);
+    }
+    
+
     // Event listener for Settings button
     if (settingsBtn) {
         settingsBtn.addEventListener('click', function() {
@@ -31,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Optionally, you can save these settings for future use
             localStorage.setItem('gameTime', gameTime);
             localStorage.setItem('questionsCount', questionsCount);
-            alert('Settings saved!');
+            showAlert('Settings saved!'); // Show centered alert
         });
     }
 
@@ -52,14 +71,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const userEmail = userEmailInput.value.trim();
             const userNumber = userNumberInput.value.trim();
             if (userName === '' || userEmail === '' || userNumber === '') {
-                alert('Please fill out all fields.');
+                showAlert('Please fill out all fields.'); // Show centered alert
                 return;
             }
             // Save user info logic here
             localStorage.setItem('userName', userName);
             localStorage.setItem('userEmail', userEmail);
             localStorage.setItem('userNumber', userNumber);
-            alert('User info saved!');
             // Redirect to game start page (replace with actual redirection logic)
             window.location.href = 'game.html'; // Replace with your game start page
         });
