@@ -47,12 +47,15 @@ document.addEventListener('DOMContentLoaded', function() {
     if (userSubmitBtn) {
         userSubmitBtn.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
+            // Validate user info
+            const userName = userNameInput.value.trim();
+            const userEmail = userEmailInput.value.trim();
+            const userNumber = userNumberInput.value.trim();
+            if (userName === '' || userEmail === '' || userNumber === '') {
+                alert('Please fill out all fields.');
+                return;
+            }
             // Save user info logic here
-            const userName = userNameInput.value;
-            const userEmail = userEmailInput.value;
-            const userNumber = userNumberInput.value;
-            console.log(`User Info: Name - ${userName}, Email - ${userEmail}, Number - ${userNumber}`);
-            // Optionally, you can save this user info for future use
             localStorage.setItem('userName', userName);
             localStorage.setItem('userEmail', userEmail);
             localStorage.setItem('userNumber', userNumber);

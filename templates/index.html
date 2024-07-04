@@ -4,42 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Game - Setup</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="/public/css/styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Quiz Game</h1>
-        <button id="settings-btn">Settings</button>
-        <button id="user-btn">User</button>
-        
-        <div id="settings-options" style="display: none;">
-            <form>
-                <label for="game-time">Game Time (minutes): </label>
-                <input type="number" id="game-time" min="1" value="5">
-                <br><br>
-                <label for="questions-count">Number of Questions: </label>
-                <input type="number" id="questions-count" min="1" value="10">
-                <br><br>
-                <button id="save-settings-btn">Save Settings</button>
-            </form>
-        </div>
-
-        <div id="user-form" style="display: none;">
-            <form id="user-info-form">
-                <label for="user-name">Name: </label>
-                <input type="text" id="user-name" required>
-                <br><br>
-                <label for="user-email">Email: </label>
-                <input type="email" id="user-email" required>
-                <br><br>
-                <label for="user-number">Number: </label>
-                <input type="tel" id="user-number" required>
-                <br><br>
-                <button type="submit" id="submit-user-info">Save User Info</button>
-            </form>
+    <div class="container-fluid">
+        <div class="section">
+            <h1 class="text-center">Quiz Game</h1>
+            <div class="text-center">
+                <button id="settings-btn" class="btn btn-primary">Settings</button>
+                <button id="user-btn" class="btn btn-primary">User</button>
+            </div>
+            
+            <div id="settings-options" style="display: none;">
+                <form>
+                    <div class="form-group">
+                        <label for="game-time">Game Time (minutes): </label>
+                        <input type="number" id="game-time" class="form-control" min="1" value="5">
+                    </div>
+                    <div class="form-group">
+                        <label for="questions-count">Number of Questions: </label>
+                        <input type="number" id="questions-count" class="form-control" min="1" value="10">
+                    </div>
+                    <button id="save-settings-btn" class="btn btn-primary">Save Settings</button>
+                </form>
+            </div>
+    
+            <div id="user-form" style="display: none;">
+                <form id="user-info-form">
+                    <div class="form-group">
+                        <label for="user-name">Name: </label>
+                        <input type="text" id="user-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">Email: </label>
+                        <input type="email" id="user-email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-number">Number: </label>
+                        <input type="tel" id="user-number" class="form-control" required>
+                    </div>
+                    <button type="submit" id="submit-user-info" class="btn btn-primary">Save User Info</button>
+                </form>
+            </div>
         </div>
     </div>
-
+    
+    <!-- Bootstrap JS and your custom script -->
     <script src="/public/js/script.js"></script>
 </body>
 </html>

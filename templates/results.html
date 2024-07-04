@@ -4,53 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Game Results</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="/public/css/styles.css">
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .back-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        .back-button:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Quiz Game Results</h1>
-        <table id="users-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Number</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody id="users-list">
-                <!-- User rows will be dynamically added here -->
-            </tbody>
-        </table>
-        <button class="back-button" onclick="goBack()">Back to Home</button>
+    <div class="container-fluid">
+        <div class="section">
+            <h1 class="text-center">Quiz Game Results</h1>
+            <div class="table-responsive">
+                <table id="users-table" class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Number</th>
+                            <th>Score</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-list">
+                        <!-- User rows will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center">
+                <button class="back-button btn btn-primary" onclick="goBack()">Back to Home</button>
+            </div>
+        </div>
     </div>
+    <!-- Bootstrap JS and your custom script -->
     <script src="/public/js/results.js"></script>
 </body>
 </html>

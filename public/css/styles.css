@@ -1,18 +1,45 @@
+/* Custom CSS */
 body {
     font-family: Arial, sans-serif;
-    font-size: 20px;
+    font-size: 18px; /* Adjust base font size */
     font-weight: 400;
+    background-image: url('/public/background/game_bg.jpg'); /* Background image URL */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    margin: 0;
+    padding: 0;
+    color: #ffffff; /* Default text color for body */
 }
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
+.container-fluid {
+    padding: 0 15px;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure full viewport height */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+}
+
+.section {
+    width: 100%;
+    max-width: 800px; /* Adjust width as needed */
     text-align: center;
+    padding: 40px; /* Increase padding */
+    background-color: rgba(148, 224, 125, 0.11); /* Darker semi-transparent background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 0 20px rgba(207, 124, 124, 0.3); /* Shadow for depth */
+    font-size: 1.2em; /* Increase font size within the section */
+    color: #ffffff; /* Text color for content inside section */
 }
 
-button {
+.btn {
     margin: 10px;
-    padding: 10px 20px;
+    padding: 15px 30px; /* Increase button padding */
+    font-size: 1.1em; /* Increase button font size */
 }
 
 #settings-options,
@@ -22,10 +49,11 @@ button {
 }
 
 .answer {
-    margin: 5px 0;
-    padding: 10px;
-    border: 5px solid #3a0c0c;
+    margin: 10px 0; /* Increase margin */
+    padding: 15px; /* Increase padding */
+    border: 2px solid #3a0c0c;
     cursor: pointer;
+    font-size: 1.1em; /* Increase font size */
 }
 
 .answer:hover {
@@ -36,4 +64,71 @@ button {
 .answer.selected {
     background-color: #4CAF50; /* Green background color */
     color: white; /* White text color */
+}
+
+.table {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Lighter semi-transparent background for table */
+    color: #333; /* Darker text color for table content */
+    border-radius: 10px; /* Rounded corners for the table */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+}
+
+.table th,
+.table td {
+    padding: 12px; /* Adjust cell padding */
+}
+
+.table thead {
+    background-color: #007bff; /* Blue background for table header */
+    color: #fff; /* White text color for table header */
+}
+
+.back-button {
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 30px; /* Adjust padding for smaller screens */
+    }
+    
+    .btn {
+        padding: 12px 24px; /* Adjust button padding for smaller screens */
+        font-size: 1em; /* Adjust button font size for smaller screens */
+    }
+    
+    .answer {
+        padding: 12px; /* Adjust answer padding for smaller screens */
+        font-size: 1em; /* Adjust answer font size for smaller screens */
+    }
+    
+    .table-responsive {
+        overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
+    }
+}
+
+
+.alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: none;
+}
+
+.alert-message {
+    font-size: 18px;
+    text-align: center;
+}
+
+.alert-button {
+    display: block;
+    margin-top: 10px;
+    text-align: center;
 }
