@@ -15,27 +15,19 @@ function displayTopUsers(users) {
     usersList.innerHTML = ''; // Clear previous content
 
     users.forEach((user, index) => {
-        if (index < 10) { // Ensure only top 10 users are displayed
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${user.name}</td>
-                <td>${user.email}</td>
-                <td>${user.number}</td>
-                <td>${user.score}</td>
-            `;
-            usersList.appendChild(row);
-        }
+        const row = document.createElement('div');
+        row.classList.add('scoreboard-row');
+        row.innerHTML = `
+            <div class="scoreboard-item">${user.name}</div>
+            <div class="scoreboard-item">${user.email}</div>
+            <div class="scoreboard-item">${user.number}</div>
+            <div class="scoreboard-item">${user.score}</div>
+        `;
+        usersList.appendChild(row);
     });
 }
 
-// Function to format time in minutes:seconds (if needed)
-function formatTime(timeInSeconds) {
-    const minutes = Math.floor(timeInSeconds / 60);
-    const seconds = timeInSeconds % 60;
-    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-}
-
-// Function to redirect to home page (if needed)
+// Function to redirect to home page
 function goBack() {
-    window.location.href = 'index.html';
+    window.location.href = 'user.html'; // Replace with your home page URL
 }

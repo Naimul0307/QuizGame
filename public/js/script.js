@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const userNumberInput = document.getElementById('user-number');
     const userSubmitBtn = document.getElementById('submit-user-info');
 
-    function showAlert(message) {
+    function showAlert(message, className = '') {
         const alertElement = document.createElement('div');
-        alertElement.className = 'alert alert-dismissible fade show';
+        alertElement.className = `alert alert-dismissible fade show ${className}`;
         alertElement.innerHTML = `
             <strong>${message}</strong>
         `;
@@ -49,7 +49,12 @@ document.addEventListener('DOMContentLoaded', function() {
             // Optionally, you can save these settings for future use
             localStorage.setItem('gameTime', gameTime);
             localStorage.setItem('questionsCount', questionsCount);
-            showAlert('Settings saved!'); // Show centered alert
+            showAlert('Settings saved!' ,'success'); // Show centered alert
+
+            // Redirect after showing the alert message for 3 seconds
+            setTimeout(function() {
+                window.location.href = 'user.html';
+            }, 3000); // 3000 milliseconds = 3 seconds
         });
     }
 
@@ -70,15 +75,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const userEmail = userEmailInput.value.trim();
             const userNumber = userNumberInput.value.trim();
             if (userName === '' || userEmail === '' || userNumber === '') {
-                showAlert('Please fill out all fields.'); // Show centered alert
+                showAlert('Please fill out all fields.','error'); // Show centered alert
                 return;
             }
             // Save user info logic here
             localStorage.setItem('userName', userName);
             localStorage.setItem('userEmail', userEmail);
             localStorage.setItem('userNumber', userNumber);
-            // Redirect to game start page (replace with actual redirection logic)
-            window.location.href = 'game.html'; // Replace with your game start page
+            showAlert('User information saved!','success'); // Show centered alert
+
+            // Redirect after showing the alert message for 3 seconds
+            setTimeout(function() {
+                window.location.href = 'game.html';
+            }, 3000); // 3000 milliseconds = 3 seconds
         });
     }
 
@@ -121,8 +130,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Function to load questions from XML and select random subset
         function loadQuestions() {
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', '/public/xml/questions.xml', true);
-            // xhr.open('GET', '../public/xml/questions.xml', true);
+            // xhr.open('GET', '/public/xml/questions.xml', true);
+            xhr.open('GET', '../public/xml/questions.xml', true);
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     const xmlData = xhr.responseXML;

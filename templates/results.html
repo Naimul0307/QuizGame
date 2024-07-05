@@ -4,33 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Game Results</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../public/css/styles.css">
-</head>
+    <link rel="stylesheet" href="../public/css/result.css">
 <body>
     <div class="container-fluid">
         <div class="section">
             <h1 class="text-center">Quiz Game Results</h1>
-            <div class="table-responsive">
-                <table id="users-table" class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Number</th>
-                            <th>Score</th>
-                        </tr>
-                    </thead>
-                    <tbody id="users-list">
-                        <!-- User rows will be dynamically added here -->
-                    </tbody>
-                </table>
+            <div class="scoreboard">
+                <div class="scoreboard-header">
+                    <div class="header-item">Name</div>
+                    <div class="header-item">Email</div>
+                    <div class="header-item">Number</div>
+                    <div class="header-item">Score</div>
+                </div>
+                <div class="scoreboard-body" id="users-list">
+                    <!-- User scoreboard rows will be dynamically added here -->
+                </div>
             </div>
-            <div class="text-center">
-                <button class="back-button btn btn-primary" onclick="goBack()">Back to Home</button>
-            </div>
+            <button class="back-button btn btn-primary" onclick="goBack()">Back to Home</button>
         </div>
     </div>
     <!-- Bootstrap JS and your custom script -->
