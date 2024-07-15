@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game - Setup</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../public/css/styles.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="section">
+            <h1 class="text-center">User Details</h1>
+            <div id="user-form">
+                <form id="user-info-form">
+                    <div class="form-group">
+                        <label for="user-name">Name: </label>
+                        <input type="text" id="user-name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">Email: </label>
+                        <input type="email" id="user-email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-number">Number: </label>
+                        <input type="tel" id="user-number" class="form-control" required>
+                    </div>
+                    <button type="submit" id="submit-user-info" class="btn">Save User Info</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS and your custom script -->
+    <script src="../public/js/script.js"></script>
+</body>
+</html>

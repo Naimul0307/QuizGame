@@ -1,0 +1,69 @@
+/* Custom CSS */
+body {
+    /* font-family: 'GaMaamli-Regular', Arial, sans-serif; */
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 18px; /* Adjust base font size */
+    font-weight: 400;
+    background-image: url('../background/game_bg.jpg'); /* Background image URL */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    margin: 0;
+    padding: 0;
+    color: #ffffff; /* Default text color for body */
+}
+
+.container-fluid {
+    padding: 0 15px;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Ensure full viewport height */
+}
+
+.btn {
+    margin: 10px;
+    padding: 15px 30px; /* Increase button padding */
+    font-size: 1.1em; /* Increase button font size */
+    font-weight: bolder;
+    background-color: rgb(42, 121, 239);
+    color: azure;
+    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
+    text-transform: uppercase;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
+    width: 400px; /* Set the desired width for the button */
+}
+
+.btn:active {
+    transform: translateY(8px); /* Push the button down slightly on click */
+    box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */
+}
+
+
+@media (max-width: 768px) {
+    .section {
+        padding: 30px; /* Adjust padding for smaller screens */
+    }
+    
+    .btn {
+        padding: 12px 24px; /* Adjust button padding for smaller screens */
+        font-size: 1em; /* Adjust button font size for smaller screens */
+    }
+    
+    .answer {
+        padding: 12px; /* Adjust answer padding for smaller screens */
+        font-size: 1em; /* Adjust answer font size for smaller screens */
+    }
+    
+    .table-responsive {
+        overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
+    }
+}
+
+
+
+
+

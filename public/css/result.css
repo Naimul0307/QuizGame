@@ -1,17 +1,18 @@
 /* result.css */
 
 /* Load the GaMaamli-Regular font */
-@font-face {
+/* @font-face {
     font-family: 'GaMaamli-Regular';
     src: url('../fonts/GaMaamli-Regular.ttf') format('truetype');
-    /* Add other formats here if needed */
     font-weight: normal;
     font-style: normal;
-}
+} */
 
 body {
-    font-family: 'GaMaamli-Regular', Arial, sans-serif; /* Use GaMaamli-Regular first, fallback to Arial and then sans-serif */
-    color: #fff; /* White text color */
+    /* font-family: 'GaMaamli-Regular', Arial, sans-serif; Use GaMaamli-Regular first, fallback to Arial and then sans-serif */
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    color: #141414; /* White text color */
     margin: 0;
     padding: 0;
     display: flex;
@@ -23,17 +24,31 @@ body {
     background-position: center;
 }
 
+h1{
+    flex: 1;
+    font-size: 2em; /* Increased font size */
+    font-weight: bold;
+    text-transform: uppercase;
+    background: linear-gradient(135deg,rgb(18, 78, 145),rgb(13, 178, 138)); /* Gradient background */
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
+}
+
 .container-fluid {
     width: 100%;
+    max-width: 800px;
     text-align: center;
 }
 
 .scoreboard {
     margin-top: 20px;
     padding: 20px;
-    background: linear-gradient(to right, rgba(6, 211, 109, 0.678), rgba(0, 0, 0, 0.3),rgba(23, 55, 197, 0.3)); /* Gradient background */
+    /* background: linear-gradient(to right, rgba(6, 211, 109, 0.678), rgba(0, 0, 0, 0.3),rgba(23, 55, 197, 0.3)); Gradient background */
+    background: linear-gradient(30deg,rgb(18, 78, 145), rgb(13, 178, 138));
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1); /* White shadow for depth */
+    box-shadow: 20px 20px 20px rgba(3, 3, 3, 0.1); /* White shadow for depth */
     height: auto; /* Adjust height as needed */
 }
 
@@ -63,11 +78,12 @@ body {
 
 .scoreboard-row {
     width: 100%;
+    max-width: 800px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #666; /* Darker border bottom */
+    border-bottom: 1px solid #201f1f; /* Darker border bottom */
 }
 
 .scoreboard-row:last-child {
@@ -83,9 +99,10 @@ body {
 
 .back-button {
     margin-top: 20px;
-    background: linear-gradient(to right, #17cc44, #022204, #0e11cc); /* Gradient background */
+    /* background: linear-gradient(to right, #17cc44, #022204, #0e11cc); Gradient background */
+    background: linear-gradient(30deg,rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
     background-size: 200% auto;
-    color: #fff; /* White text color */
+    color: #000000c9; /* White text color */
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.8em; /* Increased font size */
@@ -94,10 +111,16 @@ body {
     border: 2px solid transparent;
     cursor: pointer;
     transition: background-position 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transition for background position */
+    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
 }
 
 .back-button:hover {
     background-position: right center; /* Move gradient on hover */
     color: #dbdbdb; /* Dark text color on hover */
-    border-color: #45a049; /* Darker green border on hover */
+    border-color: #050303; /* Darker green border on hover */
+}
+
+.back-button:active {
+    transform: translateY(8px); /* Push the button down slightly on click */
+    box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */
 }

@@ -50,19 +50,19 @@ document.addEventListener('DOMContentLoaded', function() {
             localStorage.setItem('gameTime', gameTime);
             localStorage.setItem('questionsCount', questionsCount);
             showAlert('Settings saved!' ,'success'); // Show centered alert
-
             // Redirect after showing the alert message for 3 seconds
             setTimeout(function() {
                 window.location.href = 'user.html';
-            }, 3000); // 3000 milliseconds = 3 seconds
+            });
         });
     }
 
     // Event listener for User button
     if (userBtn) {
         userBtn.addEventListener('click', function() {
-            userForm.style.display = 'block';
-            settingsOptions.style.display = 'none'; // Hide settings options
+            setTimeout(function() {
+                window.location.href = 'info.html';
+            });
         });
     }
 
@@ -74,20 +74,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const userName = userNameInput.value.trim();
             const userEmail = userEmailInput.value.trim();
             const userNumber = userNumberInput.value.trim();
-            if (userName === '' || userEmail === '' || userNumber === '') {
-                showAlert('Please fill out all fields.','error'); // Show centered alert
-                return;
-            }
+            // if (userName === '' || userEmail === '' || userNumber === '') {
+            //     showAlert('Please fill out all fields.','error'); // Show centered alert
+            //     return;
+            // }
             // Save user info logic here
             localStorage.setItem('userName', userName);
             localStorage.setItem('userEmail', userEmail);
             localStorage.setItem('userNumber', userNumber);
-            showAlert('User information saved!','success'); // Show centered alert
-
+            // showAlert('User information saved!','success'); // Show centered alert
             // Redirect after showing the alert message for 3 seconds
             setTimeout(function() {
                 window.location.href = 'game.html';
-            }, 3000); // 3000 milliseconds = 3 seconds
+            }); // 3000 milliseconds = 3 seconds
         });
     }
 
