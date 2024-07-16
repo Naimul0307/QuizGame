@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Game - Setup</title>
+    <title>Quiz Game - User Info</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../public/css/bootstrap.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../public/css/styles.css">
+    <!-- Simple Keyboard CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard/build/css/index.css">
 </head>
 <body>
     <div class="container-fluid">
@@ -17,23 +19,22 @@
                 <form id="user-info-form">
                     <div class="form-group">
                         <label for="user-name">Name: </label>
-                        <input type="text" id="user-name" class="form-control" required>
+                        <input type="text" id="user-name" class="form-control input-field" required>
                     </div>
                     <div class="form-group">
                         <label for="user-email">Email: </label>
-                        <input type="email" id="user-email" class="form-control" required>
+                        <input type="email" id="user-email" class="form-control input-field" required>
                     </div>
                     <div class="form-group">
                         <label for="user-number">Number: </label>
-                        <input type="tel" id="user-number" class="form-control" required>
+                        <input type="tel" id="user-number" class="form-control input-field" required>
                     </div>
-                    <button type="submit" id="submit-user-info" class="btn">Save User Info</button>
+                    <button type="submit" id="submit-user-info" class="btn">Submit</button>
                 </form>
             </div>
         </div>
     </div>
-    
-    <!-- Bootstrap JS and your custom script -->
+    <script src="../public/js/keyboard.js"></script>
     <script src="../public/js/script.js"></script>
 </body>
 </html>

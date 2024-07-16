@@ -54,6 +54,10 @@ h1{
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
 }
 
+.btn:hover{
+    background: linear-gradient(30deg,rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
+}
+
 .btn:active {
     transform: translateY(8px); /* Push the button down slightly on click */
     box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */

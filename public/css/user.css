@@ -37,6 +37,10 @@ body {
     width: 400px; /* Set the desired width for the button */
 }
 
+.btn:hover{
+    background: linear-gradient(30deg,rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
+}
+
 .btn:active {
     transform: translateY(8px); /* Push the button down slightly on click */
     box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */
@@ -62,8 +66,5 @@ body {
         overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
     }
 }
-
-
-
 
 

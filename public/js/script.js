@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <strong>${message}</strong>
         `;
         document.body.appendChild(alertElement);
-    
+
         // Automatically close alert after 3 seconds
         setTimeout(function() {
             alertElement.classList.remove('show');
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Optionally, you can save these settings for future use
             localStorage.setItem('gameTime', gameTime);
             localStorage.setItem('questionsCount', questionsCount);
-            showAlert('Settings saved!' ,'success'); // Show centered alert
+            showAlert('Settings saved!', 'success'); // Show centered alert
             // Redirect after showing the alert message for 3 seconds
             setTimeout(function() {
                 window.location.href = 'user.html';
@@ -74,19 +74,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const userName = userNameInput.value.trim();
             const userEmail = userEmailInput.value.trim();
             const userNumber = userNumberInput.value.trim();
-            // if (userName === '' || userEmail === '' || userNumber === '') {
-            //     showAlert('Please fill out all fields.','error'); // Show centered alert
-            //     return;
-            // }
             // Save user info logic here
             localStorage.setItem('userName', userName);
             localStorage.setItem('userEmail', userEmail);
             localStorage.setItem('userNumber', userNumber);
-            // showAlert('User information saved!','success'); // Show centered alert
             // Redirect after showing the alert message for 3 seconds
             setTimeout(function() {
                 window.location.href = 'game.html';
-            }); // 3000 milliseconds = 3 seconds
+            });
         });
     }
 
@@ -238,100 +233,99 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
-// Function to handle answer click
-function handleAnswerClick(index, correct) {
-    handleAnswerSelection(index, correct);
-}
-
-// Function to handle touch events for answering questions
-function handleAnswerTouch(index, correct) {
-    handleAnswerSelection(index, correct);
-}
-
-// Function to handle keyboard events for answering questions
-function handleAnswerKeystroke(index, correct) {
-    handleAnswerSelection(index, correct);
-}
-
-// Function to handle answer selection (used by click, touch, and keystroke)
-function handleAnswerSelection(index, correct) {
-    const selectedAnswer = {
-        question: questions[currentQuestionIndex].question,
-        answer: questions[currentQuestionIndex].answers[index].text,
-        correct: correct
-    };
-    userAnswers.push(selectedAnswer);
-
-    // Remove 'selected' class from all answers
-    const answerElements = document.querySelectorAll('.answer');
-    answerElements.forEach(answerElement => {
-        answerElement.classList.remove('selected');
-    });
-
-    // Add 'selected' class to the selected answer
-    answersContainer.children[index].classList.add('selected');
-
-    if (!correct) {
-        endGame();
-        return;
-    }
-
-    // Proceed to next question automatically
-    setTimeout(function() {
-        if (shownQuestionIndices.size === questions.length) {
-            endGame();
-        } else {
-            displayQuestion();
+        // Function to handle answer click
+        function handleAnswerClick(index, correct) {
+            handleAnswerSelection(index, correct);
         }
-    }, 1000); // Adjust delay as needed for any transition or animation
-}
 
-// Event listeners for answers
-const answerElements = document.querySelectorAll('.answer');
-answerElements.forEach((answerElement, index) => {
-    // Click event listener for mouse clicks
-    answerElement.addEventListener('click', function() {
-        handleAnswerClick(index, questions[currentQuestionIndex].answers[index].correct);
-    });
+        // Function to handle touch events for answering questions
+        function handleAnswerTouch(index, correct) {
+            handleAnswerSelection(index, correct);
+        }
 
-    // Touch event listener for touch events
-    answerElement.addEventListener('touchstart', function(event) {
-        event.preventDefault(); // Prevent default touch behavior
-        handleAnswerTouch(index, questions[currentQuestionIndex].answers[index].correct);
-    });
-});
+        // Function to handle keyboard events for answering questions
+        function handleAnswerKeystroke(index, correct) {
+            handleAnswerSelection(index, correct);
+        }
 
-// Event listener for keyboard events
-document.addEventListener('keydown', function(event) {
-    const key = event.key;
-    // Example: Map keys '1', '2', '3' to answer indices (adjust as needed)
-    if (key === 'A' || key === 'a') {
-        handleAnswerKeystroke(0, questions[currentQuestionIndex].answers[0].correct);
-    } else if (key === 'B' || key === 'b') {
-        handleAnswerKeystroke(1, questions[currentQuestionIndex].answers[1].correct);
-    } else if (key === 'C' || key === 'c') {
-        handleAnswerKeystroke(2, questions[currentQuestionIndex].answers[2].correct);
-    } else if (key === 'D' || key === 'd') {
-        handleAnswerKeystroke(3, questions[currentQuestionIndex].answers[3].correct);
-    } 
-    // Add more key mappings for additional answers if needed
-});
+        // Function to handle answer selection (used by click, touch, and keystroke)
+        function handleAnswerSelection(index, correct) {
+            const selectedAnswer = {
+                question: questions[currentQuestionIndex].question,
+                answer: questions[currentQuestionIndex].answers[index].text,
+                correct: correct
+            };
+            userAnswers.push(selectedAnswer);
 
+            // Remove 'selected' class from all answers
+            const answerElements = document.querySelectorAll('.answer');
+            answerElements.forEach(answerElement => {
+                answerElement.classList.remove('selected');
+            });
+
+            // Add 'selected' class to the selected answer
+            answersContainer.children[index].classList.add('selected');
+
+            if (!correct) {
+                endGame();
+                return;
+            }
+
+            // Proceed to next question automatically
+            setTimeout(function() {
+                if (shownQuestionIndices.size === questions.length) {
+                    endGame();
+                } else {
+                    displayQuestion();
+                }
+            }, 1000); // Adjust delay as needed for any transition or animation
+        }
+
+        // Event listeners for answers
+        const answerElements = document.querySelectorAll('.answer');
+        answerElements.forEach((answerElement, index) => {
+            // Click event listener for mouse clicks
+            answerElement.addEventListener('click', function() {
+                handleAnswerClick(index, questions[currentQuestionIndex].answers[index].correct);
+            });
+
+            // Touch event listener for touch events
+            answerElement.addEventListener('touchstart', function(event) {
+                event.preventDefault(); // Prevent default touch behavior
+                handleAnswerTouch(index, questions[currentQuestionIndex].answers[index].correct);
+            });
+        });
+
+        // Event listener for keyboard events
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            // Example: Map keys '1', '2', '3' to answer indices (adjust as needed)
+            if (key === 'A' || key === 'a') {
+                handleAnswerKeystroke(0, questions[currentQuestionIndex].answers[0].correct);
+            } else if (key === 'B' || key === 'b') {
+                handleAnswerKeystroke(1, questions[currentQuestionIndex].answers[1].correct);
+            } else if (key === 'C' || key === 'c') {
+                handleAnswerKeystroke(2, questions[currentQuestionIndex].answers[2].correct);
+            } else if (key === 'D' || key === 'd') {
+                handleAnswerKeystroke(3, questions[currentQuestionIndex].answers[3].correct);
+            } 
+            // Add more key mappings for additional answers if needed
+        });
 
         // Function to end the game
         function endGame() {
             clearInterval(timer); // Stop the timer
-            
+
             // Calculate score
             const score = calculateScore();
-        
+
             // Save user info and score to localStorage
             const userName = localStorage.getItem('userName');
             const userEmail = localStorage.getItem('userEmail');
             const userNumber = localStorage.getItem('userNumber');
-        
+
             const user = { name: userName, email: userEmail, number: userNumber, score: score };
-            
+
             // Store user data in an array in localStorage
             let users = JSON.parse(localStorage.getItem('users')) || [];
             users.push(user);
@@ -354,6 +348,40 @@ document.addEventListener('keydown', function(event) {
         // Event listener for Start button
         startBtn.addEventListener('click', function() {
             loadQuestions();
+        });
+    }
+
+    // Integrate Simple Keyboard for input fields
+    function integrateSimpleKeyboard() {
+        const keyboard = new Keyboard({
+            onChange: input => onInputChange(input),
+            onKeyPress: button => onKeyPress(button)
+        });
+
+        function onInputChange(input) {
+            document.querySelector('.input').value = input;
+        }
+
+        function onKeyPress(button) {
+            console.log('Button pressed', button);
+        }
+
+        document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]').forEach(input => {
+            input.addEventListener('focus', () => {
+                keyboard.setOptions({
+                    inputName: input.name,
+                    layout: 'default'
+                });
+                document.querySelector('.simple-keyboard').style.display = 'block';
+            });
+
+            input.addEventListener('blur', () => {
+                setTimeout(() => {
+                    if (!document.querySelector('.simple-keyboard').contains(document.activeElement)) {
+                        document.querySelector('.simple-keyboard').style.display = 'none';
+                    }
+                }, 200);
+            });
         });
     }
 });
