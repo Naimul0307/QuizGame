@@ -13,7 +13,7 @@ body {
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 18px; /* Adjust base font size */
     font-weight: 400;
-    background-image: url('../background/game_bg.jpg'); /* Background image URL */
+    background-image: url('../background/game_bg.png'); /* Background image URL */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent background image from repeating */

@@ -266,10 +266,10 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add 'selected' class to the selected answer
             answersContainer.children[index].classList.add('selected');
 
-            if (!correct) {
-                endGame();
-                return;
-            }
+            // if (!correct) {
+            //     endGame();
+            //     return;
+            // }
 
             // Proceed to next question automatically
             setTimeout(function() {
