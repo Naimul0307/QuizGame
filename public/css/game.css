@@ -4,7 +4,7 @@ body {
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 18px; /* Adjust base font size */
     font-weight: 400;
-    background-image: url('../background/game_bg.png'); /* Background image URL */
+    background-image: url('../background/game_bg.jpeg'); /* Background image URL */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent background image from repeating */
@@ -35,9 +35,8 @@ h1{
     width: 100%;
     text-align: center;
     padding: 40px; /* Increase padding */
-    /* background: linear-gradient(to right, rgba(75, 173, 99, 0.4), rgba(34, 37, 34, 0.4), rgba(42, 45, 218, 0.5)); Gradient background with reduced opacity */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 0 20px rgba(207, 124, 124, 0.3); /* Shadow for depth */
+    /* border-radius: 10px;
+    box-shadow: 0 0 20px rgba(207, 124, 124, 0.3); */
     font-size: 30px; /* Increase font size within the section */
     color: #111010; /* Text color for content inside section */
 }
@@ -151,7 +150,7 @@ h1{
     left: 0;
     width: 100%; /* Cover full width */
     height: 100%; /* Cover full height */
-    background-image: url('../background/game_bg.jpg'); /* Background image URL */
+    background-image: url('../background/game_bg.jpeg'); /* Background image URL */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent background image from repeating */

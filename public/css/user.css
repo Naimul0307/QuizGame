@@ -4,7 +4,7 @@ body {
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 18px; /* Adjust base font size */
     font-weight: 400;
-    background-image: url('../background/game_bg.png'); /* Background image URL */
+    background-image: url('../background/user_background.jpeg'); /* Background image URL */
     background-size: cover; /* Cover the entire background */
     background-position: center; /* Center the background image */
     background-repeat: no-repeat; /* Prevent background image from repeating */
@@ -35,16 +35,19 @@ body {
     text-transform: uppercase;
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
     width: 400px; /* Set the desired width for the button */
+    position: relative; /* Set position to relative for top adjustment */
+    top: 300px; /* Adjust this value to move the button down off the page */
 }
 
-.btn:hover{
-    background: linear-gradient(30deg,rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
+.btn:hover {
+    background: linear-gradient(30deg, rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
 }
 
 .btn:active {
     transform: translateY(8px); /* Push the button down slightly on click */
     box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */
 }
+
 
 
 @media (max-width: 768px) {

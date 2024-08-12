@@ -19,7 +19,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh; /* Full viewport height */
-    background: url('../background/game_bg.png'); /* Gradient background with image */
+    background: url('../background/game_bg.jpeg'); /* Gradient background with image */
     background-size: cover;
     background-position: center;
 }
