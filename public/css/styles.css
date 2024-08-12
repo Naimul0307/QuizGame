@@ -66,6 +66,7 @@ h1{
 
 .btn:hover{
     background: linear-gradient(30deg,rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
+    color: azure;
 }
 .btn:active {
     transform: translateY(8px); /* Push the button down slightly on click */
@@ -88,7 +89,7 @@ input[type=tel],
 input[type=number] {
     font-size: 1.2em; /* Adjust input text size */
     padding: 10px; /* Adjust input padding */
-    border-radius: 5px; /* Rounded corners for inputs */
+    border-radius: 20px; /* Rounded corners for inputs */
     box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
 }
