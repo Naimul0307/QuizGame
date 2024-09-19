@@ -1,6 +1,5 @@
 /* Custom CSS */
 body {
-    /* font-family: 'GaMaamli-Regular', Arial, sans-serif; */
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 18px; /* Adjust base font size */
     font-weight: 400;
@@ -13,8 +12,7 @@ body {
     color: #ffffff; /* Default text color for body */
 }
 
-h1{
-    flex: 1;
+h1 {
     font-size: 2em; /* Increased font size */
     font-weight: bold;
     text-transform: uppercase;
@@ -35,8 +33,6 @@ h1{
     width: 100%;
     text-align: center;
     padding: 40px; /* Increase padding */
-    /* border-radius: 10px;
-    box-shadow: 0 0 20px rgba(207, 124, 124, 0.3); */
     font-size: 30px; /* Increase font size within the section */
     color: #111010; /* Text color for content inside section */
 }
@@ -53,8 +49,8 @@ h1{
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
 }
 
-.btn:hover{
-    background: linear-gradient(30deg,rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
+.btn:hover {
+    background: linear-gradient(30deg, rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
 }
 
 .btn:active {
@@ -63,7 +59,7 @@ h1{
 }
 
 #question {
-    background: linear-gradient(135deg,rgb(7, 3, 240), rgb(240, 218, 218)); /* Gradient background */
+    background: linear-gradient(135deg, rgb(7, 3, 240), rgb(240, 218, 218)); /* Gradient background */
     color: #fff;
     padding: 10px;
     margin-top: 10px;
@@ -77,7 +73,6 @@ h1{
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
 }
 
-
 .answer {
     margin: 10px 0; /* Increase margin */
     padding: 15px; /* Increase padding */
@@ -90,9 +85,8 @@ h1{
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
 }
 
-
 .answer:nth-child(1) {
-    background-color:rgba(65, 62, 243, 0.925); /* Green background for first option */
+    background-color: rgba(65, 62, 243, 0.925); /* Green background for first option */
     color: #fff; /* White text color */
 }
 
@@ -102,53 +96,33 @@ h1{
 }
 
 .answer:nth-child(3) {
-    background-color:rgba(65, 62, 243, 0.925); /* Red background for third option */
+    background-color: rgba(65, 62, 243, 0.925); /* Red background for third option */
     color: #fff; /* White text color */
 }
 
 .answer:nth-child(4) {
-    background-color:  rgb(240, 218, 218); /* Blue background for second option */
+    background-color: rgb(240, 218, 218); /* Blue background for fourth option */
     color: #070202; /* White text color */
 }
+
 .answer:hover {
     background-color: rgb(239, 74, 42);
     color: azure;
 }
 
 .answer.selected {
-    background-color:#4CAF50; /* Green background color */
+    background-color: #4CAF50; /* Green background color */
     color: white; /* White text color */
     transition: transform 0.5s ease-out, box-shadow 0.5s ease-out; /* Add transition for smooth animation */
 }
 
-
 .question-image {
-    width: 512px;
-    height: 512px;
-    object-fit: contain; /* This keeps the aspect ratio while fitting the image within the box */
+    width: 100%;
+    max-width: 512px; /* Limits the image width to 512px */
+    height: auto; /* Maintains aspect ratio */
+    object-fit: contain; /* Keeps the aspect ratio while fitting the image within the box */
     margin: 10px 0;
 }
-
-@media (max-width: 768px) {
-    .section {
-        padding: 30px; /* Adjust padding for smaller screens */
-    }
-    
-    .btn {
-        padding: 12px 24px; /* Adjust button padding for smaller screens */
-        font-size: 1em; /* Adjust button font size for smaller screens */
-    }
-    
-    .answer {
-        padding: 12px; /* Adjust answer padding for smaller screens */
-        font-size: 1em; /* Adjust answer font size for smaller screens */
-    }
-    
-    .table-responsive {
-        overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
-    }
-}
-
 
 .alert {
     display: none; /* Initially hide alert */
@@ -178,14 +152,13 @@ h1{
     }
 }
 
-
 #timer {
-    background: linear-gradient(30deg,rgb(7, 3, 240), rgb(255, 255, 255), rgb(96, 160, 219));
-    /* background: linear-gradient(30deg, rgb(39, 238, 89), rgb(105, 107, 105), rgba(21, 24, 230, 0.925)); Gradient background with opacity */
+    background: linear-gradient(30deg, rgb(7, 3, 240), rgb(255, 255, 255), rgb(96, 160, 219));
     color: #161515;
     padding: 15px;
     border-radius: 10px; /* Adjust border radius for square corners */
-    width: 300px; /* Adjust width as needed */
+    width: 100%; /* Full width for responsiveness */
+    max-width: 300px; /* Maximum width */
     height: 150px; /* Adjust height as needed */
     margin: 0 auto; /* Center horizontally */
     margin-top: 20px; /* Adjust top margin as needed */
@@ -197,4 +170,65 @@ h1{
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px; /* Slightly smaller font size */
+    }
+
+    h1 {
+        font-size: 1.5em; /* Adjust font size for smaller screens */
+    }
+
+    .section {
+        padding: 20px; /* Reduce padding for smaller screens */
+        font-size: 24px; /* Decrease font size */
+    }
+
+    .btn {
+        padding: 12px 24px; /* Adjust button padding */
+        font-size: 1em; /* Adjust button font size */
+    }
+
+    .answer {
+        padding: 10px; /* Adjust padding */
+        font-size: 1em; /* Adjust font size */
+    }
+
+    #timer {
+        width: 100%; /* Full width for responsiveness */
+        max-width: 250px; /* Adjust maximum width */
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px; /* Smaller font size for mobile screens */
+    }
+
+    h1 {
+        font-size: 1.2em; /* Further adjust font size */
+    }
+
+    .section {
+        padding: 15px; /* Further reduce padding */
+        font-size: 20px; /* Further decrease font size */
+    }
+
+    .btn {
+        padding: 10px 20px; /* Adjust button padding */
+        font-size: 0.9em; /* Adjust button font size */
+    }
+
+    .answer {
+        padding: 8px; /* Adjust padding */
+        font-size: 0.9em; /* Adjust font size */
+    }
+
+    #timer {
+        width: 100%; /* Full width for responsiveness */
+        max-width: 200px; /* Adjust maximum width */
+    }
 }
