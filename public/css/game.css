@@ -18,6 +18,10 @@ h1 {
     text-transform: uppercase;
 }
 
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;  /* For Chrome, Safari, and Opera */
+}
+
 .container-fluid {
     padding: 0 15px;
     max-width: 100%;
