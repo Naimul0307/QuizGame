@@ -1,0 +1,913 @@
+<questions>
+<!-- Dubai Trivia -->
+<question>
+    <text>What is the tallest building in Dubai and the world?</text>
+    <answers>
+        <image>../public/images/france.png</image>
+        <answer>Burj Al Arab</answer>
+        <answer>Dubai Tower</answer>
+        <answer correct="true">Burj Khalifa</answer>
+        <answer>Sheikh Tower</answer>
+    </answers>
+</question>
+<question>
+    <text>In which year was the Burj Khalifa officially opened?</text>
+    <answers>
+        <answer>2008</answer>
+        <answer>2012</answer>
+        <answer correct="true">2010</answer>
+        <answer>2015</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the artificial archipelago in the shape of a palm tree in Dubai?</text>
+    <answers>
+        <answer>Palm Island</answer>
+        <answer correct="true">Palm Jumeirah</answer>
+        <answer>Palm Deira</answer>
+        <answer>Palm Khalifa</answer>
+    </answers>
+</question>
+<question>
+    <text>Which mall in Dubai has a ski resort inside it?</text>
+    <answers>
+        <answer>Dubai Mall</answer>
+        <answer>Ibn Battuta Mall</answer>
+        <answer correct="true">Mall of the Emirates</answer>
+        <answer>City Centre Mirdif</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the official language of Dubai?</text>
+    <answers>
+        <answer>English</answer>
+        <answer>Urdu</answer>
+        <answer correct="true">Arabic</answer>
+        <answer>Hindi</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the currency used in Dubai?</text>
+    <answers>
+        <answer correct="true">UAE Dirham</answer>
+        <answer>Saudi Riyal</answer>
+        <answer>Qatari Riyal</answer>
+        <answer>Kuwaiti Dinar</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the largest man-made marina in the world located in Dubai?</text>
+    <answers>
+        <answer>Marina Bay</answer>
+        <answer>Marina Walk</answer>
+        <answer>Marina Cove</answer>
+        <answer correct="true">Dubai Marina</answer>
+    </answers>
+</question>
+<question>
+    <text>Which Dubai hotel is known for its underwater suites?</text>
+    <answers>
+        <answer correct="true">Atlantis, The Palm</answer>
+        <answer>Burj Al Arab</answer>
+        <answer>Jumeirah Beach Hotel</answer>
+        <answer>Ritz-Carlton</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of Dubai's international airport?</text>
+    <answers>
+        <answer correct="true">Dubai International Airport (DXB)</answer>
+        <answer>Al Maktoum International Airport</answer>
+        <answer>Sharjah International Airport</answer>
+        <answer>Abu Dhabi International Airport</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the traditional marketplace called in Dubai?</text>
+    <answers>
+        <answer>Bazaar</answer>
+        <answer correct="true">Souk</answer>
+        <answer>Market</answer>
+        <answer>Plaza</answer>
+    </answers>
+</question>
+<!-- History -->
+<question>
+    <text>When was oil first discovered in Dubai?</text>
+    <answers>
+        <answer>1958</answer>
+        <answer>1973</answer>
+        <answer correct="true">1966</answer>
+        <answer>1980</answer>
+    </answers>
+</question>
+<question>
+    <text>What was Dubai's primary industry before the discovery of oil?</text>
+    <answers>
+        <answer>Agriculture</answer>
+        <answer>Textiles</answer>
+        <answer>Gold trading</answer>
+        <answer correct="true">Pearl diving and fishing</answer>
+    </answers>
+</question>
+<question>
+    <text>Who is the current ruler of Dubai?</text>
+    <answers>
+        <answer correct="true">Sheikh Mohammed bin Rashid Al Maktoum</answer>
+        <answer>Sheikh Khalifa bin Zayed Al Nahyan</answer>
+        <answer>Sheikh Hamdan bin Mohammed Al Maktoum</answer>
+        <answer>Sheikh Mansour bin Zayed Al Nahyan</answer>
+    </answers>
+</question>
+<question>
+    <text>When was the United Arab Emirates founded?</text>
+    <answers>
+        <answer>1965</answer>
+        <answer>1980</answer>
+        <answer>1990</answer>
+        <answer correct="true">1971</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of Dubai's traditional fort, now a museum?</text>
+    <answers>
+        <answer>Al Bastakiya Fort</answer>
+        <answer>Al Maktoum Fort</answer>
+        <answer correct="true">Al Fahidi Fort</answer>
+        <answer>Al Shindagha Fort</answer>
+    </answers>
+</question>
+<question>
+    <text>Which year did Dubai become part of the UAE?</text>
+    <answers>
+        <answer>1967</answer>
+        <answer correct="true">1971</answer>
+        <answer>1975</answer>
+        <answer>1981</answer>
+    </answers>
+</question>
+<question>
+    <text>What was Dubai's first skyscraper?</text>
+    <answers>
+        <answer correct="true">Dubai World Trade Centre</answer>
+        <answer>Burj Al Arab</answer>
+        <answer>Emirates Towers</answer>
+        <answer>Burj Khalifa</answer>
+    </answers>
+</question>
+<question>
+    <text>Who was the first ruler of Dubai from the Al Maktoum family?</text>
+    <answers>
+        <answer>Sheikh Maktoum bin Butti</answer>
+        <answer correct="true">Sheikh Saeed bin Maktoum Al Maktoum</answer>
+        <answer>Sheikh Rashid bin Saeed Al Maktoum</answer>
+        <answer>Sheikh Mohammed bin Rashid Al Maktoum</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the historical area in Dubai known for its preserved traditional buildings?</text>
+    <answers>
+        <answer>Al Shindagha</answer>
+        <answer>Al Muraqqabat</answer>
+        <answer correct="true">Al Bastakiya</answer>
+        <answer>Al Karama</answer>
+    </answers>
+</question>
+<question>
+    <text>When did the Dubai Metro begin operations?</text>
+    <answers>
+        <answer>2005</answer>
+        <answer>2012</answer>
+        <answer>2015</answer>
+        <answer correct="true">2009</answer>
+    </answers>
+</question>
+<!-- Culture -->
+<question>
+    <text>What is the name of the traditional Emirati boat used for fishing and pearl diving?</text>
+    <answers>
+        <answer>Abra</answer>
+        <answer>Sampan</answer>
+        <answer correct="true">Dhow</answer>
+        <answer>Catamaran</answer>
+    </answers>
+</question>
+<question>
+    <text>What is a popular traditional dish in Dubai made of rice, meat, and spices?</text>
+    <answers>
+        <answer correct="true">Al Machboos</answer>
+        <answer>Falafel</answer>
+        <answer>Hummus</answer>
+        <answer>Shawarma</answer>
+    </answers>
+</question>
+<question>
+    <text>During which month do Muslims in Dubai fast from dawn to sunset?</text>
+    <answers>
+        <answer>Muharram</answer>
+        <answer>Safar</answer>
+        <answer correct="true">Ramadan</answer>
+        <answer>Rabi' al-awwal</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the traditional male dress called in Dubai?</text>
+    <answers>
+        <answer>Abaya</answer>
+        <answer correct="true">Kandura or Dishdasha</answer>
+        <answer>Thobe</answer>
+        <answer>Jalabiya</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the traditional female dress called in Dubai?</text>
+    <answers>
+        <answer>Kandura</answer>
+        <answer>Burqa</answer>
+        <answer correct="true">Abaya</answer>
+        <answer>Hijab</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the traditional dance of the UAE?</text>
+    <answers>
+        <answer correct="true">Al Ayyala</answer>
+        <answer>Dabke</answer>
+        <answer>Tanoura</answer>
+        <answer>Zaffa</answer>
+    </answers>
+</question>
+<question>
+    <text>Which traditional sport involving falcons is popular in Dubai?</text>
+    <answers>
+        <answer>Camel Racing</answer>
+        <answer correct="true">Falconry</answer>
+        <answer>Horse Racing</answer>
+        <answer>Bullfighting</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the coffee pot commonly used in the UAE?</text>
+    <answers>
+        <answer correct="true">Dallah</answer>
+        <answer>Samovar</answer>
+        <answer>Kettle</answer>
+        <answer>Teapot</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the Emirati bread often served with meals?</text>
+    <answers>
+        <answer>Pita</answer>
+        <answer>Naan</answer>
+        <answer>Roti</answer>
+        <answer correct="true">Khameer</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the traditional way of greeting in Dubai?</text>
+    <answers>
+        <answer>Handshake</answer>
+        <answer>Cheek kiss</answer>
+        <answer correct="true">Nose-to-nose greeting (Eskimo kiss)</answer>
+        <answer>Bowing</answer>
+    </answers>
+</question>
+<!-- Economy  -->
+<question>
+    <text>Which industry is the largest contributor to Dubai's GDP?</text>
+    <answers>
+        <answer correct="true">Real estate and construction</answer>
+        <answer>Oil and gas</answer>
+        <answer>Tourism</answer>
+        <answer>Banking</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of Dubai’s financial district?</text>
+    <answers>
+        <answer>Dubai Media City</answer>
+        <answer correct="true">Dubai International Financial Centre (DIFC)</answer>
+        <answer>Dubai Silicon Oasis</answer>
+        <answer>Dubai Investment Park</answer>
+    </answers>
+</question>
+<question>
+    <text>Which free trade zone is known for its large number of media and tech companies?</text>
+    <answers>
+        <answer>Jebel Ali Free Zone</answer>
+        <answer>Dubai Healthcare City</answer>
+        <answer correct="true">Dubai Media City</answer>
+        <answer>Dubai Internet City</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of Dubai's stock exchange?</text>
+    <answers>
+        <answer>Abu Dhabi Securities Exchange (ADX)</answer>
+        <answer>Nasdaq Dubai</answer>
+        <answer>Dubai Gold and Commodities Exchange (DGCX)</answer>
+        <answer correct="true">Dubai Financial Market (DFM)</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of Dubai’s largest port?</text>
+    <answers>
+        <answer correct="true">Jebel Ali Port</answer>
+        <answer>Port Rashid</answer>
+        <answer>Khalifa Port</answer>
+        <answer>Al Hamriya Port</answer>
+    </answers>
+</question>
+<question>
+    <text>Which annual event showcases luxury yachts in Dubai?</text>
+    <answers>
+        <answer>Dubai Yacht Festival</answer>
+        <answer correct="true">Dubai International Boat Show</answer>
+        <answer>Dubai Marine Exhibition</answer>
+        <answer>Dubai Sailing Week</answer>
+    </answers>
+</question>
+<question>
+    <text>Which event is known as the largest annual food, beverage, and hospitality event in Dubai?</text>
+    <answers>
+        <answer>Taste of Dubai</answer>
+        <answer>Dubai Food Festival</answer>
+        <answer correct="true">Gulfood</answer>
+        <answer>Dubai Culinary Week</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the Dubai-based airline?</text>
+    <answers>
+        <answer correct="true">Emirates</answer>
+        <answer>Etihad</answer>
+        <answer>Qatar Airways</answer>
+        <answer>Gulf Air</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the free zone dedicated to healthcare services?</text>
+    <answers>
+        <answer>Dubai Medical Park</answer>
+        <answer>Dubai Health District</answer>
+        <answer>Dubai Wellness Centre</answer>
+        <answer correct="true">Dubai Healthcare City</answer>
+    </answers>
+</question>
+<question>
+    <text>Which global event did Dubai host in 2020?</text>
+    <answers>
+        <answer>World Trade Expo</answer>
+        <answer>International Trade Fair</answer>
+        <answer correct="true">Expo 2020</answer>
+        <answer>Global Business Summit</answer>
+    </answers>
+</question>
+<!-- Geography -->
+<question>
+    <text>Dubai is located on the coast of which body of water?</text>
+    <answers>
+        <answer>Red Sea</answer>
+        <answer correct="true">Persian Gulf</answer>
+        <answer>Arabian Sea</answer>
+        <answer>Gulf of Oman</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the desert surrounding Dubai?</text>
+    <answers>
+        <answer>Sahara Desert</answer>
+        <answer>Thar Desert</answer>
+        <answer correct="true">Arabian Desert</answer>
+        <answer>Negev Desert</answer>
+    </answers>
+</question>
+<question>
+    <text>How many districts is Dubai divided into?</text>
+    <answers>
+        <answer correct="true">Five primary districts</answer>
+        <answer>Nine primary districts</answer>
+        <answer>Seven primary districts</answer>
+        <answer>Eleven primary districts</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the creek that runs through Dubai?</text>
+    <answers>
+        <answer>Marina Creek</answer>
+        <answer>Al Maktoum Creek</answer>
+        <answer>Ras Al Khor Creek</answer>
+         <answer correct="true">Dubai Creek</answer>
+    </answers>
+</question>
+<question>
+    <text>Which district is known as the historic heart of Dubai?</text>
+    <answers>
+        <answer correct="true">Deira</answer>
+        <answer>Jumeirah</answer>
+        <answer>Downtown</answer>
+        <answer>Al Barsha</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the artificial island in the shape of the world map?</text>
+    <answers>
+        <answer>Globe Islands</answer>
+        <answer correct="true">The World Islands</answer>
+        <answer>Earth Islands</answer>
+        <answer>Map Islands</answer>
+    </answers>
+</question>
+<question>
+    <text>Which district in Dubai is known for its skyscrapers and business centers?</text>
+    <answers>
+        <answer>JLT (Jumeirah Lakes Towers)</answer>
+        <answer>Deira</answer>
+        <answer>Al Fahidi</answer>
+        <answer correct="true">Downtown Dubai</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the public beach popular with tourists in Dubai?</text>
+    <answers>
+        <answer correct="true">Jumeirah Beach</answer>
+        <answer>Kite Beach</answer>
+        <answer>Marina Beach</answer>
+        <answer>Sunset Beach</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the main highway that runs through Dubai?</text>
+    <answers>
+        <answer>Emirates Road</answer>
+        <answer>Al Khail Road</answer>
+        <answer correct="true">Sheikh Zayed Road</answer>
+        <answer>Hessa Street</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the largest park in Dubai?</text>
+    <answers>
+        <answer>Mushrif Park</answer>
+        <answer>Safa Park</answer>
+        <answer>Creek Park</answer>
+        <answer correct="true">Zabeel Park</answer>
+    </answers>
+</question>
+<!-- Tourism -->
+<question>
+    <text>What is the name of Dubai's most famous shopping festival?</text>
+    <answers>
+        <answer>Dubai Summer Surprises</answer>
+        <answer>Dubai Retail Week</answer>
+        <answer correct="true">Dubai Shopping Festival (DSF)</answer>
+        <answer>Dubai Bargain Bazaar</answer>
+    </answers>
+</question>
+<question>
+    <text>Which Dubai hotel is shaped like a sail?</text>
+    <answers>
+        <answer correct="true">Burj Al Arab</answer>
+        <answer>Jumeirah Beach Hotel</answer>
+        <answer>Atlantis, The Palm</answer>
+        <answer>The Address Downtown</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the largest choreographed fountain system in the world located in Dubai?</text>
+    <answers>
+        <answer>Dancing Waters</answer>
+        <answer>Marina Fountain</answer>
+        <answer correct="true">The Dubai Fountain</answer>
+        <answer>Arabian Fountain</answer>
+    </answers>
+</question>
+<question>
+    <text>Which tower in Dubai offers a panoramic view of the city and is located on the artificial island of Bluewaters?</text>
+    <answers>
+        <answer>Burj Khalifa</answer>
+        <answer correct="true">Ain Dubai (Dubai Eye)</answer>
+        <answer>Dubai Frame</answer>
+        <answer>Cayan Tower</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the underwater hotel restaurant in Dubai?</text>
+    <answers>
+        <answer>Ossiano</answer>
+        <answer>Scape</answer>
+        <answer correct="true">Al Mahara</answer>
+        <answer>Pierchic</answer>
+    </answers>
+</question>
+<question>
+    <text>Which amusement park in Dubai is based on Bollywood movies?</text>
+    <answers>
+        <answer correct="true">Bollywood Parks Dubai</answer>
+        <answer>Bollywood World</answer>
+        <answer>Bollywood Land</answer>
+        <answer>Bollywood Universe</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the indoor theme park in Dubai known for its Marvel and Cartoon Network zones?</text>
+    <answers>
+        <answer>Motiongate Dubai</answer>
+        <answer correct="true">IMG Worlds of Adventure</answer>
+        <answer>Legoland Dubai</answer>
+        <answer>Wonderland Theme Park</answer>
+    </answers>
+</question>
+<question>
+    <text>Which famous Dubai landmark is known for its large gold souk?</text>
+    <answers>
+        <answer>Jumeirah Gold Market</answer>
+        <answer>Marina Gold Bazaar</answer>
+        <answer correct="true">Deira Gold Souk</answer>
+        <answer>Downtown Gold Plaza</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the tower in Dubai shaped like a twisted spiral?</text>
+    <answers>
+        <answer correct="true">Cayan Tower</answer>
+        <answer>Infinity Tower</answer>
+        <answer>Spiral Tower</answer>
+        <answer>Twisted Tower</answer>
+    </answers>
+</question>
+<question>
+    <text>Which annual horse race is one of the richest in the world, held in Dubai?</text>
+    <answers>
+        <answer>Dubai Horse Classic</answer>
+        <answer correct="true">Dubai World Cup</answer>
+        <answer>Dubai Equestrian Derby</answer>
+        <answer>Dubai Gold Cup</answer>
+    </answers>
+</question>
+<!-- Modern Developments -->
+<question>
+    <text>Which large-scale development is known as the "city within a city" in Dubai?</text>
+    <answers>
+        <answer>Dubai Hills</answer>
+        <answer>Dubai Silicon Oasis</answer>
+        <answer correct="true">Dubai Marina</answer>
+        <answer>Dubai Festival City</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the largest mall in Dubai?</text>
+    <answers>
+        <answer correct="true">The Dubai Mall</answer>
+        <answer>Mall of the Emirates</answer>
+        <answer>Ibn Battuta Mall</answer>
+        <answer>City Centre Mirdif</answer>
+    </answers>
+</question>
+<question>
+    <text>Which district in Dubai is known for its many high-end hotels and resorts?</text>
+    <answers>
+        <answer>Deira</answer>
+        <answer correct="true">Jumeirah</answer>
+        <answer>Bur Dubai</answer>
+        <answer>Al Barsha</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the tower that was once the tallest residential building in the world?</text>
+    <answers> 
+        <answer>Marina 101</answer>
+        <answer>Torch Tower</answer>
+        <answer correct="true">Princess Tower</answer>
+        <answer>Elite Residence</answer>
+    </answers>
+</question>
+<question>
+    <text>Which Dubai project aims to create a fully sustainable city?</text>
+    <answers>
+        <answer>Eco City</answer>
+        <answer>Green City</answer>
+        <answer>Future City</answer>
+        <answer correct="true">The Sustainable City</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the luxury hotel located on the artificial island connected to Jumeirah Beach?</text>
+    <answers>
+        <answer correct="true">Burj Al Arab</answer>
+        <answer>Atlantis, The Palm</answer>
+        <answer>The Ritz-Carlton</answer>
+        <answer>Jumeirah Beach Hotel</answer>
+    </answers>
+</question>
+<question>
+    <text>Which futuristic museum is set to open in Dubai and focuses on innovation and technology?</text>
+    <answers>
+        <answer>Science and Innovation Museum</answer>
+        <answer correct="true">Museum of the Future</answer>
+        <answer>Technology Museum</answer>
+        <answer>Future World Museum</answer>
+    </answers>
+</question>
+<question>
+    <text>Which district is being developed as a hub for global trade and tourism, located near the Expo 2020 site?</text>
+    <answers>
+        <answer>Dubai North</answer>
+        <answer>Dubai East</answer>
+        <answer>Dubai West</answer>
+        <answer correct="true">Dubai South</answer>
+    </answers>
+</question>
+<question>
+    <text>Which new residential area in Dubai features luxury villas and mansions along a golf course?</text>
+    <answers>
+        <answer>Jumeirah Islands</answer>
+        <answer>Arabian Ranches</answer>
+        <answer correct="true">Emirates Hills</answer>
+        <answer>Damac Hills</answer>
+    </answers>
+</question>
+<question>
+    <text>Which artificial island is planned to host an array of entertainment and leisure options, including the world’s first underwater hotel?</text>
+    <answers>
+        <answer correct="true">The World Islands</answer>
+        <answer>Palm Deira</answer>
+        <answer>Jumeirah Bay Island</answer>
+        <answer>Al Marjan Island</answer>
+    </answers>
+</question>
+<!-- Events and Festivals -->
+<question>
+    <text>Which annual event in Dubai showcases the latest in aviation technology and aerobatic displays?</text>
+    <answers>
+        <answer>Dubai Aviation Expo</answer>
+        <answer correct="true">Dubai Airshow</answer>
+        <answer>Middle East Air Expo</answer>
+        <answer>Gulf Aviation Fair</answer>
+    </answers>
+</question>
+<question>
+    <text>Which cultural festival in Dubai celebrates the diverse arts, film, and literature scene?</text>
+    <answers>
+        <answer>Dubai Arts Festival</answer>
+        <answer>Dubai Cultural Week</answer>
+        <answer correct="true">Dubai International Film Festival (DIFF)</answer>
+        <answer>Dubai Film and Arts Expo</answer>
+    </answers>
+</question>
+<question>
+    <text>Which festival marks the Islamic New Year in Dubai?</text>
+    <answers>
+        <answer>Eid Al Fitr</answer>
+        <answer>Eid Al Adha</answer>
+        <answer>Mawlid Al Nabi</answer>
+        <answer correct="true">Hijri New Year</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the week-long event in Dubai featuring concerts, exhibitions, and entertainment for all ages?</text>
+    <answers>
+        <answer correct="true">Dubai Shopping Festival (DSF)</answer>
+        <answer>Dubai Festival Week</answer>
+        <answer>Dubai Summer Surprises</answer>
+        <answer>Dubai Entertainment Week</answer>
+    </answers>
+</question>
+<question>
+    <text>Which annual event in Dubai showcases innovative furniture and design from around the world?</text>
+    <answers>
+        <answer>Dubai Furniture Expo</answer>
+        <answer correct="true">Dubai Design Week</answer>
+        <answer>Dubai Home Show</answer>
+        <answer>Dubai Interior Fair</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the festival celebrating the holy month of Ramadan in Dubai?</text>
+    <answers>
+        <answer>Ramadan Nights</answer>
+        <answer>Ramadan Fest</answer>
+        <answer correct="true">Ramadan Kareem</answer>
+        <answer>Ramadan Days</answer>
+    </answers>
+</question>
+<question>
+    <text>Which event in Dubai is known for its spectacular fireworks and live music on New Year’s Eve?</text>
+    <answers>
+        <answer>New Year’s Eve at Dubai Marina</answer>
+        <answer>New Year’s Eve at Jumeirah Beach</answer>
+        <answer>New Year’s Eve at The Palm</answer>
+        <answer correct="true">New Year’s Eve at Burj Khalifa</answer>
+    </answers>
+</question>
+<question>
+    <text>Which annual event focuses on promoting health and fitness in Dubai?</text>
+    <answers>
+        <answer>Dubai Health Week</answer>
+        <answer>Dubai Wellness Festival</answer>
+        <answer correct="true">Dubai Fitness Challenge</answer>
+        <answer>Dubai Active Expo</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the event that brings together the best chefs and food lovers in Dubai?</text>
+    <answers>
+        <answer correct="true">Taste of Dubai</answer>
+        <answer>Dubai Food Week</answer>
+        <answer>Dubai Culinary Festival</answer>
+        <answer>Dubai Gourmet Expo</answer>
+    </answers>
+</question>
+<question>
+    <text>Which event showcases the best of Dubai’s fashion industry with runway shows and designer exhibitions?</text>
+    <answers>
+        <answer>Dubai Couture Week</answer>
+        <answer correct="true">Dubai Fashion Forward</answer>
+        <answer>Dubai Style Week</answer>
+        <answer>Dubai Design Show</answer>
+    </answers>
+</question>
+<!-- Sports -->
+<question>
+    <text>Which sport is most closely associated with Dubai?</text>
+    <answers>
+        <answer>Soccer</answer>
+        <answer>Cricket</answer>
+        <answer correct="true">Horse Racing</answer>
+        <answer>Tennis</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of Dubai’s international cricket stadium?</text>
+    <answers>
+        <answer>Sheikh Zayed Stadium</answer>
+        <answer>Sharjah Cricket Stadium</answer>
+        <answer>Al Maktoum Stadium</answer>
+        <answer correct="true">Dubai International Cricket Stadium</answer>
+    </answers>
+</question>
+<question>
+    <text>Which famous golf tournament is held annually in Dubai?</text>
+    <answers>
+        <answer correct="true">Dubai Desert Classic</answer>
+        <answer>Dubai Golf Championship</answer>
+        <answer>Dubai Open</answer>
+        <answer>Dubai Masters</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the multi-sport event held in Dubai featuring athletes with disabilities?</text>
+    <answers>
+        <answer>Dubai Special Olympics</answer>
+        <answer correct="true">Dubai Para Athletics Championships</answer>
+        <answer>Dubai Disability Games</answer>
+        <answer>Dubai Adaptive Sports Festival</answer>
+    </answers>
+</question>
+<question>
+    <text>Which Dubai-based soccer team is one of the top teams in the UAE Pro League?</text>
+    <answers>
+        <answer>Al Wasl FC</answer>
+        <answer>Al Ain FC</answer>
+        <answer correct="true">Al Ahli FC</answer>
+        <answer>Al Nasr FC</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the famous tennis tournament held in Dubai?</text>
+    <answers>
+        <answer>Dubai Masters</answer>
+        <answer>Dubai Open</answer>
+        <answer>Dubai Tennis Cup</answer>
+        <answer correct="true">Dubai Duty Free Tennis Championships</answer>
+    </answers>
+</question>
+<question>
+    <text>Which motor racing event is part of the Dubai Autodrome calendar?</text>
+    <answers>
+        <answer correct="true">Dubai 24 Hour Race</answer>
+        <answer>Dubai Grand Prix</answer>
+        <answer>Dubai Rally</answer>
+        <answer>Dubai Speed Festival</answer>
+    </answers>
+</question>
+<question>
+    <text>Which water sport event is held annually in Dubai?</text>
+    <answers>
+        <answer>Dubai Surf Championship</answer>
+        <answer correct="true">Dubai International Boat Show</answer>
+        <answer>Dubai Swim Open</answer>
+        <answer>Dubai Water Sports Expo</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the popular running event held in Dubai every January?</text>
+    <answers>
+        <answer>Dubai Half Marathon</answer>
+        <answer>Dubai 10K Run</answer>
+        <answer correct="true">Dubai Marathon</answer>
+        <answer>Dubai Fun Run</answer>
+    </answers>
+</question>
+<question>
+    <text>Which sport involves players hitting a ball against a wall with their hand, popular in Dubai?</text>
+    <answers>
+        <answer>Paddleball</answer>
+        <answer>Racquetball</answer>
+        <answer>Squash</answer>
+        <answer correct="true">Handball</answer>
+    </answers>
+</question>
+<!-- Education -->
+<question>
+    <text>Which university is the oldest in Dubai?</text>
+    <answers>
+        <answer>American University in Dubai</answer>
+        <answer correct="true">University of Dubai</answer>
+        <answer>Zayed University</answer>
+        <answer>Dubai International University</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the education district in Dubai?</text>
+    <answers>
+        <answer>Dubai Knowledge Village</answer>
+        <answer>Dubai Education Park</answer>
+        <answer correct="true">Dubai International Academic City</answer>
+        <answer>Dubai Learning Zone</answer>
+    </answers>
+</question>
+<question>
+    <text>Which Dubai university is known for its business programs?</text>
+    <answers>
+        <answer correct="true">University of Dubai</answer>
+        <answer>Hult International Business School</answer>
+        <answer>Zayed University</answer>
+        <answer>American University in Dubai</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the Dubai-based institution specializing in art and design?</text>
+    <answers>
+        <answer>Dubai College of Art</answer>
+        <answer>Dubai Design School</answer>
+        <answer correct="true">Dubai Institute of Design and Innovation (DIDI)</answer>
+        <answer>Dubai Creative Institute</answer>
+    </answers>
+</question>
+<question>
+    <text>Which school in Dubai follows the British curriculum and is highly regarded?</text>
+    <answers>
+        <answer>Dubai International School</answer>
+        <answer correct="true">Dubai British School</answer>
+        <answer>Dubai Academy</answer>
+        <answer>Dubai British Academy</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the American curriculum school in Dubai known for its diverse student body?</text>
+    <answers>
+        <answer>Dubai American Academy</answer>
+        <answer>Dubai International School</answer>
+        <answer>American International School</answer>
+        <answer correct="true">American School of Dubai</answer>
+    </answers>
+</question>
+<question>
+    <text>Which organization accredits universities in Dubai?</text>
+    <answers>
+        <answer correct="true">Knowledge and Human Development Authority (KHDA)</answer>
+        <answer>Ministry of Education</answer>
+        <answer>Dubai Academic Council</answer>
+        <answer>Higher Education Council</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the annual higher education exhibition held in Dubai?</text>
+    <answers>
+        <answer>Dubai Education Fair</answer>
+        <answer>Dubai University Expo</answer>
+        <answer>Dubai Higher Learning Show</answer>
+        <answer correct="true">GETEX (Gulf Education and Training Exhibition)</answer>
+    </answers>
+</question>
+<question>
+    <text>Which Dubai school offers the International Baccalaureate (IB) program?</text>
+    <answers>
+        <answer>Dubai British School</answer>
+        <answer>American School of Dubai</answer>
+        <answer correct="true">Dubai International Academy</answer>
+        <answer>Dubai College</answer>
+    </answers>
+</question>
+<question>
+    <text>What is the name of the new campus for Dubai’s leading public university?</text>
+    <answers>
+        <answer>University of Dubai New Campus</answer>
+        <answer correct="true">Zayed University New Campus</answer>
+        <answer>Dubai International University New Campus</answer>
+        <answer>Dubai Public University New Campus</answer>
+    </answers>
+</question>
+</questions>

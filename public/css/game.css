@@ -122,6 +122,13 @@ h1{
 }
 
 
+.question-image {
+    width: 512px;
+    height: 512px;
+    object-fit: contain; /* This keeps the aspect ratio while fitting the image within the box */
+    margin: 10px 0;
+}
+
 @media (max-width: 768px) {
     .section {
         padding: 30px; /* Adjust padding for smaller screens */

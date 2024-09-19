@@ -149,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             selectedQuestions.forEach(questionNode => {
                 const questionText = questionNode.getElementsByTagName('text')[0].textContent;
+                const image = questionNode.getElementsByTagName('image')[0]?.textContent || '';
                 const answers = [];
                 const answerNodes = questionNode.getElementsByTagName('answer');
                 for (let j = 0; j < answerNodes.length; j++) {
@@ -156,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const isCorrect = answerNodes[j].getAttribute('correct') === 'true';
                     answers.push({ text: answerText, correct: isCorrect });
                 }
-                parsedQuestions.push({ question: questionText, answers: answers });
+                parsedQuestions.push({ question: questionText,image: image, answers: answers });
             });
 
             return parsedQuestions;
@@ -205,31 +206,51 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Function to display the current question
         function displayQuestion() {
-            // Ensure all questions are exhausted
             if (shownQuestionIndices.size === questions.length) {
-                endGame();
+                endGame(); // End game if all questions have been shown
                 return;
             }
 
             let nextIndex;
             do {
                 nextIndex = Math.floor(Math.random() * questions.length);
-            } while (shownQuestionIndices.has(nextIndex));
+            } while (shownQuestionIndices.has(nextIndex)); // Ensure unique question
 
-            shownQuestionIndices.add(nextIndex);
+            shownQuestionIndices.add(nextIndex); // Add index to shown questions
 
             const currentQuestion = questions[nextIndex];
-            questionContainer.textContent = currentQuestion.question;
+            questionContainer.innerHTML = ''; // Clear previous content
+
+            // Display question text if available
+            if (currentQuestion.question) {
+                const questionTextElement = document.createElement('p');
+                questionTextElement.textContent = currentQuestion.question;
+                questionContainer.appendChild(questionTextElement);
+            }
+
+            // Display image if available
+            if (currentQuestion.image) {
+                const imgElement = document.createElement('img');
+                imgElement.src = currentQuestion.image;
+                imgElement.alt = 'Question Image';
+                imgElement.classList.add('question-image'); // Add CSS class for styling
+                questionContainer.appendChild(imgElement);
+            }
+
             answersContainer.innerHTML = ''; // Clear previous answers
+
+            // Display answers
             currentQuestion.answers.forEach((answer, index) => {
                 const answerElement = document.createElement('div');
                 answerElement.textContent = answer.text;
                 answerElement.classList.add('answer');
-                answerElement.dataset.correct = answer.correct; // Store the correct attribute
+                answerElement.dataset.correct = answer.correct; // Store correct attribute
+
                 answerElement.addEventListener('click', function() {
-                    handleAnswerClick(index, answer.correct);
+                    handleAnswerClick(index, answer.correct); // Handle answer click event
                 });
-                answersContainer.appendChild(answerElement);
+
+                answersContainer.appendChild(answerElement); // Append each answer
             });
         }
 

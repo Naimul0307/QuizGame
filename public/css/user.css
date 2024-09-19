@@ -27,7 +27,7 @@ body {
 .btn {
     margin: 10px;
     padding: 15px 30px; /* Increase button padding */
-    font-size: 1.1em; /* Increase button font size */
+    font-size: 2.1em; /* Increase button font size */
     font-weight: bolder;
     background-color: rgb(42, 121, 239);
     color: azure;

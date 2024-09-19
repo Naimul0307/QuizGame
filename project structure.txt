@@ -6,7 +6,11 @@ Quiz_Game/
 │   └── xml/
 │       └── questions.xml
 ├── templates/
-│   ├── index.html
 │   ├── game.html
-│   ├── result.html
-
+│   ├── index.html
+│   ├── info.html
+│   ├── results.html
+│   └── user.html
+├──  main.js
+├── package.json
+└── preload.js
