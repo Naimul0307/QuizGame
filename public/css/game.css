@@ -61,24 +61,39 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     transform: translateY(8px); /* Push the button down slightly on click */
     box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */
 }
-
+/* 
 #question {
-    background: linear-gradient(135deg, rgb(7, 3, 240), rgb(240, 218, 218)); /* Gradient background */
+    background: linear-gradient(135deg, rgb(7, 3, 240), rgb(240, 218, 218)); 
     color: #fff;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    font-size: 1em; /* Increased font size */
+    font-size: 1em;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
+    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+} */
+
+.question-image {
+    width: 512px; /* Limits the image width to 512px */
+    height: 512px; /* Maintains aspect ratio */
+    object-fit: contain; /* Keeps the aspect ratio while fitting the image within the box */
+    margin: 5px 0;
+}
+
+#answers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .answer {
-    margin: 10px 0; /* Increase margin */
+    width: 100%;
+    max-width: 700px; /* Set maximum width */
+    margin: 5px 0; /* Increase margin */
     padding: 15px; /* Increase padding */
     border: 2px solid #3a0c0c;
     cursor: pointer;
@@ -120,13 +135,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     transition: transform 0.5s ease-out, box-shadow 0.5s ease-out; /* Add transition for smooth animation */
 }
 
-.question-image {
-    width: 100%;
-    max-width: 512px; /* Limits the image width to 512px */
-    height: auto; /* Maintains aspect ratio */
-    object-fit: contain; /* Keeps the aspect ratio while fitting the image within the box */
-    margin: 10px 0;
-}
+
 
 .alert {
     display: none; /* Initially hide alert */
@@ -159,13 +168,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 #timer {
     background: linear-gradient(30deg, rgb(7, 3, 240), rgb(255, 255, 255), rgb(96, 160, 219));
     color: #161515;
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px; /* Adjust border radius for square corners */
     width: 100%; /* Full width for responsiveness */
     max-width: 300px; /* Maximum width */
     height: 150px; /* Adjust height as needed */
     margin: 0 auto; /* Center horizontally */
-    margin-top: 20px; /* Adjust top margin as needed */
+    margin-top: 15px; /* Adjust top margin as needed */
     position: relative;
     display: flex;
     justify-content: center;
@@ -205,6 +214,16 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
         width: 100%; /* Full width for responsiveness */
         max-width: 250px; /* Adjust maximum width */
     }
+
+    .container-fluid { /* Adjust the container if needed */
+        padding: 0 10px; /* Reduce padding */
+    }
+
+    .question-image {
+        width: 100%; /* Allow image to scale with container */
+        max-width: 512px; /* Maintain maximum width */
+        height: auto; /* Adjust height automatically */
+    }
 }
 
 @media (max-width: 480px) {
@@ -234,5 +253,15 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     #timer {
         width: 100%; /* Full width for responsiveness */
         max-width: 200px; /* Adjust maximum width */
+    }
+
+    .container-fluid { /* Further adjust the container for smaller screens */
+        padding: 0 5px; /* Further reduce padding */
+    }
+
+    .question-image {
+        width: 100%; /* Allow image to scale with container */
+        max-width: 512px; /* Maintain maximum width */
+        height: auto; /* Adjust height automatically */
     }
 }
