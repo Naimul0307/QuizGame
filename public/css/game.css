@@ -282,6 +282,33 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     }
 }
 
+/* Message box styling */
+.message-box {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Centering both axes */
+    padding: 25px 50px; /* Increase padding for a larger box */
+    background-color: rgba(247, 54, 54, 0.644); /* Darker red background for wrong answer */
+    color: #fff;
+    font-size: 30px; /* Increase font size for bigger text */
+    font-weight: bold;
+    border-radius: 12px; /* Make the corners more rounded */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Bigger shadow for emphasis */
+    opacity: 1;
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-out */
+    max-width: 90%; /* Ensure the message box doesn't get too wide */
+    max-height: 60%; /* Ensure the message box doesn't get too wide */
+    text-align: center; /* Center the text inside the box */
+}
+
+/* Hidden state */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
 @media (max-width: 480px) {
     body {
         font-size: 14px; /* Smaller font size for mobile screens */

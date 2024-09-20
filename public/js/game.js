@@ -175,123 +175,73 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 
-        // // Function to display the current question
-        // function displayQuestion() {
-        //     if (shownQuestionIndices.size === questions.length) {
-        //         endGame(); // End game if all questions have been shown
-        //         return;
-        //     }
-
-        //     let nextIndex;
-        //     do {
-        //         nextIndex = Math.floor(Math.random() * questions.length);
-        //     } while (shownQuestionIndices.has(nextIndex)); // Ensure unique question
-
-        //     shownQuestionIndices.add(nextIndex); // Add index to shown questions
-        //     currentQuestionIndex = nextIndex; // Update the currentQuestionIndex
-
-        //     const currentQuestion = questions[currentQuestionIndex];
-        //     questionContainer.innerHTML = ''; // Clear previous content
-
-        //     // Display question text if available
-        //     if (currentQuestion.question) {
-        //         const questionTextElement = document.createElement('p');
-        //         questionTextElement.textContent = currentQuestion.question;
-        //         questionContainer.appendChild(questionTextElement);
-        //     }
-
-        //     // Display image if available
-        //     if (currentQuestion.image) {
-        //         const imgElement = document.createElement('img');
-        //         imgElement.src = currentQuestion.image;
-        //         imgElement.alt = 'Question Image';
-        //         imgElement.classList.add('question-image'); // Add CSS class for styling
-        //         questionContainer.appendChild(imgElement);
-        //     }
-
-        //     answersContainer.innerHTML = ''; // Clear previous answers
-
-        //     // Display answers
-        //     currentQuestion.answers.forEach((answer, index) => {
-        //         const answerElement = document.createElement('div');
-        //         answerElement.textContent = answer.text;
-        //         answerElement.classList.add('answer');
-        //         answerElement.dataset.correct = answer.correct; // Store correct attribute
-
-        //         answerElement.addEventListener('click', function() {
-        //             handleAnswerClick(index, answer.correct); // Handle answer click event
-        //         });
-
-        //         answersContainer.appendChild(answerElement); // Append each answer
-        //     });
-        // }
-
         // Function to display the current question
-function displayQuestion() {
-    if (shownQuestionIndices.size === questions.length) {
-        endGame(); // End game if all questions have been shown
-        return;
-    }
+        function displayQuestion() {
+            if (shownQuestionIndices.size === questions.length) {
+                endGame(); // End game if all questions have been shown
+                return;
+            }
 
-    let nextIndex;
-    do {
-        nextIndex = Math.floor(Math.random() * questions.length);
-    } while (shownQuestionIndices.has(nextIndex)); // Ensure unique question
+            let nextIndex;
+            do {
+                nextIndex = Math.floor(Math.random() * questions.length);
+            } while (shownQuestionIndices.has(nextIndex)); // Ensure unique question
 
-    shownQuestionIndices.add(nextIndex); // Add index to shown questions
-    currentQuestionIndex = nextIndex; // Update the currentQuestionIndex
+            shownQuestionIndices.add(nextIndex); // Add index to shown questions
+            currentQuestionIndex = nextIndex; // Update the currentQuestionIndex
 
-    const currentQuestion = questions[currentQuestionIndex];
-    questionContainer.innerHTML = ''; // Clear previous content
+            const currentQuestion = questions[currentQuestionIndex];
+            questionContainer.innerHTML = ''; // Clear previous content
 
-    // Display question text if available
-    if (currentQuestion.question) {
-        const questionTextElement = document.createElement('p');
-        questionTextElement.textContent = currentQuestion.question;
-        questionContainer.appendChild(questionTextElement);
-    }
+            // Display question text if available
+            if (currentQuestion.question) {
+                const questionTextElement = document.createElement('p');
+                questionTextElement.textContent = currentQuestion.question;
+                questionContainer.appendChild(questionTextElement);
+            }
 
-    // Display image if available
-    if (currentQuestion.image) {
-        const imgElement = document.createElement('img');
-        imgElement.src = currentQuestion.image;
-        imgElement.alt = 'Question Image';
-        imgElement.classList.add('question-image'); // Add CSS class for styling
-        questionContainer.appendChild(imgElement);
-    }
+            // Display image if available
+            if (currentQuestion.image) {
+                const imgElement = document.createElement('img');
+                imgElement.src = currentQuestion.image;
+                imgElement.alt = 'Question Image';
+                imgElement.classList.add('question-image'); // Add CSS class for styling
+                questionContainer.appendChild(imgElement);
+            }
 
-    answersContainer.innerHTML = ''; // Clear previous answers
+            answersContainer.innerHTML = ''; // Clear previous answers
 
-    // Display answers
-    currentQuestion.answers.forEach((answer, index) => {
-        const answerElement = document.createElement('div');
-        answerElement.textContent = answer.text;
-        answerElement.classList.add('answer');
-        answerElement.dataset.correct = answer.correct; // Store correct attribute
+            // Display answers
+            currentQuestion.answers.forEach((answer, index) => {
+                const answerElement = document.createElement('div');
+                answerElement.textContent = answer.text;
+                answerElement.classList.add('answer');
+                answerElement.dataset.correct = answer.correct; // Store correct attribute
 
-        answerElement.addEventListener('click', function() {
-            handleAnswerClick(index, answer.correct); // Handle answer click event
-        });
+                answerElement.addEventListener('click', function() {
+                    handleAnswerClick(index, answer.correct); // Handle answer click event
+                });
 
-        answersContainer.appendChild(answerElement); // Append each answer
-    });
+                answersContainer.appendChild(answerElement); // Append each answer
+            });
 
-    // Show the Pass button
-    const passButton = document.getElementById('pass-button');
-    passButton.style.display = 'inline-block'; // Show the Pass button
+            // Show the Pass button
+            const passButton = document.getElementById('pass-button');
+            passButton.style.display = 'inline-block'; // Show the Pass button
 
-    // Add event listener for Pass button
-    passButton.onclick = function() {
-        handlePass(); // Call handlePass function
-    };
-}
+            // Add event listener for Pass button
+            passButton.onclick = function() {
+                handlePass(); // Call handlePass function
+            };
+        }
 
-// Function to handle passing the question
-function handlePass() {
-    const passButton = document.getElementById('pass-button');
-    passButton.style.display = 'none'; // Hide the Pass button
-    displayQuestion(); // Move to the next question
-}
+        // Function to handle passing the question
+        function handlePass() {
+            const passButton = document.getElementById('pass-button');
+            passButton.style.display = 'none'; // Hide the Pass button
+            displayQuestion(); // Move to the next question
+        }
+
         // Function to handle answer click
         function handleAnswerClick(index, correct) {
             handleAnswerSelection(index, correct);
@@ -309,8 +259,48 @@ function handlePass() {
             handleAnswerSelection(index, correct);
         }
         
-          // Function to handle answer selection
-          function handleAnswerSelection(index, correct) {
+        //   // Function to handle answer selection
+        //   function handleAnswerSelection(index, correct) {
+        //     console.log(`Answer selected: ${index}, Correct: ${correct}`);
+        //     const selectedAnswer = {
+        //         question: questions[currentQuestionIndex].question,
+        //         answer: questions[currentQuestionIndex].answers[index].text,
+        //         correct: correct
+        //     };
+        //     userAnswers.push(selectedAnswer);
+
+        //     // Remove 'selected' class from all answers
+        //     const answerElements = document.querySelectorAll('.answer');
+        //     answerElements.forEach(answerElement => {
+        //         answerElement.classList.remove('selected');
+        //     });
+
+        //     // Add 'selected' class to the selected answer
+        //     answersContainer.children[index].classList.add('selected');
+
+        //     // Proceed to next question automatically
+        //     setTimeout(function() {
+        //         if (shownQuestionIndices.size < questions.length) {
+        //             displayQuestion(); // Display next question
+        //         } else {
+        //             endGame(); // End game if no more questions
+        //         }
+        //     }, 1000); // Delay before showing the next question
+        // }
+
+        function showMessage(message, duration = 1000) {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.textContent = message;
+            messageBox.classList.remove('hidden');  // Show the message
+        
+            // Hide the message after the specified duration
+            setTimeout(() => {
+                messageBox.classList.add('hidden');  // Hide the message
+            }, duration);
+        }
+
+        
+        function handleAnswerSelection(index, correct) {
             console.log(`Answer selected: ${index}, Correct: ${correct}`);
             const selectedAnswer = {
                 question: questions[currentQuestionIndex].question,
@@ -318,17 +308,25 @@ function handlePass() {
                 correct: correct
             };
             userAnswers.push(selectedAnswer);
-
+        
             // Remove 'selected' class from all answers
             const answerElements = document.querySelectorAll('.answer');
             answerElements.forEach(answerElement => {
                 answerElement.classList.remove('selected');
             });
-
+        
             // Add 'selected' class to the selected answer
             answersContainer.children[index].classList.add('selected');
-
-            // Proceed to next question automatically
+        
+            // Check if the answer is correct or wrong
+            if (correct) {
+                console.log("Correct answer!");
+            } else {
+                console.log("Answer is wrong");
+                showMessage("Answer is wrong!", 1000);  // Show custom message for 2 seconds
+            }
+        
+            // Proceed to next question automatically after a short delay
             setTimeout(function() {
                 if (shownQuestionIndices.size < questions.length) {
                     displayQuestion(); // Display next question

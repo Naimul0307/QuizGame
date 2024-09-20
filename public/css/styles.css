@@ -93,6 +93,7 @@ input[type=tel],
 input[type=number] {
     font-size: 1.2em; /* Adjust input text size */
     padding: 10px; /* Adjust input padding */
+    margin: 20px;
     border-radius: 20px; /* Rounded corners for inputs */
     box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
