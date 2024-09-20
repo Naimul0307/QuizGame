@@ -35,33 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
             xhr.send();
         }
 
-        // // Function to parse questions from XML and select random subset
-        // function parseQuestions(xml) {
-        //     const questionNodes = xml.getElementsByTagName('question');
-        //     let parsedQuestions = [];
-
-        //     // Shuffle array to get random order
-        //     const shuffledQuestions = shuffle(Array.from(questionNodes));
-
-        //     // Select the first questionsCount questions from shuffled list
-        //     const selectedQuestions = shuffledQuestions.slice(0, questionsCount);
-
-        //     selectedQuestions.forEach(questionNode => {
-        //         const questionText = questionNode.getElementsByTagName('text')[0].textContent;
-        //         const image = questionNode.getElementsByTagName('image')[0]?.textContent || '';
-        //         const answers = [];
-        //         const answerNodes = questionNode.getElementsByTagName('answer');
-        //         for (let j = 0; j < answerNodes.length; j++) {
-        //             const answerText = answerNodes[j].textContent;
-        //             const isCorrect = answerNodes[j].getAttribute('correct') === 'true';
-        //             answers.push({ text: answerText, correct: isCorrect });
-        //         }
-        //         parsedQuestions.push({ question: questionText,image: image, answers: answers });
-        //     });
-
-        //     return parsedQuestions;
-        // }
-
         // Function to parse questions from XML and select a random subset
         function parseQuestions(xml) {
             const questionNodes = xml.getElementsByTagName('question');
@@ -98,24 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return parsedQuestions;
         }
 
-        
-        // Function to shuffle array (Fisher-Yates shuffle)
-        // function shuffle(array) {
-        //     let currentIndex = array.length, randomIndex;
-
-        //     // While there remain elements to shuffle...
-        //     while (currentIndex !== 0) {
-
-        //         // Pick a remaining element...
-        //         randomIndex = Math.floor(Math.random() * currentIndex);
-        //         currentIndex--;
-
-        //         // And swap it with the current element.
-        //         [array[currentIndex], array[randomIndex]] = [
-        //             array[randomIndex], array[currentIndex]];
-        //     }
-        //     return array;
-        // }
 
         function seededRandom(seed) {
             const x = Math.sin(seed++) * 10000;
@@ -173,7 +128,24 @@ document.addEventListener('DOMContentLoaded', function() {
             displayQuestion();
         }
 
-    
+        function playBeep() {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+        
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+        
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(1000, audioContext.currentTime); // Beep frequency
+            gainNode.gain.setValueAtTime(1, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5); // Beep duration
+        
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+
+
         // Function to start the timer
         function startTimer(duration) {
             let timeLeft = duration;
@@ -181,12 +153,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 let minutes = Math.floor(timeLeft / 60);
                 let seconds = timeLeft % 60;
                 timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                // Play beep sound when countdown reaches 10 seconds or less
+                if (timeLeft <= 10 && timeLeft > 0) {
+                    playBeep(); // Play beep sound
+                    timerDisplay.classList.add('timer-beep'); // Add beep animation class
+
+                    // Remove the animation class after it completes
+                    setTimeout(() => {
+                        timerDisplay.classList.remove('timer-beep');
+                    }, 500); // Match the duration of the animation
+                }
+
                 if (--timeLeft < 0) {
                     clearInterval(timer);
                     endGame();
                 }
             }, 1000);
         }
+
 
         // Function to display the current question
         function displayQuestion() {

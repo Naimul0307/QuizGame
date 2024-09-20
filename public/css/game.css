@@ -172,9 +172,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     border-radius: 10px; /* Adjust border radius for square corners */
     width: 100%; /* Full width for responsiveness */
     max-width: 300px; /* Maximum width */
-    height: 150px; /* Adjust height as needed */
+    height: 100px; /* Adjust height as needed */
     margin: 0 auto; /* Center horizontally */
-    margin-top: 15px; /* Adjust top margin as needed */
+    margin-top: 10px; /* Adjust top margin as needed */
     position: relative;
     display: flex;
     justify-content: center;
@@ -183,6 +183,38 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;
+}
+#countdown-timer {
+    color: #161515;
+    padding: 10px;
+    border-radius: 10px; /* Adjust border radius for square corners */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5em; /* Increased font size */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+@keyframes beepAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1); /* Slightly enlarge the timer */
+        opacity: 0.8; /* Fade slightly */
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.timer-beep {
+    animation: beepAnimation 0.5s ease-in-out; /* Adjust duration as needed */
 }
 
 /* Responsive adjustments */
