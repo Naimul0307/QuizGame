@@ -2,17 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Game logic for game.html
     if (window.location.pathname.endsWith('game.html')) {
         const gameContent = document.getElementById('game-content');
-        const countdownTimerElement = document.getElementById('countdown-timer');
         const timerDisplay = document.getElementById('timer');
-        const countdownDisplay = document.getElementById('countdown');
         const questionContainer = document.getElementById('question');
         const answersContainer = document.getElementById('answers');
 
         let questions = [];
         let currentQuestionIndex = 0;
         let timer;
-        let countdownTimer;
-        let countdownInSeconds = 5; // Countdown time before the game starts
         let gameTimeInSeconds = localStorage.getItem('gameTime') * 60 || 300; // Default 5 minutes
         let userAnswers = [];
         let questionsCount = parseInt(localStorage.getItem('questionsCount')) || 4; // Default to 4 questions
@@ -126,26 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return array;
         }
         
-        
-        // Function to show a countdown before starting the game
-        function showCountdown() {
-            gameContent.style.display = 'none'; // Hide game content during countdown
-            timerDisplay.style.display = 'none'; // Hide game timer during countdown
-            let countdown = countdownInSeconds;
-
-            countdownTimer = setInterval(function () {
-                countdownDisplay.textContent = `Game starts in: ${countdown}`;
-                countdown--;
-
-                if (countdown < 0) {
-                    clearInterval(countdownTimer);
-                    countdownTimerElement.style.display = 'none'; // Hide countdown
-                    timerDisplay.style.display = 'block'; // Show the timer after countdown
-                    loadQuestions(); // Start loading questions after countdown
-                }
-            }, 1000);
-        }
-
 
         // Function to start the game
         function startGame() {
@@ -362,7 +338,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Automatically start the game after 5 seconds
-        showCountdown();
+        loadQuestions();
     }
 });
 
