@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (settingsBtn) {
         settingsBtn.addEventListener('click', function() {
             settingsOptions.style.display = 'block';
-            userForm.style.display = 'none'; // Hide user form
         });
     }
 

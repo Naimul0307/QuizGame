@@ -17,59 +17,85 @@ document.addEventListener('DOMContentLoaded', function() {
         let userAnswers = [];
         let questionsCount = parseInt(localStorage.getItem('questionsCount')) || 4; // Default to 4 questions
 
-        // Set to keep track of shown question indices
-        let shownQuestionIndices = new Set();
+      // Set to keep track of shown question indices
+      let shownQuestionIndices = new Set();
 
-        // Function to load questions from XML and select random subset
-        function loadQuestions() {
-            const xhr = new XMLHttpRequest();
-            // xhr.open('GET', '/public/xml/questions.xml', true);
-            xhr.open('GET', '../public/xml/questions.xml', true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    const xmlData = xhr.responseXML;
-                    questions = parseQuestions(xmlData);
-                    startGame();
-                }
-            };
-            xhr.send();
-        }
+      function loadQuestions() {
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', '../public/xml/questions.xml', true);
+          xhr.onreadystatechange = function() {
+              if (xhr.readyState == 4 && xhr.status == 200) {
+                  const xmlData = xhr.responseXML;
+                  questions = parseQuestions(xmlData);
+                  startGame();
+              }
+          };
+          xhr.send();
+      }
 
-        // Function to parse questions from XML and select a random subset
-        function parseQuestions(xml) {
-            const questionNodes = xml.getElementsByTagName('question');
-            let parsedQuestions = [];
+      // Function to parse questions from XML and select a random subset
+      function parseQuestions(xml) {
+          const questionNodes = xml.getElementsByTagName('question');
+          let parsedQuestions = [];
 
-            // Convert NodeList to array and shuffle
-            const shuffledQuestions = advancedShuffle(Array.from(questionNodes));
+          // Convert NodeList to array and shuffle
+          const shuffledQuestions = advancedShuffle(Array.from(questionNodes));
 
-            // Use a Set to keep track of selected indices to avoid duplicates
-            let selectedQuestionsSet = new Set();
+          // Use a Set to keep track of selected indices to avoid duplicates
+          let selectedQuestionsSet = new Set();
 
-            // Select a random subset of questions based on desired criteria
-            while (selectedQuestionsSet.size < questionsCount && selectedQuestionsSet.size < shuffledQuestions.length) {
-                let randomIndex = Math.floor(Math.random() * shuffledQuestions.length);
-                if (!selectedQuestionsSet.has(randomIndex)) {
-                    selectedQuestionsSet.add(randomIndex); // Ensure unique question selection
-                    const questionNode = shuffledQuestions[randomIndex];
+          // Select a random subset of questions based on desired criteria
+          while (selectedQuestionsSet.size < questionsCount && selectedQuestionsSet.size < shuffledQuestions.length) {
+              let randomIndex = Math.floor(Math.random() * shuffledQuestions.length);
+              if (!selectedQuestionsSet.has(randomIndex)) {
+                  selectedQuestionsSet.add(randomIndex); // Ensure unique question selection
+                  const questionNode = shuffledQuestions[randomIndex];
 
-                    const questionText = questionNode.getElementsByTagName('text')[0].textContent;
-                    const image = questionNode.getElementsByTagName('image')[0]?.textContent || '';
-                    const answers = [];
-                    const answerNodes = questionNode.getElementsByTagName('answer');
+                  const questionText = questionNode.getElementsByTagName('text')[0].textContent;
+                  const image = questionNode.getElementsByTagName('image')[0]?.textContent || '';
+                  const answers = [];
+                  const answerNodes = questionNode.getElementsByTagName('answer');
 
-                    for (let j = 0; j < answerNodes.length; j++) {
-                        const answerText = answerNodes[j].textContent;
-                        const isCorrect = answerNodes[j].getAttribute('correct') === 'true';
-                        answers.push({ text: answerText, correct: isCorrect });
-                    }
+                  for (let j = 0; j < answerNodes.length; j++) {
+                      const answerText = answerNodes[j].textContent;
+                      const isCorrect = answerNodes[j].getAttribute('correct') === 'true';
+                      answers.push({ text: answerText, correct: isCorrect });
+                  }
 
-                    parsedQuestions.push({ question: questionText, image: image, answers: answers });
-                }
-            }
+                  parsedQuestions.push({ question: questionText, image: image, answers: answers });
+              }
+          }
 
-            return parsedQuestions;
-        }
+          return parsedQuestions;
+      }
+
+      function seededRandom(seed) {
+          const x = Math.sin(seed++) * 10000;
+          return x - Math.floor(x);
+      }
+      
+      function advancedShuffle(array, seed = 0) {
+          let currentIndex = array.length;
+
+          // First pass: Fisher-Yates shuffle
+          while (currentIndex !== 0) {
+              const randomIndex = Math.floor(seededRandom(seed) * currentIndex);
+              seed++;  // Increment seed for next random number
+              currentIndex--;
+              [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+          }
+
+          // Second pass: Another shuffle for increased randomness
+          currentIndex = array.length;
+          while (currentIndex !== 0) {
+              const randomIndex = Math.floor(seededRandom(seed) * currentIndex);
+              seed++;
+              currentIndex--;
+              [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+          }
+
+          return array;
+      }
 
 
         function seededRandom(seed) {
@@ -186,8 +212,9 @@ document.addEventListener('DOMContentLoaded', function() {
             } while (shownQuestionIndices.has(nextIndex)); // Ensure unique question
 
             shownQuestionIndices.add(nextIndex); // Add index to shown questions
+            currentQuestionIndex = nextIndex; // Update the currentQuestionIndex
 
-            const currentQuestion = questions[nextIndex];
+            const currentQuestion = questions[currentQuestionIndex];
             questionContainer.innerHTML = ''; // Clear previous content
 
             // Display question text if available
@@ -235,11 +262,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Function to handle keyboard events for answering questions
         function handleAnswerKeystroke(index, correct) {
+            console.log(questions[currentQuestionIndex]); 
+            console.log(`Key pressed: ${index}, Correct: ${correct}`); // Debug log
             handleAnswerSelection(index, correct);
         }
-
-        // Function to handle answer selection (used by click, touch, and keystroke)
-        function handleAnswerSelection(index, correct) {
+        
+          // Function to handle answer selection
+          function handleAnswerSelection(index, correct) {
+            console.log(`Answer selected: ${index}, Correct: ${correct}`);
             const selectedAnswer = {
                 question: questions[currentQuestionIndex].question,
                 answer: questions[currentQuestionIndex].answers[index].text,
@@ -256,19 +286,14 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add 'selected' class to the selected answer
             answersContainer.children[index].classList.add('selected');
 
-            // if (!correct) {
-            //     endGame();
-            //     return;
-            // }
-
             // Proceed to next question automatically
             setTimeout(function() {
-                if (shownQuestionIndices.size === questions.length) {
-                    endGame();
+                if (shownQuestionIndices.size < questions.length) {
+                    displayQuestion(); // Display next question
                 } else {
-                    displayQuestion();
+                    endGame(); // End game if no more questions
                 }
-            }, 1000); // Adjust delay as needed for any transition or animation
+            }, 1000); // Delay before showing the next question
         }
 
         // Event listeners for answers
@@ -288,20 +313,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Event listener for keyboard events
         document.addEventListener('keydown', function(event) {
-            const key = event.key;
-            // Example: Map keys '1', '2', '3' to answer indices (adjust as needed)
-            if (key === 'A' || key === 'a') {
-                handleAnswerKeystroke(0, questions[currentQuestionIndex].answers[0].correct);
-            } else if (key === 'B' || key === 'b') {
-                handleAnswerKeystroke(1, questions[currentQuestionIndex].answers[1].correct);
-            } else if (key === 'C' || key === 'c') {
-                handleAnswerKeystroke(2, questions[currentQuestionIndex].answers[2].correct);
-            } else if (key === 'D' || key === 'd') {
-                handleAnswerKeystroke(3, questions[currentQuestionIndex].answers[3].correct);
-            } 
-            // Add more key mappings for additional answers if needed
+            const key = event.key.toLowerCase(); // Normalize to lowercase
+            const answerIndices = {
+                'a': 0,
+                'b': 1,
+                'c': 2,
+                // Add more mappings if you have more answers
+            };
+        
+            if (answerIndices[key] !== undefined) {
+                console.log(questions[currentQuestionIndex]);
+                const index = answerIndices[key];
+                handleAnswerKeystroke(index, questions[currentQuestionIndex].answers[index].correct);
+            }
         });
-
+        
         // Function to end the game
         function endGame() {
             clearInterval(timer); // Stop the timer
@@ -339,6 +365,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showCountdown();
     }
 });
+
 
 
 
