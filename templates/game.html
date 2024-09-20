@@ -13,9 +13,12 @@
     <div class="container-fluid">
         <div class="section">
             <div id="game-container" class="container">
-                <div id="timer" class="text-center">Time: <span id="time-left"></span></div>
-                <button id="start-btn" class="btn">Start Game</button>
-                <div id="game-content">
+                <!-- Countdown timer -->
+                <div id="countdown-timer" class="text-center"><span id="countdown"></span></div>
+                
+                <!-- Game timer and content -->
+                <div id="timer" class="text-center" style="display: none;"><span id="time-left"></span></div>
+                <div id="game-content" style="display: none;">
                     <div id="question"></div>
                     <div id="answers"></div>
                 </div>
@@ -23,6 +26,6 @@
         </div>
     </div>
     <!-- Bootstrap JS and your custom script -->
-    <script src="../public/js/script.js"></script>
+    <script src="../public/js/game.js"></script>
 </body>
 </html>
