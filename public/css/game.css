@@ -214,6 +214,26 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     animation: beepAnimation 0.5s ease-in-out; /* Adjust duration as needed */
 }
 
+#pass-button {
+    position: absolute; /* Make it positionable */
+    right: 30px; /* Distance from the right */
+    top: 80%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for button height */
+    
+    /* Increase button size */
+    padding: 20px 40px; /* Bigger padding for a larger button */
+    font-size: 30px; /* Larger font size */
+    font-weight: bolder;
+
+    /* Optional styles */
+    border-radius: 10px; /* More rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Larger shadow for depth */
+    
+    /* Adjust width and height (optional) */
+    min-width: 200px; /* Set a minimum width */
+    min-height: 80px; /* Set a minimum height */
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     body {
@@ -252,6 +272,13 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
         width: 100%; /* Allow image to scale with container */
         max-width: 512px; /* Maintain maximum width */
         height: auto; /* Adjust height automatically */
+    }
+    #pass-button {
+        padding: 16px 32px;
+        font-size: 22px;
+        min-width: 160px;
+        min-height: 60px;
+        right: 15px; /* Further adjust right margin */
     }
 }
 
@@ -292,5 +319,14 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
         width: 100%; /* Allow image to scale with container */
         max-width: 512px; /* Maintain maximum width */
         height: auto; /* Adjust height automatically */
+    }
+
+    #pass-button {
+        padding: 12px 24px;
+        font-size: 18px;
+        min-width: 140px;
+        min-height: 50px;
+        right: 10px; /* Smallest right margin */
+        top: 85%; /* Adjust top for smaller screens */
     }
 }
