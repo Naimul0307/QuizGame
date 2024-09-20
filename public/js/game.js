@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const questionContainer = document.getElementById('question');
         const answersContainer = document.getElementById('answers');
 
+
+        let isFileDownloaded = false; // Flag to track file download
         let questions = [];
         let currentQuestionIndex = 0;
         let timer;
@@ -259,40 +261,10 @@ document.addEventListener('DOMContentLoaded', function() {
             handleAnswerSelection(index, correct);
         }
         
-        //   // Function to handle answer selection
-        //   function handleAnswerSelection(index, correct) {
-        //     console.log(`Answer selected: ${index}, Correct: ${correct}`);
-        //     const selectedAnswer = {
-        //         question: questions[currentQuestionIndex].question,
-        //         answer: questions[currentQuestionIndex].answers[index].text,
-        //         correct: correct
-        //     };
-        //     userAnswers.push(selectedAnswer);
-
-        //     // Remove 'selected' class from all answers
-        //     const answerElements = document.querySelectorAll('.answer');
-        //     answerElements.forEach(answerElement => {
-        //         answerElement.classList.remove('selected');
-        //     });
-
-        //     // Add 'selected' class to the selected answer
-        //     answersContainer.children[index].classList.add('selected');
-
-        //     // Proceed to next question automatically
-        //     setTimeout(function() {
-        //         if (shownQuestionIndices.size < questions.length) {
-        //             displayQuestion(); // Display next question
-        //         } else {
-        //             endGame(); // End game if no more questions
-        //         }
-        //     }, 1000); // Delay before showing the next question
-        // }
-
         function showMessage(message, duration = 1000) {
             const messageBox = document.getElementById('messageBox');
             messageBox.textContent = message;
             messageBox.classList.remove('hidden');  // Show the message
-        
             // Hide the message after the specified duration
             setTimeout(() => {
                 messageBox.classList.add('hidden');  // Hide the message
@@ -369,27 +341,115 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         // Function to end the game
-        function endGame() {
-            clearInterval(timer); // Stop the timer
+        // function endGame() {
+        //     clearInterval(timer); // Stop the timer
 
-            // Calculate score
-            const score = calculateScore();
+        //     // Calculate score
+        //     const score = calculateScore();
 
-            // Save user info and score to localStorage
-            const userName = localStorage.getItem('userName');
-            const userEmail = localStorage.getItem('userEmail');
-            const userNumber = localStorage.getItem('userNumber');
+        //     // Save user info and score to localStorage
+        //     const userName = localStorage.getItem('userName');
+        //     const userEmail = localStorage.getItem('userEmail');
+        //     const userNumber = localStorage.getItem('userNumber');
 
-            const user = { name: userName, email: userEmail, number: userNumber, score: score };
+        //     const user = { name: userName, email: userEmail, number: userNumber, score: score };
 
-            // Store user data in an array in localStorage
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-            users.push(user);
-            localStorage.setItem('users', JSON.stringify(users));
-            // Redirect to results page
-            window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}`;
+        //     // Store user data in an array in localStorage
+        //     let users = JSON.parse(localStorage.getItem('users')) || [];
+        //     users.push(user);
+        //     localStorage.setItem('users', JSON.stringify(users));
+        //     // Redirect to results page
+        //     window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}`;
+        // }
+
+        // function endGame() {
+        //     clearInterval(timer); // Stop the timer
+        
+        //     // Calculate score and retrieve user info from localStorage
+        //     const score = calculateScore();
+        //     const userName = localStorage.getItem('userName');
+        //     const userEmail = localStorage.getItem('userEmail');
+        //     const userNumber = localStorage.getItem('userNumber');
+        //     const dateTime = new Date().toISOString(); // Get current date and time
+        
+        //     const user = { 
+        //         name: userName, 
+        //         email: userEmail, 
+        //         number: userNumber, 
+        //         score: score, 
+        //         dateTime: dateTime // Add date and time
+        //     };
+        
+        //     // Store user data in an array in localStorage
+        //     let users = JSON.parse(localStorage.getItem('users')) || [];
+        //     users.push(user);
+        //     localStorage.setItem('users', JSON.stringify(users));
+        
+        //     // Create a worksheet and workbook for Excel
+        //     const ws = XLSX.utils.json_to_sheet(users);
+        //     const wb = XLSX.utils.book_new();
+        //     XLSX.utils.book_append_sheet(wb, ws, "Results");
+
+        //     // // Create a worksheet with headers
+        //     // const header = ["Name", "Email", "Number", "Score", "Date and Time"]; // Added Date and Time header
+        //     // const ws = XLSX.utils.json_to_sheet(users, { header });
+        //     // const wb = XLSX.utils.book_new();
+        //     // XLSX.utils.book_append_sheet(wb, ws, "Results");
+        
+        //     // Generate Excel file and trigger download
+        //     XLSX.writeFile(wb, "user_results.xlsx");
+        
+        //     // Redirect to results page
+        //     window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
+        // }
+    
+        
+
+    function endGame() {
+        clearInterval(timer); // Stop the timer
+
+        // Calculate score and retrieve user info from localStorage
+        const score = calculateScore();
+        const userName = localStorage.getItem('userName');
+        const userEmail = localStorage.getItem('userEmail');
+        const userNumber = localStorage.getItem('userNumber');
+        const dateTime = new Date().toISOString(); // Get current date and time
+
+        const user = { 
+            name: userName, 
+            email: userEmail, 
+            number: userNumber, 
+            score: score, 
+            dateTime: dateTime // Add date and time
+        };
+
+        // Load existing user data from localStorage
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        users.push(user); // Append new user data
+        localStorage.setItem('users', JSON.stringify(users));
+
+        // Check if the file has been downloaded already
+        if (!isFileDownloaded) {
+            // Create a worksheet with headers
+            const header = ["Name", "Email", "Number", "Score", "Date and Time"];
+            const ws = XLSX.utils.json_to_sheet(users, { header });
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, "Results");
+
+            // Generate Excel file and trigger download
+            XLSX.writeFile(wb, "user_results.xlsx");
+
+            isFileDownloaded = true; // Set flag to true after downloading
+        } else {
+            // If the file has been downloaded, you could choose to handle updating it here.
+            // Note: In a browser, you can't modify an existing file directly.
+            // You may need to provide instructions to users on how to manage the file.
+            console.log("File already downloaded. Please manage the Excel file manually to add more entries.");
         }
 
+        // Redirect to results page
+        window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
+    }
         // Function to calculate score (example logic)
         function calculateScore() {
             let correctAnswers = 0;
