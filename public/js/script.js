@@ -1,17 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const settingsBtn = document.getElementById('settings-btn');
-    const settingsOptions = document.getElementById('settings-options');
-    const gameTimeInput = document.getElementById('game-time');
-    const questionsCountInput = document.getElementById('questions-count');
-    const saveSettingsBtn = document.getElementById('save-settings-btn');
-
-    const userBtn = document.getElementById('user-btn');
-    const userForm = document.getElementById('user-form');
-    const userNameInput = document.getElementById('user-name');
-    const userEmailInput = document.getElementById('user-email');
-    const userNumberInput = document.getElementById('user-number');
-    const userSubmitBtn = document.getElementById('submit-user-info');
-
+    
     function showAlert(message, className = '') {
         const alertElement = document.createElement('div');
         alertElement.className = `alert alert-dismissible fade show ${className}`;
@@ -28,79 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 alertElement.remove();
             }, 200); // Match CSS fade transition duration
         }, 3000);
-    }
-
-    // Event listener for Settings button
-    if (settingsBtn) {
-        settingsBtn.addEventListener('click', function() {
-            settingsOptions.style.display = 'block';
-            userForm.style.display = 'none'; // Hide user form
-        });
-    }
-
-    // Event listener for Save Settings button
-    if (saveSettingsBtn) {
-        saveSettingsBtn.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent form submission
-            // Save settings logic here
-            const gameTime = parseInt(gameTimeInput.value);
-            const questionsCount = parseInt(questionsCountInput.value);
-            console.log(`Game Time: ${gameTime} minutes, Questions Count: ${questionsCount}`);
-            // Optionally, you can save these settings for future use
-            localStorage.setItem('gameTime', gameTime);
-            localStorage.setItem('questionsCount', questionsCount);
-            showAlert('Settings saved!', 'success'); // Show centered alert
-            // Redirect after showing the alert message for 3 seconds
-            setTimeout(function() {
-                window.location.href = 'user.html';
-            });
-        });
-    }
-
-    // Event listener for User button
-    if (userBtn) {
-        userBtn.addEventListener('click', function() {
-            setTimeout(function() {
-                window.location.href = 'info.html';
-            });
-        });
-    }
-
-    // Event listener for User Info Form submission
-    if (userSubmitBtn) {
-        userSubmitBtn.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent form submission
-            // Validate user info
-            const userName = userNameInput.value.trim();
-            const userEmail = userEmailInput.value.trim();
-            const userNumber = userNumberInput.value.trim();
-            // Save user info logic here
-            localStorage.setItem('userName', userName);
-            localStorage.setItem('userEmail', userEmail);
-            localStorage.setItem('userNumber', userNumber);
-            // Redirect after showing the alert message for 3 seconds
-            setTimeout(function() {
-                window.location.href = 'game.html';
-            });
-        });
-    }
-
-    // Event listener for changing color on settings option select
-    const colorOptions = document.querySelectorAll('.color-option');
-
-    colorOptions.forEach(option => {
-        option.addEventListener('click', function() {
-            const color = option.dataset.color;
-            document.body.style.backgroundColor = color; // Change background color
-            // Optionally, you can save the selected color for future use
-            localStorage.setItem('backgroundColor', color);
-        });
-    });
-
-    // Restore saved background color from localStorage
-    const savedColor = localStorage.getItem('backgroundColor');
-    if (savedColor) {
-        document.body.style.backgroundColor = savedColor;
     }
 
     // Game logic for game.html
@@ -369,40 +284,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Event listener for Start button
         startBtn.addEventListener('click', function() {
             loadQuestions();
-        });
-    }
-
-    // Integrate Simple Keyboard for input fields
-    function integrateSimpleKeyboard() {
-        const keyboard = new Keyboard({
-            onChange: input => onInputChange(input),
-            onKeyPress: button => onKeyPress(button)
-        });
-
-        function onInputChange(input) {
-            document.querySelector('.input').value = input;
-        }
-
-        function onKeyPress(button) {
-            console.log('Button pressed', button);
-        }
-
-        document.querySelectorAll('input[type="text"], input[type="email"], input[type="number"]').forEach(input => {
-            input.addEventListener('focus', () => {
-                keyboard.setOptions({
-                    inputName: input.name,
-                    layout: 'default'
-                });
-                document.querySelector('.simple-keyboard').style.display = 'block';
-            });
-
-            input.addEventListener('blur', () => {
-                setTimeout(() => {
-                    if (!document.querySelector('.simple-keyboard').contains(document.activeElement)) {
-                        document.querySelector('.simple-keyboard').style.display = 'none';
-                    }
-                }, 200);
-            });
         });
     }
 });

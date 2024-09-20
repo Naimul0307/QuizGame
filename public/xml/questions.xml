@@ -1,7 +1,7 @@
 <questions>
     <question>
         <text></text>    
-        <image>../public/images/q1.jpg</image>
+        <image>../public/images/q1.png</image>
         <answers>
             <answer>Danger zone</answer>
             <answer>Radioactive material</answer>
@@ -11,7 +11,7 @@
 
     <question>
         <text></text>   
-        <image>../public/images/q2.jpg</image>
+        <image>../public/images/q2.png</image>
         <answers>
             <answer>High Voltage Zone</answer>
             <answer correct="true">Electrical hazard</answer>
@@ -21,7 +21,7 @@
 
     <question>
         <text></text>   
-        <image>../public/images/q3.jpg</image>
+        <image>../public/images/q3.png</image>
         <answers>
             <answer correct="true">Emergency Eye wash</answer>
             <answer>First aid</answer>
@@ -31,7 +31,7 @@
 
     <question> 
         <text></text>     
-        <image>../public/images/q4.jpg</image>
+        <image>../public/images/q4.png</image>
         <answers>
             <answer>Wear your helmet</answer>
             <answer correct="true">Hearing protection must be worn</answer>
@@ -41,7 +41,7 @@
 
     <question>
         <text></text>       
-        <image>../public/images/q5.jpg</image>
+        <image>../public/images/q5.png</image>
         <answers>
             <answer>Keep Clear</answer>
             <answer>Do not touch</answer>
@@ -51,7 +51,7 @@
     
     <question> 
         <text></text>       
-        <image>../public/images/q6.jpg</image>
+        <image>../public/images/q6.png</image>
         <answers>
             <answer correct="true">Keep clear</answer>
             <answer>Danger</answer>
@@ -61,7 +61,7 @@
 
     <question>
         <text></text>       
-        <image>../public/images/q7.jpg</image>
+        <image>../public/images/q7.png</image>
         <answers>
             <answer>Danger zone</answer>
             <answer correct="true">Radioactive Material</answer>
@@ -71,7 +71,7 @@
 
     <question>
         <text></text>        
-        <image>../public/images/q8.jpg</image>
+        <image>../public/images/q8.png</image>
         <answers>
             <answer>Dangerous for the environment</answer>
             <answer>Fire ahead</answer>
