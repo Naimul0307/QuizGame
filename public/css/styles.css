@@ -61,16 +61,16 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     padding: 15px 30px; /* Increase button padding */
     font-size: 1.1em; /* Increase button font size */
     font-weight: bolder;
-    background-color: rgb(42, 121, 239);
-    color: azure;
+    background-color: rgba(219,227,214,255);
+    color: black;
     box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
     text-transform: uppercase;
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
 }
 
 .btn:hover{
-    background: linear-gradient(30deg,rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
-    color: azure;
+    background: linear-gradient(30deg,rgba(175,195,167,255), rgba(234,239,232,255), rgba(192,207,184,255));
+    color: black;
 }
 .btn:active {
     transform: translateY(8px); /* Push the button down slightly on click */

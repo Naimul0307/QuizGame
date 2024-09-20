@@ -29,7 +29,7 @@ h1{
     font-size: 2em; /* Increased font size */
     font-weight: bold;
     text-transform: uppercase;
-    background: linear-gradient(135deg,rgb(7, 3, 240), rgb(240, 218, 218)); /* Gradient background */
+    background: linear-gradient(30deg,rgba(9,129,100,255), rgba(146,198,113,255), rgba(133, 181, 213)); /* Gradient background */
     color: #fff;
     border-radius: 10px;
     box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
@@ -50,7 +50,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     margin-top: 20px;
     padding: 20px;
     /* background: linear-gradient(to right, rgba(6, 211, 109, 0.678), rgba(0, 0, 0, 0.3),rgba(23, 55, 197, 0.3)); Gradient background */
-    background: linear-gradient(30deg,rgb(7, 3, 240), rgb(240, 218, 218));
+    background: linear-gradient(30deg,rgba(9,129,100,255), rgba(146,198,113,255), rgba(133, 181, 213));;
     border-radius: 10px;
     box-shadow: 20px 20px 20px rgba(3, 3, 3, 0.1); /* White shadow for depth */
     height: auto; /* Adjust height as needed */
@@ -104,9 +104,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 .back-button {
     margin-top: 20px;
     /* background: linear-gradient(to right, #17cc44, #022204, #0e11cc); Gradient background */
-    background-color: rgb(42, 121, 239);
+    background-color: rgba(219,227,214,255);
     background-size: 200% auto;
-    color: azure; /* White text color */
+    color: black; /* White text color */
     text-transform: uppercase;
     font-weight: bold;
     font-size: 1.8em; /* Increased font size */
@@ -119,9 +119,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 .back-button:hover {
-    background: linear-gradient(30deg,rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
+    background: linear-gradient(30deg,rgba(175,195,167,255), rgba(234,239,232,255), rgba(192,207,184,255));
+    color: black;;
     background-position: right center; /* Move gradient on hover */
-    color: azure; /* Dark text color on hover */
     border-color: #050303; /* Darker green border on hover */
 }
 

@@ -46,15 +46,16 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     padding: 15px 30px; /* Increase button padding */
     font-size: 1.1em; /* Increase button font size */
     font-weight: bolder;
-    background-color: rgb(42, 95, 239);
-    color: azure;
+    background-color: rgba(219,227,214,255);
+    color: black;
     box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
     text-transform: uppercase;
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
 }
 
 .btn:hover {
-    background: linear-gradient(30deg, rgb(18, 78, 145), rgba(35, 208, 231, 0.829), rgb(13, 178, 138));
+    background: linear-gradient(30deg,rgba(175,195,167,255), rgba(234,239,232,255), rgba(192,207,184,255));
+    color: black;
 }
 
 .btn:active {
@@ -105,27 +106,22 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 .answer:nth-child(1) {
-    background-color: rgba(65, 62, 243, 0.925); /* Green background for first option */
-    color: #fff; /* White text color */
+    background-color: rgb(175,195,167,255); /* Green background for first option */
+    color: #070202; /* White text color */
 }
 
 .answer:nth-child(2) {
-    background-color: rgb(240, 218, 218); /* Blue background for second option */
+    background-color: rgba(234,239,232,255); /* Blue background for second option */
     color: #070202; /* White text color */
 }
 
 .answer:nth-child(3) {
-    background-color: rgba(65, 62, 243, 0.925); /* Red background for third option */
-    color: #fff; /* White text color */
-}
-
-.answer:nth-child(4) {
-    background-color: rgb(240, 218, 218); /* Blue background for fourth option */
+    background-color: rgba(192,207,184,255); /* Red background for third option */
     color: #070202; /* White text color */
 }
 
 .answer:hover {
-    background-color: rgb(239, 74, 42);
+    background-color: rgba(239, 75, 42, 0.747);
     color: azure;
 }
 
@@ -166,7 +162,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 #timer {
-    background: linear-gradient(30deg, rgb(7, 3, 240), rgb(255, 255, 255), rgb(96, 160, 219));
+    background: linear-gradient(30deg,rgba(9,129,100,255), rgba(146,198,113,255), rgba(133, 181, 213));
     color: #161515;
     padding: 10px;
     border-radius: 10px; /* Adjust border radius for square corners */
@@ -184,8 +180,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     text-transform: uppercase;
     text-align: center;
 }
+
 #countdown-timer {
-    color: #161515;
+    color: rgba(50,135,190,255);
     padding: 10px;
     border-radius: 10px; /* Adjust border radius for square corners */
     position: relative;
