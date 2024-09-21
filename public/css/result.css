@@ -6,20 +6,30 @@
     font-style: normal;
 } */
 
-body {
-    font-family: 'Helvetica Neue', sans-serif;
-    font-weight: 400;
-    color: #141414;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Custom CSS */
+body,html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-size: 18px; /* Adjust base font size */
+    font-weight: 400;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column; /* Stack elements vertically */
-    height: 100vh;
-    background: url('../background/game_bg.jpeg');
-    background-size: cover;
-    background-position: center;
+    background-image: url('../background/game_bg.jpeg'); /* Background image URL */
+    background-size: cover; /* Cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    margin: 0;
+    padding: 0;
+    color: #ffffff; /* Default text color for body */
 }
 
 html::-webkit-scrollbar, body::-webkit-scrollbar {
@@ -154,6 +164,29 @@ h1 {
         padding: 8px 16px; /* Adjusted padding */
     }
 }
+
+/* Specific Media Query for 1080x1920 Resolution (Portrait) */
+@media screen and (min-width: 1080px) and (max-height: 1920px) and (orientation: portrait) {
+
+    body {
+        height: 100%;
+        width: 100%;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 18px; /* Adjust base font size */
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; /* Stack elements vertically */
+        background-image: url('../background/game_bg_p.jpeg'); /* Background image URL */
+        background-size: cover; /* Cover the entire background */
+        background-position: center; /* Center the background image */
+        background-repeat: no-repeat; /* Prevent background image from repeating */
+        margin: 0;
+        padding: 0;
+        color: #ffffff; /* Default text color for body */
+    }
+ }
 
 @media (max-width: 480px) {
     h1 {

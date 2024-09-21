@@ -1,15 +1,19 @@
 /* Custom CSS */
-html, body {
-    height: 100%; /* Ensures the body covers the full screen height */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-body {
+body,html {
     /* font-family: 'GaMaamli-Regular', Arial, sans-serif; */
+    height: 100%;
+    width: 100%;
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 18px; /* Adjust base font size */
     font-weight: 400;
+    margin: 0;
+    padding: 0;
     background-image: url('../background/user_background.jpeg'); /* Background image URL */
     background-size: cover; /* Ensure the background covers the entire area */
     background-position: center; /* Center the background image */
@@ -60,7 +64,28 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */
 }
 
-
+/* Specific Media Query for 1080x1920 Resolution (Portrait) */
+@media screen and (min-width: 1080px) and (max-height: 1920px) and (orientation: portrait) {
+    body,html {
+        /* font-family: 'GaMaamli-Regular', Arial, sans-serif; */
+        height: 100%;
+        width: 100%;
+        font-family: 'Helvetica Neue', sans-serif;
+        font-size: 18px; /* Adjust base font size */
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+        background-image: url('../background/user_background_p.jpeg'); /* Background image URL */
+        background-size: cover; /* Ensure the background covers the entire area */
+        background-position: center; /* Center the background image */
+        background-repeat: no-repeat; /* Prevent the background image from repeating */
+        background-attachment: fixed; /* Keeps the background fixed in place */
+        color: #ffffff; /* Default text color for body */
+        display: flex; /* Enable flex layout */
+        justify-content: center; /* Center content horizontally */
+        align-items: center; /* Center content vertically */
+    }
+}
 
 @media (max-width: 768px) {
     .section {
