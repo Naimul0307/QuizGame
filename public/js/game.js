@@ -299,7 +299,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (correct) {
                 console.log("Correct answer!");
             } else {
-                console.log("Answer is wrong");
+                console.log("Answer is wrong!");
+                playBeep(); // Play the beep sound for wrong answers
                 showMessage("Answer is wrong!", 1000);  // Show custom message for 2 seconds
             }
         
