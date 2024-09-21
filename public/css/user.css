@@ -1,16 +1,24 @@
 /* Custom CSS */
+html, body {
+    height: 100%; /* Ensures the body covers the full screen height */
+    margin: 0;
+    padding: 0;
+}
+
 body {
     /* font-family: 'GaMaamli-Regular', Arial, sans-serif; */
     font-family: 'Helvetica Neue', sans-serif;
     font-size: 18px; /* Adjust base font size */
     font-weight: 400;
     background-image: url('../background/user_background.jpeg'); /* Background image URL */
-    background-size: cover; /* Cover the entire background */
+    background-size: cover; /* Ensure the background covers the entire area */
     background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent background image from repeating */
-    margin: 0;
-    padding: 0;
+    background-repeat: no-repeat; /* Prevent the background image from repeating */
+    background-attachment: fixed; /* Keeps the background fixed in place */
     color: #ffffff; /* Default text color for body */
+    display: flex; /* Enable flex layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
 }
 
 html::-webkit-scrollbar, body::-webkit-scrollbar {

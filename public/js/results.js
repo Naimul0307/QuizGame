@@ -25,13 +25,17 @@ function loadExcelData() {
         top10Results.forEach((user, index) => {
             const userRow = document.createElement('div');
             userRow.classList.add('scoreboard-row');
+
+            // Format date to show only the date portion
+            const formattedDate = user.dateTime ? new Date(user.dateTime).toLocaleDateString() : 'N/A';
+
             userRow.innerHTML = `
                 <div class="user-rank">${index + 1}</div>
                 <div class="user-name">${user.name || 'N/A'}</div>
                 <div class="user-email">${user.email || 'N/A'}</div>
                 <div class="user-number">${user.number || 'N/A'}</div>
                 <div class="user-score">${user.score || 0}</div>
-                <div class="user-date">${user.dateTime || 'N/A'}</div>
+                <div class="user-date">${formattedDate}</div>
             `;
             usersList.appendChild(userRow);
         });
@@ -55,6 +59,6 @@ document.querySelector('.back-button').addEventListener('click', function() {
 });
 
 // Set a timeout to automatically redirect after 10 seconds
-let autoRedirectTimeout = setTimeout(() => {
-    window.location.href = 'user.html'; // Replace with your home page URL
-}, 10000); // Redirect after 10 seconds
+// let autoRedirectTimeout = setTimeout(() => {
+//     window.location.href = 'user.html'; // Replace with your home page URL
+// }, 10000); // Redirect after 10 seconds

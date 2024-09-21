@@ -1,5 +1,3 @@
-/* result.css */
-
 /* Load the GaMaamli-Regular font */
 /* @font-face {
     font-family: 'GaMaamli-Regular';
@@ -9,123 +7,174 @@
 } */
 
 body {
-    /* font-family: 'GaMaamli-Regular', Arial, sans-serif; Use GaMaamli-Regular first, fallback to Arial and then sans-serif */
     font-family: 'Helvetica Neue', sans-serif;
     font-weight: 400;
-    color: #141414; /* White text color */
+    color: #141414;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Full viewport height */
-    background: url('../background/game_bg.jpeg'); /* Gradient background with image */
+    flex-direction: column; /* Stack elements vertically */
+    height: 100vh;
+    background: url('../background/game_bg.jpeg');
     background-size: cover;
     background-position: center;
 }
 
-h1{
-    flex: 1;
-    font-size: 2em; /* Increased font size */
-    font-weight: bold;
-    text-transform: uppercase;
-    background: linear-gradient(30deg,rgba(9,129,100,255), rgba(146,198,113,255), rgba(133, 181, 213)); /* Gradient background */
-    color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+    display: none;
 }
 
-html::-webkit-scrollbar, body::-webkit-scrollbar {
-    display: none;  /* For Chrome, Safari, and Opera */
+h1 {
+    font-size: 2.5em; /* Increased font size */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center; /* Centers the text */
+    background: linear-gradient(30deg, rgba(9, 129, 100, 255), rgba(146, 198, 113, 255), rgba(133, 181, 213));
+    color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    padding: 10px; /* Added padding */
 }
+
 
 .container-fluid {
     width: 100%;
-    max-width: 800px;
+    max-width: 1200px;
     text-align: center;
+    padding: 20px; /* Added padding for small screens */
+    margin-top: 50px;
 }
 
 .scoreboard {
     margin-top: 20px;
     padding: 20px;
-    /* background: linear-gradient(to right, rgba(6, 211, 109, 0.678), rgba(0, 0, 0, 0.3),rgba(23, 55, 197, 0.3)); Gradient background */
-    background: linear-gradient(30deg,rgba(9,129,100,255), rgba(146,198,113,255), rgba(133, 181, 213));;
+    background: linear-gradient(30deg, rgba(9, 129, 100, 255), rgba(146, 198, 113, 255), rgba(133, 181, 213));
     border-radius: 10px;
-    box-shadow: 20px 20px 20px rgba(3, 3, 3, 0.1); /* White shadow for depth */
-    height: auto; /* Adjust height as needed */
+    box-shadow: 20px 20px 20px rgba(3, 3, 3, 0.1);
 }
-
 
 .scoreboard-header {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 2px solid #4CAF50; /* Green border bottom */
+    border-bottom: 2px solid #4CAF50;
     margin-bottom: 10px;
 }
 
 .header-item {
     flex: 1;
-    font-size: 2em; /* Increased font size */
+    font-size: 1.5em; /* Adjusted font size for responsiveness */
     font-weight: bold;
     text-transform: uppercase;
-    color: #fff; /* White text color */
+    color: #fff;
 }
 
 .scoreboard-body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 10px 0;
+    border-bottom: 2px solid #4CAF50;
+    margin-bottom: 10px;
 }
 
 .scoreboard-row {
     width: 100%;
-    max-width: 800px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #201f1f; /* Darker border bottom */
+    border-bottom: 2px solid #9beb9d;
 }
 
 .scoreboard-row:last-child {
-    border-bottom: none; /* Remove border bottom for last row */
+    border-bottom: none;
 }
 
-.scoreboard-item {
-    flex: 1;
-    font-size: 1.8em; /* Increased font size */
-    color: #fff; /* White text color */
-    line-height: 1.5; /* Adjust line height */
+.user-rank,
+.user-name,
+.user-email,
+.user-number,
+.user-score,
+.user-date {
+    flex: 1; /* Ensures even spacing */
+    text-align: center; /* Centers the text */
+    font-weight: bold;
+    font-size: 1.4em; /* Reduced font size for responsiveness */
+    line-height: 1.5;
 }
 
 .back-button {
     margin-top: 20px;
-    /* background: linear-gradient(to right, #17cc44, #022204, #0e11cc); Gradient background */
-    background-color: rgba(219,227,214,255);
-    background-size: 200% auto;
-    color: black; /* White text color */
+    background-color: rgba(219, 227, 214, 255);
+    color: black;
     text-transform: uppercase;
     font-weight: bold;
-    font-size: 1.8em; /* Increased font size */
+    font-size: 1.5em; /* Adjusted font size */
     padding: 10px 20px;
     border-radius: 5px;
     border: 2px solid transparent;
     cursor: pointer;
-    transition: background-position 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Smooth transition for background position */
-    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
+    transition: background-position 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404);
 }
 
 .back-button:hover {
-    background: linear-gradient(30deg,rgba(175,195,167,255), rgba(234,239,232,255), rgba(192,207,184,255));
-    color: black;;
-    background-position: right center; /* Move gradient on hover */
-    border-color: #050303; /* Darker green border on hover */
+    background: linear-gradient(30deg, rgba(175, 195, 167, 255), rgba(234, 239, 232, 255), rgba(192, 207, 184, 255));
+    border-color: #050303;
 }
 
 .back-button:active {
-    transform: translateY(8px); /* Push the button down slightly on click */
-    box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */
+    transform: translateY(8px);
+    box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em; /* Slightly smaller font size */
+    }
+
+    .user-rank,
+    .user-name,
+    .user-email,
+    .user-number,
+    .user-score,
+    .user-date {
+        font-size: 1.2em; /* Smaller font size */
+    }
+
+    .back-button {
+        font-size: 1.2em; /* Smaller font size */
+        padding: 8px 16px; /* Adjusted padding */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8em; /* Further smaller font size */
+    }
+
+    .header-item {
+        font-size: 1.2em; /* Smaller font size */
+    }
+
+    .user-rank,
+    .user-name,
+    .user-email,
+    .user-number,
+    .user-score,
+    .user-date {
+        font-size: 1em; /* Smaller font size */
+    }
+
+    .back-button {
+        font-size: 1em; /* Smaller font size */
+        padding: 6px 12px; /* Adjusted padding */
+    }
 }
