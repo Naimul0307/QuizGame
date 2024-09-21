@@ -1,10 +1,6 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
 const url = require('url');
-const XLSX = require('xlsx');
-const fs = require('fs');
-
-let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -13,40 +9,42 @@ function createWindow() {
     fullscreen: true, // Start in full-screen mode
     autoHideMenuBar: true, // Hide the menu bar
     webPreferences: {
-      nodeIntegration: true, // Allows use of Node.js features in renderer
-      contextIsolation: false, // Disable context isolation to allow IPC
+      nodeIntegration: true,
+      contextIsolation: false,
+      enableRemoteModule: true,
     }
   });
 
-  // Load index.html file
+    // Function to clear cache
+  function clearCache() {
+    const ses = session.defaultSession;
+    ses.clearCache().then(() => {
+      console.log('Cache cleared');
+    }).catch((error) => {
+      console.error('Error clearing cache:', error);
+    });
+  }
+
+  // Call clearCache when the app is ready
+  app.on('ready', () => {
+    clearCache();
+    createWindow();
+  });
+
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'templates', 'index.html'),
     protocol: 'file:',
     slashes: true
   }));
 
+  // Remove DevTools opening for production
+  // mainWindow.webContents.openDevTools();
+
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
 }
 
-// Add Excel file-saving functionality via ipcMain
-ipcMain.on('save-excel', (event, users) => {
-  const worksheet = XLSX.utils.json_to_sheet(users); // Convert JSON to Excel sheet
-  const workbook = XLSX.utils.book_new(); // Create a new workbook
-  XLSX.utils.book_append_sheet(workbook, worksheet, 'Quiz Results'); // Add sheet
-
-  // Define the path to save the Excel file inside the project
-  const filePath = path.join(__dirname, 'public', 'results', 'quiz_results.xlsx');
-
-  // Write the Excel file to the specified location
-  XLSX.writeFile(workbook, filePath);
-
-  // Send a success message back to renderer
-  event.reply('save-excel-success', 'File saved successfully!');
-});
-
-// Handle app lifecycle
 app.on('ready', createWindow);
 
 app.on('window-all-closed', function () {

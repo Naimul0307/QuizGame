@@ -5,9 +5,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const timerDisplay = document.getElementById('timer');
         const questionContainer = document.getElementById('question');
         const answersContainer = document.getElementById('answers');
+        
+        // At the top of your game.js file
+        const fs = require('fs');
+        const path = require('path');
+        const XLSX = require('xlsx');
 
-
-        let isFileDownloaded = false; // Flag to track file download
+        const filePath = path.join(__dirname, '../public/results/user_results.xlsx');
+        // let isFileDownloaded = false; // Flag to track file download
         let questions = [];
         let currentQuestionIndex = 0;
         let timer;
@@ -364,14 +369,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // function endGame() {
         //     clearInterval(timer); // Stop the timer
-        
+
         //     // Calculate score and retrieve user info from localStorage
         //     const score = calculateScore();
         //     const userName = localStorage.getItem('userName');
         //     const userEmail = localStorage.getItem('userEmail');
         //     const userNumber = localStorage.getItem('userNumber');
         //     const dateTime = new Date().toISOString(); // Get current date and time
-        
+
         //     const user = { 
         //         name: userName, 
         //         email: userEmail, 
@@ -379,77 +384,80 @@ document.addEventListener('DOMContentLoaded', function() {
         //         score: score, 
         //         dateTime: dateTime // Add date and time
         //     };
-        
-        //     // Store user data in an array in localStorage
-        //     let users = JSON.parse(localStorage.getItem('users')) || [];
-        //     users.push(user);
-        //     localStorage.setItem('users', JSON.stringify(users));
-        
-        //     // Create a worksheet and workbook for Excel
-        //     const ws = XLSX.utils.json_to_sheet(users);
-        //     const wb = XLSX.utils.book_new();
-        //     XLSX.utils.book_append_sheet(wb, ws, "Results");
 
-        //     // // Create a worksheet with headers
-        //     // const header = ["Name", "Email", "Number", "Score", "Date and Time"]; // Added Date and Time header
-        //     // const ws = XLSX.utils.json_to_sheet(users, { header });
-        //     // const wb = XLSX.utils.book_new();
-        //     // XLSX.utils.book_append_sheet(wb, ws, "Results");
-        
-        //     // Generate Excel file and trigger download
-        //     XLSX.writeFile(wb, "user_results.xlsx");
-        
+        //     // Load existing user data from localStorage
+        //     let users = JSON.parse(localStorage.getItem('users')) || [];
+        //     users.push(user); // Append new user data
+        //     localStorage.setItem('users', JSON.stringify(users));
+
+        //     // Check if the file has been downloaded already
+        //     if (!isFileDownloaded) {
+        //         // Create a worksheet with headers
+        //         const header = ["Name", "Email", "Number", "Score", "Date and Time"];
+        //         const ws = XLSX.utils.json_to_sheet(users, { header });
+        //         const wb = XLSX.utils.book_new();
+        //         XLSX.utils.book_append_sheet(wb, ws, "Results");
+
+        //         // Generate Excel file and trigger download
+        //         XLSX.writeFile(wb, "user_results.xlsx");
+
+        //         isFileDownloaded = true; // Set flag to true after downloading
+        //     } else {
+        //         // If the file has been downloaded, you could choose to handle updating it here.
+        //         // Note: In a browser, you can't modify an existing file directly.
+        //         // You may need to provide instructions to users on how to manage the file.
+        //         console.log("File already downloaded. Please manage the Excel file manually to add more entries.");
+        //     }
+
         //     // Redirect to results page
         //     window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
         // }
+
+        function endGame() {
+            clearInterval(timer); // Stop the timer
     
-        
-
-    function endGame() {
-        clearInterval(timer); // Stop the timer
-
-        // Calculate score and retrieve user info from localStorage
-        const score = calculateScore();
-        const userName = localStorage.getItem('userName');
-        const userEmail = localStorage.getItem('userEmail');
-        const userNumber = localStorage.getItem('userNumber');
-        const dateTime = new Date().toISOString(); // Get current date and time
-
-        const user = { 
-            name: userName, 
-            email: userEmail, 
-            number: userNumber, 
-            score: score, 
-            dateTime: dateTime // Add date and time
-        };
-
-        // Load existing user data from localStorage
-        let users = JSON.parse(localStorage.getItem('users')) || [];
-        users.push(user); // Append new user data
-        localStorage.setItem('users', JSON.stringify(users));
-
-        // Check if the file has been downloaded already
-        if (!isFileDownloaded) {
-            // Create a worksheet with headers
-            const header = ["Name", "Email", "Number", "Score", "Date and Time"];
-            const ws = XLSX.utils.json_to_sheet(users, { header });
-            const wb = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(wb, ws, "Results");
-
-            // Generate Excel file and trigger download
-            XLSX.writeFile(wb, "user_results.xlsx");
-
-            isFileDownloaded = true; // Set flag to true after downloading
-        } else {
-            // If the file has been downloaded, you could choose to handle updating it here.
-            // Note: In a browser, you can't modify an existing file directly.
-            // You may need to provide instructions to users on how to manage the file.
-            console.log("File already downloaded. Please manage the Excel file manually to add more entries.");
+            // Calculate score and retrieve user info
+            const score = calculateScore();
+            const userName = localStorage.getItem('userName');
+            const userEmail = localStorage.getItem('userEmail');
+            const userNumber = localStorage.getItem('userNumber');
+            const dateTime = new Date().toISOString();
+    
+            const user = {
+                name: userName,
+                email: userEmail,
+                number: userNumber,
+                score: score,
+                dateTime: dateTime
+            };
+    
+            // Check if the file exists
+            let users = [];
+            if (fs.existsSync(filePath)) {
+                // Read existing data
+                const workbook = XLSX.readFile(filePath);
+                const sheetName = workbook.SheetNames[0];
+                const worksheet = workbook.Sheets[sheetName];
+    
+                // Convert the existing sheet to JSON
+                users = XLSX.utils.sheet_to_json(worksheet);
+            }
+    
+            // Append new user data
+            users.push(user);
+    
+            // Create a new worksheet and workbook
+            const newWorksheet = XLSX.utils.json_to_sheet(users);
+            const newWorkbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(newWorkbook, newWorksheet, "Results");
+    
+            // Write the updated workbook to the file
+            XLSX.writeFile(newWorkbook, filePath);
+    
+            // Redirect to results page
+            window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
         }
 
-        // Redirect to results page
-        window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
-    }
         // Function to calculate score (example logic)
         function calculateScore() {
             let correctAnswers = 0;

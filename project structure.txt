@@ -14,3 +14,6 @@ Quiz_Game/
 ├──  main.js
 ├── package.json
 └── preload.js
+
+install this package need to donwlode results in excle file
+npm install xlsx

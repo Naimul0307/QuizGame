@@ -12,5 +12,6 @@ contextBridge.exposeInMainWorld('fileAPI', {
     readXMLFile: (filePath) => {
         const xmlData = fs.readFileSync(path.join(__dirname, filePath), 'utf-8');
         return new window.DOMParser().parseFromString(xmlData, "application/xml");
-    }
+    },
+    
 });
