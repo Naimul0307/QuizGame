@@ -13,8 +13,20 @@ function loadExcelData() {
         const worksheet = workbook.Sheets[sheetName];
         const jsonData = XLSX.utils.sheet_to_json(worksheet);
 
-        // Sort the data by score in descending order
-        jsonData.sort((a, b) => b.score - a.score);
+        // Function to convert timerValue to total seconds
+        const convertTimerValueToSeconds = (timerValue) => {
+            if (!timerValue) return 0;
+            const [minutes, seconds] = timerValue.split(':').map(Number);
+            return (minutes || 0) * 60 + (seconds || 0);
+        };
+
+        // Sort the data by score in descending order and timerValue in ascending order
+        jsonData.sort((a, b) => {
+            const scoreDifference = b.score - a.score;
+            if (scoreDifference !== 0) return scoreDifference; // Sort by score first
+            return convertTimerValueToSeconds(a.timerValue) - convertTimerValueToSeconds(b.timerValue); // Sort by timerValue next
+        });
+
 
         // Get the top 10 results
         const top10Results = jsonData.slice(0, 10);
@@ -35,6 +47,7 @@ function loadExcelData() {
                 <div class="user-email">${user.email || 'N/A'}</div>
                 <div class="user-number">${user.number || 'N/A'}</div>
                 <div class="user-score">${user.score || 0}</div>
+                <div class="user-score">${user.timerValue || 'N/A'}</div>
                 <div class="user-date">${formattedDate}</div>
             `;
             usersList.appendChild(userRow);
@@ -59,6 +72,6 @@ document.querySelector('.back-button').addEventListener('click', function() {
 });
 
 // Set a timeout to automatically redirect after 10 seconds
-// let autoRedirectTimeout = setTimeout(() => {
-//     window.location.href = 'user.html'; // Replace with your home page URL
-// }, 10000); // Redirect after 10 seconds
+let autoRedirectTimeout = setTimeout(() => {
+    window.location.href = 'user.html'; // Replace with your home page URL
+}, 10000); // Redirect after 10 seconds

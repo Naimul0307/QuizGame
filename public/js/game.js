@@ -346,73 +346,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-        // Function to end the game
-        // function endGame() {
-        //     clearInterval(timer); // Stop the timer
-
-        //     // Calculate score
-        //     const score = calculateScore();
-
-        //     // Save user info and score to localStorage
-        //     const userName = localStorage.getItem('userName');
-        //     const userEmail = localStorage.getItem('userEmail');
-        //     const userNumber = localStorage.getItem('userNumber');
-
-        //     const user = { name: userName, email: userEmail, number: userNumber, score: score };
-
-        //     // Store user data in an array in localStorage
-        //     let users = JSON.parse(localStorage.getItem('users')) || [];
-        //     users.push(user);
-        //     localStorage.setItem('users', JSON.stringify(users));
-        //     // Redirect to results page
-        //     window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}`;
-        // }
-
-        // function endGame() {
-        //     clearInterval(timer); // Stop the timer
-
-        //     // Calculate score and retrieve user info from localStorage
-        //     const score = calculateScore();
-        //     const userName = localStorage.getItem('userName');
-        //     const userEmail = localStorage.getItem('userEmail');
-        //     const userNumber = localStorage.getItem('userNumber');
-        //     const dateTime = new Date().toISOString(); // Get current date and time
-
-        //     const user = { 
-        //         name: userName, 
-        //         email: userEmail, 
-        //         number: userNumber, 
-        //         score: score, 
-        //         dateTime: dateTime // Add date and time
-        //     };
-
-        //     // Load existing user data from localStorage
-        //     let users = JSON.parse(localStorage.getItem('users')) || [];
-        //     users.push(user); // Append new user data
-        //     localStorage.setItem('users', JSON.stringify(users));
-
-        //     // Check if the file has been downloaded already
-        //     if (!isFileDownloaded) {
-        //         // Create a worksheet with headers
-        //         const header = ["Name", "Email", "Number", "Score", "Date and Time"];
-        //         const ws = XLSX.utils.json_to_sheet(users, { header });
-        //         const wb = XLSX.utils.book_new();
-        //         XLSX.utils.book_append_sheet(wb, ws, "Results");
-
-        //         // Generate Excel file and trigger download
-        //         XLSX.writeFile(wb, "user_results.xlsx");
-
-        //         isFileDownloaded = true; // Set flag to true after downloading
-        //     } else {
-        //         // If the file has been downloaded, you could choose to handle updating it here.
-        //         // Note: In a browser, you can't modify an existing file directly.
-        //         // You may need to provide instructions to users on how to manage the file.
-        //         console.log("File already downloaded. Please manage the Excel file manually to add more entries.");
-        //     }
-
-        //     // Redirect to results page
-        //     window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
-        // }
 
         function endGame() {
             clearInterval(timer); // Stop the timer
@@ -424,12 +357,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const userNumber = localStorage.getItem('userNumber');
             const dateTime = new Date().toISOString();
     
+            //    // Get the last timer value
+            const timerValue = timerDisplay.textContent; // Get the current displayed timer value
+            // const [minutes, seconds] = timerValue.split(':').map(Number);
+            // const totalSeconds = minutes * 60 + seconds; // Convert to total seconds
+
             const user = {
                 name: userName,
                 email: userEmail,
                 number: userNumber,
                 score: score,
-                dateTime: dateTime
+                dateTime: dateTime,
+                timerValue:timerValue
+                // timerValue: totalSeconds // Save the timer value
             };
     
             // Check if the file exists
