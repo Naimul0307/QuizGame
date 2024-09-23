@@ -10,12 +10,32 @@ document.addEventListener('DOMContentLoaded', function() {
         const fs = require('fs');
         const path = require('path');
         const XLSX = require('xlsx');
+        const os = require('os');
 
-        const filePath = path.join(__dirname, '../public/results/user_results.xlsx');
+        // Detect the user's home directory
+        const userHome = os.homedir();
+
+        // Automatically determine the file path for the user's system
+        // This will point to the Documents folder within the user's home directory
+        const filePath = path.join(userHome, 'Documents', 'QuizGame3', 'user_results.xlsx');
+        
+        // const filePath = path.join(__dirname, '../public/results/user_results.xlsx');
+
+        // Ensure that the directory exists, and if not, create it
+        const directoryPath = path.dirname(filePath);
+        if (!fs.existsSync(directoryPath)) {
+            fs.mkdirSync(directoryPath, { recursive: true });
+            console.log('Directory created:', directoryPath);
+        } else {
+            console.log('Directory already exists:', directoryPath);
+        }
+
+        
         // let isFileDownloaded = false; // Flag to track file download
         let questions = [];
         let currentQuestionIndex = 0;
         let timer;
+        let audioContext;
         let gameTimeInSeconds = localStorage.getItem('gameTime') * 60 || 300; // Default 5 minutes
         let userAnswers = [];
         let questionsCount = parseInt(localStorage.getItem('questionsCount')) || 4; // Default to 4 questions
@@ -137,8 +157,28 @@ document.addEventListener('DOMContentLoaded', function() {
             displayQuestion();
         }
 
+        // function playBeep() {
+        //     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        //     const oscillator = audioContext.createOscillator();
+        //     const gainNode = audioContext.createGain();
+        
+        //     oscillator.connect(gainNode);
+        //     gainNode.connect(audioContext.destination);
+        
+        //     oscillator.type = 'sine';
+        //     oscillator.frequency.setValueAtTime(1000, audioContext.currentTime); // Beep frequency
+        //     gainNode.gain.setValueAtTime(1, audioContext.currentTime);
+        //     gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5); // Beep duration
+        
+        //     oscillator.start(audioContext.currentTime);
+        //     oscillator.stop(audioContext.currentTime + 0.5);
+        // }
+
+
         function playBeep() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
         
@@ -153,8 +193,7 @@ document.addEventListener('DOMContentLoaded', function() {
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + 0.5);
         }
-
-
+        
         // Function to start the timer
         function startTimer(duration) {
             let timeLeft = duration;

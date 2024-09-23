@@ -1,8 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
+const os = require('os');
 
-const filePath = path.join(__dirname, '../public/results/user_results.xlsx'); // Path to your Excel file
+// const filePath = path.join(__dirname, '../public/results/user_results.xlsx'); // Path to your Excel file
+
+// Detect the user's home directory
+const userHome = os.homedir();
+
+// Automatically determine the file path for the user's system
+const filePath = path.join(userHome, 'Documents', 'QuizGame3', 'user_results.xlsx');
+
+// Ensure that the directory exists, and if not, create it
+const directoryPath = path.dirname(filePath);
+if (!fs.existsSync(directoryPath)) {
+    fs.mkdirSync(directoryPath, { recursive: true });
+    console.log('Directory created:', directoryPath);
+} else {
+    console.log('Directory already exists:', directoryPath);
+}
 
 // Function to load and display Excel data
 function loadExcelData() {
