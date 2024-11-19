@@ -312,10 +312,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
         /* font-family: 'GaMaamli-Regular', Arial, sans-serif; */
         background-image: url('../background/game_bg_p.jpeg'); /* Background image URL */
     }
-
-    .container-fluid {
-        margin-top: 50px;
-    }
     
     #timer {
         margin-top: 50px; /* Adjust top margin as needed */
