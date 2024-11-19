@@ -20,7 +20,6 @@ if (!fs.existsSync(directoryPath)) {
     console.log('Directory already exists:', directoryPath);
 }
 
-// Function to load and display Excel data
 function loadExcelData() {
     if (fs.existsSync(filePath)) {
         // Read the Excel file
@@ -40,9 +39,13 @@ function loadExcelData() {
         jsonData.sort((a, b) => {
             const scoreDifference = b.score - a.score;
             if (scoreDifference !== 0) return scoreDifference; // Sort by score first
-            return convertTimerValueToSeconds(a.timerValue) - convertTimerValueToSeconds(b.timerValue); // Sort by timerValue next
-        });
 
+            const timerDifference = convertTimerValueToSeconds(b.timerValue) - convertTimerValueToSeconds(a.timerValue);
+            if (timerDifference !== 0) return timerDifference; // Sort by timerValue next
+
+            // If both score and timerValue are the same, maintain original order
+            return jsonData.indexOf(a) - jsonData.indexOf(b);
+        });
 
         // Get the top 10 results
         const top10Results = jsonData.slice(0, 10);
@@ -61,9 +64,8 @@ function loadExcelData() {
                 <div class="user-rank">${index + 1}</div>
                 <div class="user-name">${user.name || 'N/A'}</div>
                 <div class="user-email">${user.email || 'N/A'}</div>
-                <div class="user-number">${user.number || 'N/A'}</div>
                 <div class="user-score">${user.score || 0}</div>
-                <div class="user-score">${user.timerValue || 'N/A'}</div>
+                <div class="user-timer">${user.timerValue || 'N/A'}</div>
                 <div class="user-date">${formattedDate}</div>
             `;
             usersList.appendChild(userRow);
@@ -72,6 +74,7 @@ function loadExcelData() {
         console.error('File not found:', filePath);
     }
 }
+
 
 // Call the function to load data when the page loads
 window.onload = loadExcelData;
@@ -91,3 +94,5 @@ document.querySelector('.back-button').addEventListener('click', function() {
 let autoRedirectTimeout = setTimeout(() => {
     window.location.href = 'user.html'; // Replace with your home page URL
 }, 10000); // Redirect after 10 seconds
+
+

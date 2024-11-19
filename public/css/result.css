@@ -111,6 +111,7 @@ h1 {
 .user-email,
 .user-number,
 .user-score,
+.user-timer,
 .user-date {
     flex: 1; /* Ensures even spacing */
     text-align: center; /* Centers the text */

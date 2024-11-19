@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             console.log('Directory already exists:', directoryPath);
         }
-
         
         // let isFileDownloaded = false; // Flag to track file download
         let questions = [];
@@ -156,24 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
             startTimer(gameTimeInSeconds);
             displayQuestion();
         }
-
-        // function playBeep() {
-        //     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        //     const oscillator = audioContext.createOscillator();
-        //     const gainNode = audioContext.createGain();
-        
-        //     oscillator.connect(gainNode);
-        //     gainNode.connect(audioContext.destination);
-        
-        //     oscillator.type = 'sine';
-        //     oscillator.frequency.setValueAtTime(1000, audioContext.currentTime); // Beep frequency
-        //     gainNode.gain.setValueAtTime(1, audioContext.currentTime);
-        //     gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5); // Beep duration
-        
-        //     oscillator.start(audioContext.currentTime);
-        //     oscillator.stop(audioContext.currentTime + 0.5);
-        // }
-
 
         function playBeep() {
             if (!audioContext) {
@@ -393,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const score = calculateScore();
             const userName = localStorage.getItem('userName');
             const userEmail = localStorage.getItem('userEmail');
-            const userNumber = localStorage.getItem('userNumber');
+            // const userNumber = localStorage.getItem('userNumber');
             const dateTime = new Date().toISOString();
     
             //    // Get the last timer value
@@ -404,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const user = {
                 name: userName,
                 email: userEmail,
-                number: userNumber,
+                // number: userNumber,
                 score: score,
                 dateTime: dateTime,
                 timerValue:timerValue
@@ -435,7 +416,7 @@ document.addEventListener('DOMContentLoaded', function() {
             XLSX.writeFile(newWorkbook, filePath);
     
             // Redirect to results page
-            window.location.href = `results.html?name=${userName}&email=${userEmail}&number=${userNumber}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
+            window.location.href = `results.html?name=${userName}&email=${userEmail}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
         }
 
         // Function to calculate score (example logic)
@@ -453,7 +434,3 @@ document.addEventListener('DOMContentLoaded', function() {
         loadQuestions();
     }
 });
-
-
-
-
