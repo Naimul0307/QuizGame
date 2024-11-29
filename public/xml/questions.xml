@@ -1,81 +1,50 @@
 <questions>
     <question>
-        <text></text>    
-        <image>../public/images/q1.png</image>
+        <title>Guess the UAE Landmark</title>  
+        <image>../public/images/Al-Bidya-Mosque-Fujairah.jpg</image>
+        <text>Hint: Located in Dubai, this landmark is dedicated to the nation's history.</text>
         <answers>
-            <answer>Danger zone</answer>
-            <answer>Radioactive material</answer>
-            <answer correct="true">Biological Hazard</answer>
+            <answer>Al Owais Mosque</answer>
+            <answer>Al Murabbaa Mosque</answer>
+            <answer correct="true">Al Bidya Mosque</answer>
+            <answer>Al Murabbaa Mosque</answer>
         </answers>
     </question>
 
     <question>
-        <text></text>   
-        <image>../public/images/q2.png</image>
+        <title>Guess the UAE Landmark</title>  
+        <image>../public/images/Al-Bidya-Mosque-Fujairah.jpg</image>
+        <text>Hint: Located in Dubai, this landmark is dedicated to the nation's history.</text>
         <answers>
-            <answer>High Voltage Zone</answer>
-            <answer correct="true">Electrical hazard</answer>
-            <answer>Lightning risk</answer>
+            <answer>Al Owais Mosque</answer>
+            <answer>Al Murabbaa Mosque</answer>
+            <answer correct="true">Al Bidya Mosque</answer>
+            <answer>Al Murabbaa Mosque</answer>
         </answers>
     </question>
 
     <question>
-        <text></text>   
-        <image>../public/images/q3.png</image>
+        <title>Guess the UAE Landmark</title>  
+        <image>../public/images/Al-Bidya-Mosque-Fujairah.jpg</image>
+        <text>Hint: Located in Dubai, this landmark is dedicated to the nation's history.</text>
         <answers>
-            <answer correct="true">Emergency Eye wash</answer>
-            <answer>First aid</answer>
-            <answer>Shower Area</answer>
+            <answer>Al Owais Mosque</answer>
+            <answer>Al Murabbaa Mosque</answer>
+            <answer correct="true">Al Bidya Mosque</answer>
+            <answer>Al Murabbaa Mosque</answer>
         </answers>
-    </question>
-
-    <question> 
-        <text></text>     
-        <image>../public/images/q4.png</image>
-        <answers>
-            <answer>Wear your helmet</answer>
-            <answer correct="true">Hearing protection must be worn</answer>
-            <answer>Noise level</answer>
-        </answers>
-    </question>
-
+  </question>
+  
     <question>
-        <text></text>       
-        <image>../public/images/q5.png</image>
+        <title>Guess the UAE Landmark</title>  
+        <image>../public/images/Al-Bidya-Mosque-Fujairah.jpg</image>
+        <text>Hint: Located in Dubai, this landmark is dedicated to the nation's history.</text>
         <answers>
-            <answer>Keep Clear</answer>
-            <answer>Do not touch</answer>
-            <answer correct="true">no unauthorised entrance</answer>
-        </answers>
-    </question>
-    
-    <question> 
-        <text></text>       
-        <image>../public/images/q6.png</image>
-        <answers>
-            <answer correct="true">Keep clear</answer>
-            <answer>Danger</answer>
-            <answer>Do not enter</answer>
+            <answer>Al Owais Mosque</answer>
+            <answer>Al Murabbaa Mosque</answer>
+            <answer correct="true">Al Bidya Mosque</answer>
+            <answer>Al Murabbaa Mosque</answer>
         </answers>
     </question>
 
-    <question>
-        <text></text>       
-        <image>../public/images/q7.png</image>
-        <answers>
-            <answer>Danger zone</answer>
-            <answer correct="true">Radioactive Material</answer>
-            <answer>Bio Hazard</answer>
-        </answers>
-    </question>
-
-    <question>
-        <text></text>        
-        <image>../public/images/q8.png</image>
-        <answers>
-            <answer>Dangerous for the environment</answer>
-            <answer>Fire ahead</answer>
-            <answer correct="true">Flammable</answer>
-        </answers>
-    </question>
 </questions>

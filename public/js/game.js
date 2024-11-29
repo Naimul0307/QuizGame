@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const timerDisplay = document.getElementById('timer');
         const questionContainer = document.getElementById('question');
         const answersContainer = document.getElementById('answers');
-        
+
         // At the top of your game.js file
         const fs = require('fs');
         const path = require('path');
@@ -57,40 +57,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Function to parse questions from XML and select a random subset
       function parseQuestions(xml) {
-          const questionNodes = xml.getElementsByTagName('question');
-          let parsedQuestions = [];
+        const questionNodes = xml.getElementsByTagName('question');
+        let parsedQuestions = [];
+    
+        // Convert NodeList to array and shuffle
+        const shuffledQuestions = advancedShuffle(Array.from(questionNodes));
+    
+        // Use a Set to keep track of selected indices to avoid duplicates
+        let selectedQuestionsSet = new Set();
+    
+        // Select a random subset of questions based on desired criteria
+        while (selectedQuestionsSet.size < questionsCount && selectedQuestionsSet.size < shuffledQuestions.length) {
+            let randomIndex = Math.floor(Math.random() * shuffledQuestions.length);
+            if (!selectedQuestionsSet.has(randomIndex)) {
+                selectedQuestionsSet.add(randomIndex); // Ensure unique question selection
+                const questionNode = shuffledQuestions[randomIndex];
+    
+                // Extract the title (if present)
+                const title = questionNode.getElementsByTagName('title')[0]?.textContent || '';
+    
+                // Extract the question text
+                const questionText = questionNode.getElementsByTagName('text')[0]?.textContent || '';
+    
+                // Extract the image (if present)
+                const image = questionNode.getElementsByTagName('image')[0]?.textContent || '';
+    
+                // Extract the answers
+                const answers = [];
+                const answerNodes = questionNode.getElementsByTagName('answer');
+                for (let j = 0; j < answerNodes.length; j++) {
+                    const answerText = answerNodes[j].textContent;
+                    const isCorrect = answerNodes[j].getAttribute('correct') === 'true';
+                    answers.push({ text: answerText, correct: isCorrect });
+                }
+    
+                // Add the parsed question to the array
+                parsedQuestions.push({ title: title, question: questionText, image: image, answers: answers });
+            }
+        }
+    
+        return parsedQuestions;
+    }
+    
 
-          // Convert NodeList to array and shuffle
-          const shuffledQuestions = advancedShuffle(Array.from(questionNodes));
-
-          // Use a Set to keep track of selected indices to avoid duplicates
-          let selectedQuestionsSet = new Set();
-
-          // Select a random subset of questions based on desired criteria
-          while (selectedQuestionsSet.size < questionsCount && selectedQuestionsSet.size < shuffledQuestions.length) {
-              let randomIndex = Math.floor(Math.random() * shuffledQuestions.length);
-              if (!selectedQuestionsSet.has(randomIndex)) {
-                  selectedQuestionsSet.add(randomIndex); // Ensure unique question selection
-                  const questionNode = shuffledQuestions[randomIndex];
-
-                  const questionText = questionNode.getElementsByTagName('text')[0].textContent;
-                  const image = questionNode.getElementsByTagName('image')[0]?.textContent || '';
-                  const answers = [];
-                  const answerNodes = questionNode.getElementsByTagName('answer');
-
-                  for (let j = 0; j < answerNodes.length; j++) {
-                      const answerText = answerNodes[j].textContent;
-                      const isCorrect = answerNodes[j].getAttribute('correct') === 'true';
-                      answers.push({ text: answerText, correct: isCorrect });
-                  }
-
-                  parsedQuestions.push({ question: questionText, image: image, answers: answers });
-              }
-          }
-
-          return parsedQuestions;
-      }
-
+      
       function seededRandom(seed) {
           const x = Math.sin(seed++) * 10000;
           return x - Math.floor(x);
@@ -202,30 +212,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
 
-        // Function to display the current question
         function displayQuestion() {
             if (shownQuestionIndices.size === questions.length) {
                 endGame(); // End game if all questions have been shown
                 return;
             }
-
+        
             let nextIndex;
             do {
                 nextIndex = Math.floor(Math.random() * questions.length);
             } while (shownQuestionIndices.has(nextIndex)); // Ensure unique question
-
+        
             shownQuestionIndices.add(nextIndex); // Add index to shown questions
             currentQuestionIndex = nextIndex; // Update the currentQuestionIndex
-
+        
             const currentQuestion = questions[currentQuestionIndex];
             questionContainer.innerHTML = ''; // Clear previous content
-
-            // Display question text if available
-            if (currentQuestion.question) {
-                const questionTextElement = document.createElement('p');
-                questionTextElement.textContent = currentQuestion.question;
-                questionTextElement.classList.add('question-text'); // Apply the background style
-                questionContainer.appendChild(questionTextElement);
+        
+            // Display the title if available
+            if (currentQuestion.title) {
+                const titleElement = document.createElement('h2');
+                titleElement.textContent = currentQuestion.title;
+                titleElement.classList.add('question-title'); // Optional: Add CSS class for styling
+                questionContainer.appendChild(titleElement);
             }
 
             // Display image if available
@@ -237,32 +246,42 @@ document.addEventListener('DOMContentLoaded', function() {
                 questionContainer.appendChild(imgElement);
             }
 
+            // Display question text if available
+            if (currentQuestion.question) {
+                const questionTextElement = document.createElement('p');
+                questionTextElement.textContent = currentQuestion.question;
+                questionTextElement.classList.add('question-text'); // Apply the background style
+                questionContainer.appendChild(questionTextElement);
+            }
+        
+        
             answersContainer.innerHTML = ''; // Clear previous answers
-
-            // Display answers
+        
+            // Dynamically display the correct number of answers
             currentQuestion.answers.forEach((answer, index) => {
                 const answerElement = document.createElement('div');
                 answerElement.textContent = answer.text;
                 answerElement.classList.add('answer');
                 answerElement.dataset.correct = answer.correct; // Store correct attribute
-
-                answerElement.addEventListener('click', function() {
+        
+                answerElement.addEventListener('click', function () {
                     handleAnswerClick(index, answer.correct); // Handle answer click event
                 });
-
+        
                 answersContainer.appendChild(answerElement); // Append each answer
             });
-
+        
             // Show the Pass button
             const passButton = document.getElementById('pass-button');
             passButton.style.display = 'inline-block'; // Show the Pass button
-
+        
             // Add event listener for Pass button
-            passButton.onclick = function() {
+            passButton.onclick = function () {
                 handlePass(); // Call handlePass function
             };
         }
-
+        
+        
         // Function to handle passing the question
         function handlePass() {
             const passButton = document.getElementById('pass-button');
@@ -309,6 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 'a': 0,
                 'b': 1,
                 'c': 2,
+                'd': 3,
                 // Add more mappings if you have more answers
             };
         
@@ -372,8 +392,15 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show the result message after the game ends
             const correctAnswers = score;
             const totalQuestions = shownQuestionIndices.size;
-            const resultMessage = `You answered ${correctAnswers} out of ${totalQuestions} questions correctly!`;
-                  showMessage(resultMessage, "result", true) // Show the result message for 6 seconds
+        
+            // Prepare the result message with dynamic values
+            const resultMessage = {
+                correctAnswers: correctAnswers,
+                totalQuestions: totalQuestions
+            };
+        
+            // Call showMessage with the result message
+            showMessage(resultMessage, "result", true); // Show the result message for 6 seconds
         
             // Wait for 6 seconds after the result message, then redirect
             setTimeout(function() {
@@ -432,23 +459,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 const resultSummary = document.createElement("p");
                 resultSummary.id = "result-summary";
                 resultSummary.classList.add("hidden");
-                resultSummary.innerHTML = `You matched <span id="matched-words">0</span> out of <span id="total-words">0</span> words.`;
+                
+                // Dynamically set the message with correct answers and total questions
+                resultSummary.innerHTML = `You answered <span id="correct-answers">0</span> out of <span id="total-questions">0</span> questions correctly.`;
         
                 // Append both messages to the result message box
                 resultMessageBox.appendChild(congratsMessage);
                 resultMessageBox.appendChild(resultSummary);
         
-                // Show the result message and summary on different lines
+                // Show the result message and summary with animation
                 setTimeout(() => {
                     congratsMessage.classList.remove("hidden");
                     resultSummary.classList.remove("hidden");
         
                     // Replace the placeholder values with actual data
-                    document.getElementById("matched-words").textContent = message.matched || 0;  // Use actual data for matched words
-                    document.getElementById("total-words").textContent = message.total || 0;  // Use actual data for total words
+                    document.getElementById("correct-answers").textContent = message.correctAnswers || 0;
+                    document.getElementById("total-questions").textContent = message.totalQuestions || 0;
         
                 }, 500);  // Delay before showing the result message (to allow for smoother rendering)
-        
             } else {
                 // Handle non-result message
                 document.getElementById("answerMessageBox").classList.remove("hidden");
@@ -456,19 +484,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 messageBox.innerHTML = `<span>${message}</span>`;
                 document.getElementById("answerMessageBox").appendChild(messageBox);
             }
-        
-            // Hide the message box after its duration
-            setTimeout(() => {
-                if (isResult) {
-                    document.getElementById("resultMessageBox").style.opacity = 0; // Fade out result message
-                    setTimeout(() => {
-                        document.getElementById("resultMessageBox").classList.add("hidden");  // Hide result message
-                        window.location.href = 'result.html';  // Redirect after the message disappears
-                    }, 1000);  // Wait for fade-out before redirect
-                } else {
-                    document.getElementById("answerMessageBox").classList.add("hidden");
-                }
-            }, isResult ? 10000 : 2000);  // Show result message for 10s, others for 2s
         }
         
         
