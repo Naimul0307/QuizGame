@@ -51,51 +51,202 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     color: #111010; /* Text color for content inside section */
 }
 
-.btn {
+#pass-button {
     margin: 10px;
-    padding: 15px 30px; /* Increase button padding */
-    font-size: 1.1em; /* Increase button font size */
+    padding: 15px 30px;
+    position: absolute; 
+    background-color: rgb(29,43,66);
+    border: 5px solid rgb(107,109,108) !important;
+    color: rgb(255,255,255);
+    right: 30px;
+    top: 80%; 
+    transform: translateY(-50%);
+    padding: 20px 40px;
+    font-size: 30px; 
     font-weight: bolder;
-    background-color: rgba(219,227,214,255);
-    color: black;
-    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
+    border-radius: 50px; 
+    border: 2px solid #3a0c0c;
+    text-transform: uppercase;
+    min-width: 200px; 
+    min-height: 80px;
+}
+
+.question-title{
+    padding: 10px;
+    margin: 10px auto; /* Center the element horizontally */
+    width: 80%; /* Set the desired width (adjust percentage as needed) */
+    max-width: 700px; /* Optionally, set a maximum width */
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+    font-weight: bolder;
+    color: rgb(255,255,255);
     text-transform: uppercase;
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
 }
 
-.btn:hover {
-    background: linear-gradient(30deg,rgba(175,195,167,255), rgba(234,239,232,255), rgba(192,207,184,255));
-    color: black;
-}
-
-.btn:active {
-    transform: translateY(8px); /* Push the button down slightly on click */
-    box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */
-}
-/* 
-#question {
-    background: linear-gradient(135deg, rgb(7, 3, 240), rgb(240, 218, 218)); 
-    color: #fff;
+.question-text {
     padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px auto; /* Center the element horizontally */
+    width: 80%; /* Set the desired width (adjust percentage as needed) */
+    max-width: 700px; /* Optionally, set a maximum width */
     font-size: 1em;
     font-weight: bold;
-    text-transform: uppercase;
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404);
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-} */
-
-.question-image {
-    width: 512px; /* Limits the image width to 512px */
-    height: 512px; /* Maintains aspect ratio */
-    object-fit: contain; /* Keeps the aspect ratio while fitting the image within the box */
-    margin: 5px 0;
+    font-weight: bolder;
+    color: rgb(255,255,255);
+    text-transform: uppercase;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
 }
 
+.question-image {
+    max-width: 700px;
+    max-height: 300px;
+    object-fit: contain;
+}
+
+/* Message box styling */
+.message-box {
+    position: fixed;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Centering both axes */
+    padding: 40px 80px; /* Increased padding for a larger box */
+    color: #fff;
+    font-size: 30px; /* Increase font size for bigger text */
+    font-weight: bold;
+    border-radius: 12px; /* Make the corners more rounded */
+    opacity: 1;
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade-out */
+    max-width: 90%; /* Ensure the message box doesn't get too wide */
+    width: 50%;
+    max-height: 80%; /* Increased max-height for more vertical space */
+    overflow: hidden; /* Prevent scrollbars from appearing */
+    display: flex; /* Enable flexbox layout */
+    justify-content: center; /* Horizontally center the text */
+    align-items: center; /* Vertically center the text */
+    text-align: center; /* Center the text inside the box */
+}
+
+/* Additional class for correct answer */
+.message-box.correct {
+    background-color: rgb(0, 255, 0); /* Green background for correct answer */
+}
+
+/* Additional class for wrong answer */
+.message-box.wrong {
+    background-color: rgb(255, 0, 0); /* Red background for wrong answer */
+}
+
+
+/* Hidden state */
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Additional styling for result message */
+.message-box-result {
+    position: fixed;  /* Position it relative to the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;  /* Full width of the viewport */
+    height: 100vh;  /* Full height of the viewport */
+    background-image: url('../background/game_bg.jpeg');  /* Background image URL */
+    background-size: cover;  /* Cover the entire area */
+    background-position: center;  /* Center the background image */
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    display: flex;  /* Use flexbox to center content */
+    flex-direction: column;  /* Stack the messages vertically */
+    justify-content: center;  /* Center horizontally */
+    align-items: center;  /* Center vertically */
+    z-index: 9999;  /* Ensure it appears above other content */
+    opacity: 1;
+    transition: opacity 1s ease;  /* Smooth fade-out */
+    animation: fadeIn 1s ease-out;  /* Apply the fade-in effect */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);  /* Start with a slight downward shift */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);  /* End at the normal position */
+    }
+}
+
+/* Animating the "Congratulations!" message */
+#result-message {
+    animation: slideInFromTop 1s ease-out forwards;
+}
+
+/* Slide-in effect for "Congratulations!" */
+@keyframes slideInFromTop {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);  /* Start slightly above */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);  /* End at the normal position */
+    }
+}
+
+/* Animating the result summary */
+#result-summary {
+    animation: slideInFromBottom 1s ease-out forwards;
+    animation-delay: 0.5s;  /* Delay to make sure it comes after the "Congratulations!" */
+}
+
+/* Slide-in effect for the result summary */
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);  /* Start slightly below */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);  /* End at the normal position */
+    }
+}
+
+/* Optionally, style the span text inside the message box */
+.message-box-result span {
+    max-width: 90%;  /* Prevent text from being too wide */
+    word-wrap: break-word;
+}
+
+
 #answers {
+    display: flex; /* Use Flexbox to align items in a row */
+    justify-content: space-evenly; /* Distribute the answers evenly across the container */
+    flex-wrap: wrap; /* Allow items to wrap if there isn't enough space */
+    gap: 20px; /* Add space between the answer options */
+    margin: 5px;
+}
+
+.answer {
+    width: auto; /* Let the width of each answer be based on its content */
+    max-width: 300px; /* Set a max width for the answer boxes */
+    margin: 0; /* Remove margin between items */
+    padding: 10px;
+    border: 2px solid #3a0c0c;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+/* #answers {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -103,45 +254,52 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 
 .answer {
     width: 100%;
-    max-width: 700px; /* Set maximum width */
-    margin: 5px 0; /* Increase margin */
-    padding: 15px; /* Increase padding */
+    max-width: 700px;
+    margin: 5px 0; 
+    padding: 10px;
     border: 2px solid #3a0c0c;
     cursor: pointer;
-    font-size: 1.1em; /* Increase font size */
-    text-align: center; /* Center text */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
-    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
-}
+    font-size: 1.1em; 
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+} */
 
 .answer:nth-child(1) {
-    background-color: rgb(175,195,167,255); /* Green background for first option */
-    color: #070202; /* White text color */
+    background-color: rgb(0,0,0);
+    border: 5px solid rgb(107,109,108);
+    color: rgb(255,255,255);
 }
 
 .answer:nth-child(2) {
-    background-color: rgba(234,239,232,255); /* Blue background for second option */
-    color: #070202; /* White text color */
+    background-color: rgb(0,0,0);
+    border: 5px solid rgb(107,109,108);
+    color: rgb(255,255,255);
 }
 
 .answer:nth-child(3) {
-    background-color: rgba(192,207,184,255); /* Red background for third option */
-    color: #070202; /* White text color */
+    background-color: rgb(0,0,0);
+    border: 5px solid rgb(107,109,108);
+    color: rgb(255,255,255);
+}
+
+.answer:nth-child(4) {
+    background-color: rgb(0,0,0);
+    border: 5px solid rgb(107,109,108);
+    color: rgb(255,255,255);
 }
 
 .answer:hover {
-    background-color: rgba(239, 75, 42, 0.747);
+    background-color: rgba(160, 160, 160, 0.747);
     color: azure;
 }
 
 .answer.selected {
-    background-color: #4CAF50; /* Green background color */
+    background-color: #4c93af; /* Green background color */
     color: white; /* White text color */
     transition: transform 0.5s ease-out, box-shadow 0.5s ease-out; /* Add transition for smooth animation */
 }
-
-
 
 .alert {
     display: none; /* Initially hide alert */
@@ -172,8 +330,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 }
 
 #timer {
-    background: linear-gradient(30deg,rgba(9,129,100,255), rgba(146,198,113,255), rgba(133, 181, 213));
-    color: #161515;
+    background: linear-gradient(30deg, rgb(55,62,69), rgb(38,49,66),rgb(10,29,62));
+    border: 5px solid rgb(107,109,108);
+    color: rgb(255,255,255);
     padding: 10px;
     border-radius: 10px; /* Adjust border radius for square corners */
     width: 100%; /* Full width for responsiveness */
@@ -210,23 +369,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     animation: beepAnimation 0.5s ease-in-out; /* Adjust duration as needed */
 }
 
-#pass-button {
-    position: absolute; /* Make it positionable */
-    right: 30px; /* Distance from the right */
-    top: 80%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust for button height */
-    /* Increase button size */
-    padding: 20px 40px; /* Bigger padding for a larger button */
-    font-size: 30px; /* Larger font size */
-    font-weight: bolder;
-    /* Optional styles */
-    border-radius: 10px; /* More rounded corners */
-    border: 2px solid #3a0c0c;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Larger shadow for depth */
-    /* Adjust width and height (optional) */
-    min-width: 200px; /* Set a minimum width */
-    min-height: 80px; /* Set a minimum height */
-}
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -274,35 +416,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
         min-height: 60px;
         right: 15px; /* Further adjust right margin */
     }
-}
-/* Message box styling */
-.message-box {
-    position: fixed;
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Centering both axes */
-    padding: 40px 80px; /* Increased padding for a larger box */
-    background-color: rgba(247, 54, 54, 0.644); /* Darker red background for wrong answer */
-    color: #fff;
-    font-size: 30px; /* Increase font size for bigger text */
-    font-weight: bold;
-    text-align: center;
-    border-radius: 12px; /* Make the corners more rounded */
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* Bigger shadow for emphasis */
-    opacity: 1;
-    z-index: 1000;
-    transition: opacity 0.5s ease-in-out; /* Smooth fade-out */
-    max-width: 90%; /* Ensure the message box doesn't get too wide */
-    width: 50%;
-    max-height: 80%; /* Increased max-height for more vertical space */
-    text-align: center; /* Center the text inside the box */
-    overflow: auto; /* Enable scrolling if content exceeds height */
-}
-
-/* Hidden state */
-.hidden {
-    opacity: 0;
-    visibility: hidden;
 }
 
 /* Specific Media Query for 1080x1920 Resolution (Portrait) */

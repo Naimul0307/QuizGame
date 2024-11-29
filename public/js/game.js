@@ -389,18 +389,28 @@ document.addEventListener('DOMContentLoaded', function() {
             // Get the last timer value
             const timerValue = timerDisplay.textContent; // Get the current displayed timer value
         
-            // Show the result message after the game ends
-            const correctAnswers = score;
+            // Get the total number of questions answered
             const totalQuestions = shownQuestionIndices.size;
+            const correctAnswers = score;
         
-            // Prepare the result message with dynamic values
-            const resultMessage = {
-                correctAnswers: correctAnswers,
-                totalQuestions: totalQuestions
-            };
-        
-            // Call showMessage with the result message
-            showMessage(resultMessage, "result", true); // Show the result message for 6 seconds
+            // Check if the user answered all questions or if time ran out
+            if (totalQuestions === 0) {
+                // User didn't answer any questions, show Time's Up
+                const resultMessage = {
+                    correctAnswers: 0,
+                    totalQuestions: totalQuestions,
+                    message: "Time's up!  better next time."
+                };
+                showMessage(resultMessage, "result", true);
+            } else {
+                // User answered some questions correctly, show regular result
+                const resultMessage = {
+                    correctAnswers: correctAnswers,
+                    totalQuestions: totalQuestions,
+                    message: `You answered ${correctAnswers} out of ${totalQuestions} questions correctly!`
+                };
+                showMessage(resultMessage, "result", true);
+            }
         
             // Wait for 6 seconds after the result message, then redirect
             setTimeout(function() {
@@ -449,6 +459,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 const resultMessageBox = document.getElementById("resultMessageBox");
                 resultMessageBox.classList.remove("hidden");
         
+                // Clear previous result message to avoid appending multiple times
+                resultMessageBox.innerHTML = "";  // This will clear any previous message
+        
                 // Create the "Congratulations!" message element
                 const congratsMessage = document.createElement("h1");
                 congratsMessage.id = "result-message";
@@ -460,8 +473,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 resultSummary.id = "result-summary";
                 resultSummary.classList.add("hidden");
                 
-                // Dynamically set the message with correct answers and total questions
-                resultSummary.innerHTML = `You answered <span id="correct-answers">0</span> out of <span id="total-questions">0</span> questions correctly.`;
+                // Display custom message for Time's Up or Better Luck Next Time
+                resultSummary.innerHTML = `${message.message || `You answered <span id="correct-answers">0</span> out of <span id="total-questions">0</span> questions correctly.`}`;
         
                 // Append both messages to the result message box
                 resultMessageBox.appendChild(congratsMessage);
@@ -473,9 +486,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     resultSummary.classList.remove("hidden");
         
                     // Replace the placeholder values with actual data
-                    document.getElementById("correct-answers").textContent = message.correctAnswers || 0;
-                    document.getElementById("total-questions").textContent = message.totalQuestions || 0;
-        
+                    if (message.correctAnswers !== undefined && message.totalQuestions !== undefined) {
+                        document.getElementById("correct-answers").textContent = message.correctAnswers || 0;
+                        document.getElementById("total-questions").textContent = message.totalQuestions || 0;
+                    }
                 }, 500);  // Delay before showing the result message (to allow for smoother rendering)
             } else {
                 // Handle non-result message

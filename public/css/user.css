@@ -44,9 +44,11 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     padding: 15px 30px; /* Increase button padding */
     font-size: 2.1em; /* Increase button font size */
     font-weight: bolder;
-    background-color: rgba(219,227,214,255);
-    color: black;
-    box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); /* Increased bottom shadow */
+    background-color: rgb(0,0,0);
+    border: 5px solid rgb(107,109,108);
+    color: rgb(255,255,255);
+    border-radius: 50px;
+    /* box-shadow: 0 20px 12px rgba(20, 20, 20, 0.404); */
     text-transform: uppercase;
     transition: transform 0.3s ease-out, box-shadow 0.3s ease-out; /* Add transition for smooth animation */
     width: 400px; /* Set the desired width for the button */
@@ -54,15 +56,15 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     top: 300px; /* Adjust this value to move the button down off the page */
 }
 
-.btn:hover {
+/* .btn:hover {
     background: linear-gradient(30deg,rgba(175,195,167,255), rgba(234,239,232,255), rgba(192,207,184,255));
-    color: black;
+    color: rgb(255,255,255);
 }
 
 .btn:active {
-    transform: translateY(8px); /* Push the button down slightly on click */
-    box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6); /* Adjusted shadow for active state */
-}
+    transform: translateY(8px);
+    box-shadow: 0 6px 12px rgba(20, 20, 20, 0.6);
+} */
 
 /* Specific Media Query for 1080x1920 Resolution (Portrait) */
 @media screen and (min-width: 1080px) and (max-height: 1920px) and (orientation: portrait) {
