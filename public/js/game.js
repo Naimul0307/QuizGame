@@ -224,6 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
             if (currentQuestion.question) {
                 const questionTextElement = document.createElement('p');
                 questionTextElement.textContent = currentQuestion.question;
+                questionTextElement.classList.add('question-text'); // Apply the background style
                 questionContainer.appendChild(questionTextElement);
             }
 
@@ -286,54 +287,6 @@ document.addEventListener('DOMContentLoaded', function() {
             handleAnswerSelection(index, correct);
         }
         
-        function showMessage(message, duration = 1000) {
-            const messageBox = document.getElementById('messageBox');
-            messageBox.textContent = message;
-            messageBox.classList.remove('hidden');  // Show the message
-            // Hide the message after the specified duration
-            setTimeout(() => {
-                messageBox.classList.add('hidden');  // Hide the message
-            }, duration);
-        }
-
-        
-        function handleAnswerSelection(index, correct) {
-            console.log(`Answer selected: ${index}, Correct: ${correct}`);
-            const selectedAnswer = {
-                question: questions[currentQuestionIndex].question,
-                answer: questions[currentQuestionIndex].answers[index].text,
-                correct: correct
-            };
-            userAnswers.push(selectedAnswer);
-        
-            // Remove 'selected' class from all answers
-            const answerElements = document.querySelectorAll('.answer');
-            answerElements.forEach(answerElement => {
-                answerElement.classList.remove('selected');
-            });
-        
-            // Add 'selected' class to the selected answer
-            answersContainer.children[index].classList.add('selected');
-        
-            // Check if the answer is correct or wrong
-            if (correct) {
-                console.log("Correct answer!");
-            } else {
-                console.log("Answer is wrong!");
-                playBeep(); // Play the beep sound for wrong answers
-                showMessage("Answer is wrong!", 1000);  // Show custom message for 2 seconds
-            }
-        
-            // Proceed to next question automatically after a short delay
-            setTimeout(function() {
-                if (shownQuestionIndices.size < questions.length) {
-                    displayQuestion(); // Display next question
-                } else {
-                    endGame(); // End game if no more questions
-                }
-            }, 1000); // Delay before showing the next question
-        }
-
         // Event listeners for answers
         const answerElements = document.querySelectorAll('.answer');
         answerElements.forEach((answerElement, index) => {
@@ -366,59 +319,159 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
-
+        
+        function handleAnswerSelection(index, correct) {
+            console.log(`Answer selected: ${index}, Correct: ${correct}`);
+            const selectedAnswer = {
+                question: questions[currentQuestionIndex].question,
+                answer: questions[currentQuestionIndex].answers[index].text,
+                correct: correct
+            };
+            userAnswers.push(selectedAnswer);
+        
+            // Remove 'selected' class from all answers
+            const answerElements = document.querySelectorAll('.answer');
+            answerElements.forEach(answerElement => {
+                answerElement.classList.remove('selected');
+            });
+        
+            // Add 'selected' class to the selected answer
+            answersContainer.children[index].classList.add('selected');
+        
+            // Check if the answer is correct or wrong
+            if (correct) {
+                playBeep(); // Play the beep sound for correct answers
+                showMessage("Answer is Right", "correct");  // Show feedback message for correct answer
+            } else {
+                playBeep(); // Play the beep sound for wrong answers
+                showMessage("Answer is wrong!", "wrong");  // Show feedback message for wrong answer
+            }
+        
+            // Wait for the next question after a short delay
+            setTimeout(function() {
+                if (shownQuestionIndices.size < questions.length) {
+                    displayQuestion(); // Display next question
+                } else {
+                    endGame(); // End game if no more questions
+                }
+            }, 1000); // Delay before showing the next question
+        }
+    
         function endGame() {
             clearInterval(timer); // Stop the timer
-    
+        
             // Calculate score and retrieve user info
             const score = calculateScore();
             const userName = localStorage.getItem('userName');
             const userEmail = localStorage.getItem('userEmail');
-            // const userNumber = localStorage.getItem('userNumber');
             const dateTime = new Date().toISOString();
-    
-            //    // Get the last timer value
+        
+            // Get the last timer value
             const timerValue = timerDisplay.textContent; // Get the current displayed timer value
-            // const [minutes, seconds] = timerValue.split(':').map(Number);
-            // const totalSeconds = minutes * 60 + seconds; // Convert to total seconds
-
-            const user = {
-                name: userName,
-                email: userEmail,
-                // number: userNumber,
-                score: score,
-                dateTime: dateTime,
-                timerValue:timerValue
-                // timerValue: totalSeconds // Save the timer value
-            };
-    
-            // Check if the file exists
-            let users = [];
-            if (fs.existsSync(filePath)) {
-                // Read existing data
-                const workbook = XLSX.readFile(filePath);
-                const sheetName = workbook.SheetNames[0];
-                const worksheet = workbook.Sheets[sheetName];
-    
-                // Convert the existing sheet to JSON
-                users = XLSX.utils.sheet_to_json(worksheet);
-            }
-    
-            // Append new user data
-            users.push(user);
-    
-            // Create a new worksheet and workbook
-            const newWorksheet = XLSX.utils.json_to_sheet(users);
-            const newWorkbook = XLSX.utils.book_new();
-            XLSX.utils.book_append_sheet(newWorkbook, newWorksheet, "Results");
-    
-            // Write the updated workbook to the file
-            XLSX.writeFile(newWorkbook, filePath);
-    
-            // Redirect to results page
-            window.location.href = `results.html?name=${userName}&email=${userEmail}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
+        
+            // Show the result message after the game ends
+            const correctAnswers = score;
+            const totalQuestions = shownQuestionIndices.size;
+            const resultMessage = `You answered ${correctAnswers} out of ${totalQuestions} questions correctly!`;
+                  showMessage(resultMessage, "result", true) // Show the result message for 6 seconds
+        
+            // Wait for 6 seconds after the result message, then redirect
+            setTimeout(function() {
+                // Create the user data object
+                const user = {
+                    name: userName,
+                    email: userEmail,
+                    score: score,
+                    dateTime: dateTime,
+                    timerValue: timerValue
+                };
+        
+                // Check if the file exists
+                let users = [];
+                if (fs.existsSync(filePath)) {
+                    // Read existing data
+                    const workbook = XLSX.readFile(filePath);
+                    const sheetName = workbook.SheetNames[0];
+                    const worksheet = workbook.Sheets[sheetName];
+        
+                    // Convert the existing sheet to JSON
+                    users = XLSX.utils.sheet_to_json(worksheet);
+                }
+        
+                // Append new user data
+                users.push(user);
+        
+                // Create a new worksheet and workbook
+                const newWorksheet = XLSX.utils.json_to_sheet(users);
+                const newWorkbook = XLSX.utils.book_new();
+                XLSX.utils.book_append_sheet(newWorkbook, newWorksheet, "Results");
+        
+                // Write the updated workbook to the file
+                XLSX.writeFile(newWorkbook, filePath);
+        
+                // Redirect to results page
+                window.location.href = `results.html?name=${userName}&email=${userEmail}&score=${score}&dateTime=${encodeURIComponent(dateTime)}`;
+            }, 6000); // Wait for 6 seconds before redirecting
         }
-
+        
+        function showMessage(message, type, isResult = false) {
+            const messageBox = document.createElement("div");
+        
+            // Check if it's a result message and set the message accordingly
+            if (isResult) {
+                const resultMessageBox = document.getElementById("resultMessageBox");
+                resultMessageBox.classList.remove("hidden");
+        
+                // Create the "Congratulations!" message element
+                const congratsMessage = document.createElement("h1");
+                congratsMessage.id = "result-message";
+                congratsMessage.classList.add("hidden");
+                congratsMessage.innerHTML = "Congratulations!";
+        
+                // Create the result summary element
+                const resultSummary = document.createElement("p");
+                resultSummary.id = "result-summary";
+                resultSummary.classList.add("hidden");
+                resultSummary.innerHTML = `You matched <span id="matched-words">0</span> out of <span id="total-words">0</span> words.`;
+        
+                // Append both messages to the result message box
+                resultMessageBox.appendChild(congratsMessage);
+                resultMessageBox.appendChild(resultSummary);
+        
+                // Show the result message and summary on different lines
+                setTimeout(() => {
+                    congratsMessage.classList.remove("hidden");
+                    resultSummary.classList.remove("hidden");
+        
+                    // Replace the placeholder values with actual data
+                    document.getElementById("matched-words").textContent = message.matched || 0;  // Use actual data for matched words
+                    document.getElementById("total-words").textContent = message.total || 0;  // Use actual data for total words
+        
+                }, 500);  // Delay before showing the result message (to allow for smoother rendering)
+        
+            } else {
+                // Handle non-result message
+                document.getElementById("answerMessageBox").classList.remove("hidden");
+                messageBox.classList.add("message-box", type);
+                messageBox.innerHTML = `<span>${message}</span>`;
+                document.getElementById("answerMessageBox").appendChild(messageBox);
+            }
+        
+            // Hide the message box after its duration
+            setTimeout(() => {
+                if (isResult) {
+                    document.getElementById("resultMessageBox").style.opacity = 0; // Fade out result message
+                    setTimeout(() => {
+                        document.getElementById("resultMessageBox").classList.add("hidden");  // Hide result message
+                        window.location.href = 'result.html';  // Redirect after the message disappears
+                    }, 1000);  // Wait for fade-out before redirect
+                } else {
+                    document.getElementById("answerMessageBox").classList.add("hidden");
+                }
+            }, isResult ? 10000 : 2000);  // Show result message for 10s, others for 2s
+        }
+        
+        
         // Function to calculate score (example logic)
         function calculateScore() {
             let correctAnswers = 0;
@@ -433,4 +486,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Automatically start the game after 5 seconds
         loadQuestions();
     }
+
 });
+
+
