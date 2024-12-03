@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // // const userForm = document.getElementById('user-form');
     const settingsBtn = document.getElementById('settings-btn');
     const settingsOptions = document.getElementById('settings-options');
     const gameTimeInput = document.getElementById('game-time');
+    const timeUnitSelect = document.getElementById('time-unit');
     const questionsCountInput = document.getElementById('questions-count');
     const saveSettingsBtn = document.getElementById('save-settings-btn');
 
@@ -35,19 +35,31 @@ document.addEventListener('DOMContentLoaded', function() {
     if (saveSettingsBtn) {
         saveSettingsBtn.addEventListener('click', function(event) {
             event.preventDefault(); // Prevent form submission
-            // Save settings logic here
-            const gameTime = parseInt(gameTimeInput.value);
-            const questionsCount = parseInt(questionsCountInput.value);
-            console.log(`Game Time: ${gameTime} minutes, Questions Count: ${questionsCount}`);
-            // Optionally, you can save these settings for future use
-            localStorage.setItem('gameTime', gameTime);
+
+            // Get game time and selected unit
+            const gameTime = parseInt(gameTimeInput.value, 10);
+            const timeUnit = timeUnitSelect.value;
+
+            // Convert to seconds based on selected unit
+            const gameTimeSeconds = timeUnit === 'minutes' ? gameTime * 60 : gameTime;
+
+            const questionsCount = parseInt(questionsCountInput.value, 10);
+
+            console.log(`Game Time: ${gameTime} ${timeUnit} (${gameTimeSeconds} seconds), Questions Count: ${questionsCount}`);
+
+            // Save settings in both formats
+            localStorage.setItem('gameTimeInput', gameTime);
+            localStorage.setItem('gameTimeUnit', timeUnit);
+            localStorage.setItem('gameTimeSeconds', gameTimeSeconds);
             localStorage.setItem('questionsCount', questionsCount);
-            showAlert('Settings saved!', 'success'); // Show centered alert
+
+            // Show centered alert
+            showAlert('Settings saved!', 'success');
+
             // Redirect after showing the alert message for 3 seconds
             setTimeout(function() {
                 window.location.href = 'user.html';
-            });
+            }, 3000);
         });
     }
-
 });

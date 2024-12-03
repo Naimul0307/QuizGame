@@ -1,15 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 const XLSX = require('xlsx');
-const os = require('os');
+// const os = require('os');
 
-// const filePath = path.join(__dirname, '../public/results/user_results.xlsx'); // Path to your Excel file
+const filePath = path.join(__dirname, '../public/results/user_results.xlsx'); // Path to your Excel file
 
-// Detect the user's home directory
-const userHome = os.homedir();
+// // Detect the user's home directory
+// const userHome = os.homedir();
 
-// Automatically determine the file path for the user's system
-const filePath = path.join(userHome, 'Documents', 'QuizGame3', 'user_results.xlsx');
+// // Automatically determine the file path for the user's system
+// const filePath = path.join(userHome, 'Documents', 'QuizGame3', 'user_results.xlsx');
 
 // Ensure that the directory exists, and if not, create it
 const directoryPath = path.dirname(filePath);

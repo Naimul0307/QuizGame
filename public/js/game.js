@@ -33,9 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // let isFileDownloaded = false; // Flag to track file download
         let questions = [];
         let currentQuestionIndex = 0;
-        let timer;
         let audioContext;
-        let gameTimeInSeconds = localStorage.getItem('gameTime') * 60 || 300; // Default 5 minutes
+        let gameTimeInSeconds = parseInt(localStorage.getItem('gameTimeSeconds')) || 20; // Default 20 seconds
+        let timer;
         let userAnswers = [];
         let questionsCount = parseInt(localStorage.getItem('questionsCount')) || 4; // Default to 4 questions
 
@@ -129,41 +129,35 @@ document.addEventListener('DOMContentLoaded', function() {
           return array;
       }
 
-
-        function seededRandom(seed) {
-            const x = Math.sin(seed++) * 10000;
-            return x - Math.floor(x);
-        }
-        
-        function advancedShuffle(array, seed = 0) {
-            let currentIndex = array.length;
-        
-            // First pass: Fisher-Yates shuffle
-            while (currentIndex !== 0) {
-                const randomIndex = Math.floor(seededRandom(seed) * currentIndex);
-                seed++;  // Increment seed for next random number
-                currentIndex--;
-                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-            }
-        
-            // Second pass: Another shuffle for increased randomness
-            currentIndex = array.length;
-            while (currentIndex !== 0) {
-                const randomIndex = Math.floor(seededRandom(seed) * currentIndex);
-                seed++;
-                currentIndex--;
-                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
-            }
-        
-            return array;
-        }
-        
-
         // Function to start the game
         function startGame() {
             gameContent.style.display = 'block';
             startTimer(gameTimeInSeconds);
             displayQuestion();
+        }
+
+
+        function startTimer(duration) {
+            let timeLeft = duration;
+            timer = setInterval(function() {
+                let minutes = Math.floor(timeLeft / 60);
+                let seconds = timeLeft % 60;
+                timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    
+                // Play beep sound when countdown reaches 10 seconds or less
+                if (timeLeft <= 10 && timeLeft > 0) {
+                    playBeep();
+                    timerDisplay.classList.add('timer-beep');
+                    setTimeout(() => {
+                        timerDisplay.classList.remove('timer-beep');
+                    }, 500);
+                }
+    
+                if (--timeLeft < 0) {
+                    clearInterval(timer);
+                    endGame();
+                }
+            }, 1000);
         }
 
         function playBeep() {
@@ -172,72 +166,48 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
-        
+    
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
-        
+    
             oscillator.type = 'sine';
-            oscillator.frequency.setValueAtTime(1000, audioContext.currentTime); // Beep frequency
+            oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);
             gainNode.gain.setValueAtTime(1, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5); // Beep duration
-        
+            gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
+    
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + 0.5);
         }
-        
-        // Function to start the timer
-        function startTimer(duration) {
-            let timeLeft = duration;
-            timer = setInterval(function() {
-                let minutes = Math.floor(timeLeft / 60);
-                let seconds = timeLeft % 60;
-                timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-
-                // Play beep sound when countdown reaches 10 seconds or less
-                if (timeLeft <= 10 && timeLeft > 0) {
-                    playBeep(); // Play beep sound
-                    timerDisplay.classList.add('timer-beep'); // Add beep animation class
-
-                    // Remove the animation class after it completes
-                    setTimeout(() => {
-                        timerDisplay.classList.remove('timer-beep');
-                    }, 500); // Match the duration of the animation
-                }
-
-                if (--timeLeft < 0) {
-                    clearInterval(timer);
-                    endGame();
-                }
-            }, 1000);
-        }
-
 
         function displayQuestion() {
+            // Check if all questions have been shown; end the game if true
             if (shownQuestionIndices.size === questions.length) {
                 endGame(); // End game if all questions have been shown
                 return;
             }
         
             let nextIndex;
+            // Keep selecting a random index until we find one that hasn't been shown before
             do {
                 nextIndex = Math.floor(Math.random() * questions.length);
             } while (shownQuestionIndices.has(nextIndex)); // Ensure unique question
         
-            shownQuestionIndices.add(nextIndex); // Add index to shown questions
-            currentQuestionIndex = nextIndex; // Update the currentQuestionIndex
+            // Add the selected index to the set of shown questions
+            shownQuestionIndices.add(nextIndex); 
+            currentQuestionIndex = nextIndex; // Update the current question index
         
             const currentQuestion = questions[currentQuestionIndex];
-            questionContainer.innerHTML = ''; // Clear previous content
+            questionContainer.innerHTML = ''; // Clear any previous question content
         
-            // Display the title if available
+            // Display the question title if available
             if (currentQuestion.title) {
                 const titleElement = document.createElement('h2');
                 titleElement.textContent = currentQuestion.title;
                 titleElement.classList.add('question-title'); // Optional: Add CSS class for styling
                 questionContainer.appendChild(titleElement);
             }
-
-            // Display image if available
+        
+            // Display an image associated with the question if available
             if (currentQuestion.image) {
                 const imgElement = document.createElement('img');
                 imgElement.src = currentQuestion.image;
@@ -245,42 +215,40 @@ document.addEventListener('DOMContentLoaded', function() {
                 imgElement.classList.add('question-image'); // Add CSS class for styling
                 questionContainer.appendChild(imgElement);
             }
-
-            // Display question text if available
+        
+            // Display the actual question text
             if (currentQuestion.question) {
                 const questionTextElement = document.createElement('p');
                 questionTextElement.textContent = currentQuestion.question;
-                questionTextElement.classList.add('question-text'); // Apply the background style
+                questionTextElement.classList.add('question-text'); // Optional styling
                 questionContainer.appendChild(questionTextElement);
             }
         
-        
-            answersContainer.innerHTML = ''; // Clear previous answers
+            answersContainer.innerHTML = ''; // Clear any previous answers
         
             // Dynamically display the correct number of answers
             currentQuestion.answers.forEach((answer, index) => {
                 const answerElement = document.createElement('div');
                 answerElement.textContent = answer.text;
                 answerElement.classList.add('answer');
-                answerElement.dataset.correct = answer.correct; // Store correct attribute
+                answerElement.dataset.correct = answer.correct; // Store the correct answer info
         
                 answerElement.addEventListener('click', function () {
-                    handleAnswerClick(index, answer.correct); // Handle answer click event
+                    handleAnswerClick(index, answer.correct); // Handle the click event for answers
                 });
         
                 answersContainer.appendChild(answerElement); // Append each answer
             });
         
-            // Show the Pass button
+            // Show the "Pass" button
             const passButton = document.getElementById('pass-button');
             passButton.style.display = 'inline-block'; // Show the Pass button
         
-            // Add event listener for Pass button
+            // Add event listener for the Pass button
             passButton.onclick = function () {
-                handlePass(); // Call handlePass function
+                handlePass(); // Call the handlePass function
             };
         }
-        
         
         // Function to handle passing the question
         function handlePass() {
@@ -472,7 +440,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const resultSummary = document.createElement("p");
                 resultSummary.id = "result-summary";
                 resultSummary.classList.add("hidden");
-                
+        
                 // Display custom message for Time's Up or Better Luck Next Time
                 resultSummary.innerHTML = `${message.message || `You answered <span id="correct-answers">0</span> out of <span id="total-questions">0</span> questions correctly.`}`;
         
@@ -490,13 +458,26 @@ document.addEventListener('DOMContentLoaded', function() {
                         document.getElementById("correct-answers").textContent = message.correctAnswers || 0;
                         document.getElementById("total-questions").textContent = message.totalQuestions || 0;
                     }
-                }, 500);  // Delay before showing the result message (to allow for smoother rendering)
+                }, 1000);  // Delay before showing the result message (to allow for smoother rendering)
+        
+                // Hide the result message after 10 seconds
+                setTimeout(() => {
+                    resultMessageBox.classList.add("hide");  // Apply fade-out animation for result
+                }, 10000);  // Hide after 10 seconds
+        
             } else {
                 // Handle non-result message
-                document.getElementById("answerMessageBox").classList.remove("hidden");
+                const answerMessageBox = document.getElementById("answerMessageBox");
+                answerMessageBox.classList.remove("hidden");
+        
                 messageBox.classList.add("message-box", type);
                 messageBox.innerHTML = `<span>${message}</span>`;
-                document.getElementById("answerMessageBox").appendChild(messageBox);
+                answerMessageBox.appendChild(messageBox);
+        
+                // Hide the answer message after 1 second
+                setTimeout(() => {
+                    messageBox.classList.add("hide");  // Apply fade-out animation
+                }, 1000);  // Hide after 1 second
             }
         }
         
