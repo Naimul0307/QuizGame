@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
                 // Play beep sound when countdown reaches 10 seconds or less
                 if (timeLeft <= 10 && timeLeft > 0) {
-                    playBeep('timeup');
+                    playBeep();
                     timerDisplay.classList.add('timer-beep');
                     setTimeout(() => {
                         timerDisplay.classList.remove('timer-beep');
@@ -161,52 +161,28 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1000);
         }
 
-        function playBeep(type) {
+        function playBeep() {
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
             }
-        
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
-        
+    
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
-        
-            // Set frequency and waveform type based on the `type` argument
-            switch(type) {
-                case 'correct':
-                    oscillator.type = 'sine';
-                    oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);  // Higher pitch
-                    break;
-                case 'incorrect':
-                    oscillator.type = 'square';
-                    oscillator.frequency.setValueAtTime(500, audioContext.currentTime);  // Lower pitch
-                    break;
-                case 'timeup':
-                    oscillator.type = 'triangle';
-                    oscillator.frequency.setValueAtTime(700, audioContext.currentTime);  // Medium pitch
-                    break;
-                default:
-                    oscillator.type = 'sine';
-                    oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);  // Default to higher pitch
-                    break;
-            }
-        
-            // Set the gain (volume) and fade out over time
+    
+            oscillator.type = 'sine';
+            oscillator.frequency.setValueAtTime(1000, audioContext.currentTime);
             gainNode.gain.setValueAtTime(1, audioContext.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
-        
-            oscillator.start(audioContext.currentTime);
-            oscillator.stop(audioContext.currentTime + 0.5); // Duration of the beep
-        }
-        
-
-        function displayQuestion() {
     
-            // Clear previous question and answers
-            questionContainer.innerHTML = '';
-            answersContainer.innerHTML = '';
-                  // Check if all questions have been shown; end the game if true
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+
+        
+        function displayQuestion() {
+            // Check if all questions have been shown; end the game if true
             if (shownQuestionIndices.size === questions.length) {
                 endGame(); // End game if all questions have been shown
                 return;
@@ -249,60 +225,126 @@ document.addEventListener('DOMContentLoaded', function() {
                 questionTextElement.classList.add('question-text'); // Optional styling
                 questionContainer.appendChild(questionTextElement);
             }
-
-            // Display the answers
-            currentQuestion.answers.forEach((answer, index) => {
-                const answerElement = document.createElement('button');
-                answerElement.classList.add('answer', 'btn', 'btn-primary', 'mb-2');
-                answerElement.textContent = answer.text;
         
-                // Attach click event
-                answerElement.addEventListener('click', () => {
-                    handleAnswerSelection(index, answer.correct);
+            answersContainer.innerHTML = ''; // Clear any previous answers
+        
+            // Dynamically display the correct number of answers
+            currentQuestion.answers.forEach((answer, index) => {
+                const answerElement = document.createElement('div');
+                answerElement.textContent = answer.text;
+                answerElement.classList.add('answer');
+                answerElement.dataset.correct = answer.correct; // Store the correct answer info
+        
+                answerElement.addEventListener('click', function () {
+                    handleAnswerClick(index, answer.correct); // Handle the click event for answers
                 });
         
-                answersContainer.appendChild(answerElement);
+                answersContainer.appendChild(answerElement); // Append each answer
             });
-            // Enable keyboard support after rendering answers
-            setupKeyboardListeners();
+        
+            // Show the "Pass" button
+            const passButton = document.getElementById('pass-button');
+            passButton.style.display = 'inline-block'; // Show the Pass button
+        
+            // Add event listener for the Pass button
+            passButton.onclick = function () {
+                handlePass(); // Call the handlePass function
+            };
         }
-    
+        
+        // Function to handle passing the question
+        function handlePass() {
+            const passButton = document.getElementById('pass-button');
+            passButton.style.display = 'none'; // Hide the Pass button
+            displayQuestion(); // Move to the next question
+        }
 
-        function handleAnswerSelection(index, isCorrect) {
-            // Highlight the selected answer
-            const answerButtons = answersContainer.children;
-            if (isCorrect) {
-                playBeep('correct');
-                answerButtons[index].classList.add('correct');
+        // Function to handle answer click
+        function handleAnswerClick(index, correct) {
+            handleAnswerSelection(index, correct);
+        }
+
+        // Function to handle touch events for answering questions
+        function handleAnswerTouch(index, correct) {
+            handleAnswerSelection(index, correct);
+        }
+
+        // Function to handle keyboard events for answering questions
+        function handleAnswerKeystroke(index, correct) {
+            console.log(questions[currentQuestionIndex]); 
+            console.log(`Key pressed: ${index}, Correct: ${correct}`); // Debug log
+            handleAnswerSelection(index, correct);
+        }
+        
+
+        // Event listeners for answers
+        const answerElements = document.querySelectorAll('.answer');
+        answerElements.forEach((answerElement, index) => {
+            // Click event listener for mouse clicks
+            answerElement.addEventListener('click', function() {
+                handleAnswerClick(index, questions[currentQuestionIndex].answers[index].correct);
+            });
+
+            // Touch event listener for touch events
+            answerElement.addEventListener('touchstart', function(event) {
+                event.preventDefault(); // Prevent default touch behavior
+                handleAnswerTouch(index, questions[currentQuestionIndex].answers[index].correct);
+            });
+        });
+
+        // Event listener for keyboard events
+        document.addEventListener('keydown', function(event) {
+            const key = event.key.toLowerCase(); // Normalize to lowercase
+            const answerIndices = {
+                'a': 0,
+                'b': 1,
+                'c': 2,
+                'd': 3,
+                // Add more mappings if you have more answers
+            };
+        
+            if (answerIndices[key] !== undefined) {
+                console.log(questions[currentQuestionIndex]);
+                const index = answerIndices[key];
+                handleAnswerKeystroke(index, questions[currentQuestionIndex].answers[index].correct);
+            }
+        });
+        
+        function handleAnswerSelection(index, correct) {
+            console.log(`Answer selected: ${index}, Correct: ${correct}`);
+            const selectedAnswer = {
+                question: questions[currentQuestionIndex].question,
+                answer: questions[currentQuestionIndex].answers[index].text,
+                correct: correct
+            };
+            userAnswers.push(selectedAnswer);
+        
+            // Remove 'selected' class from all answers
+            const answerElements = document.querySelectorAll('.answer');
+            answerElements.forEach(answerElement => {
+                answerElement.classList.remove('selected');
+            });
+        
+            // Add 'selected' class to the selected answer
+            answersContainer.children[index].classList.add('selected');
+        
+            // Check if the answer is correct or wrong
+            if (correct) {
+                playBeep(); // Play the beep sound for correct answers
+                showMessage("Answer is Right", "correct");  // Show feedback message for correct answer
             } else {
-                playBeep('incorrect');
-                answerButtons[index].classList.add('incorrect');
+                playBeep(); // Play the beep sound for wrong answers
+                showMessage("Answer is wrong!", "wrong");  // Show feedback message for wrong answer
             }
-
-            // Disable all buttons after selection
-            for (let i = 0; i < answerButtons.length; i++) {
-                answerButtons[i].classList.add('disabled');
-                answerButtons[i].disabled = true;
-            }
-
-            // Show next question after a delay
-            setTimeout(displayQuestion, 1000);
-        }
-
-        // Add keyboard event listeners for answers
-        function setupKeyboardListeners() {
-            const answerButtons = answersContainer.children;
-            document.addEventListener('keydown', function handleKeydown(event) {
-                const key = event.key.toLowerCase();
-                const keyMap = ['a', 'b', 'c', 'd'];
-                const index = keyMap.indexOf(key);
-
-                if (index !== -1 && index < answerButtons.length) {
-                    handleAnswerSelection(index, questions[currentQuestionIndex].answers[index].correct);
-                    // Remove the listener to prevent multiple selections
-                    document.removeEventListener('keydown', handleKeydown);
+        
+            // Wait for the next question after a short delay
+            setTimeout(function() {
+                if (shownQuestionIndices.size < questions.length) {
+                    displayQuestion(); // Display next question
+                } else {
+                    endGame(); // End game if no more questions
                 }
-            });
+            }, 1000); // Delay before showing the next question
         }
 
         function endGame() {

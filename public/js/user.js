@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function redirectToVideoPage() {
         if (window.location.pathname !== '/info.html') {
-            window.location.href = 'video.html'; // Change this to your video page URL
+            window.location.href = 'user.html'; // Change this to your video page URL
         }
     }
 
