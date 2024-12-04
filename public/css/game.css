@@ -1,15 +1,21 @@
-/* Custom CSS */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Verdana';
+    src: url('../fonts/verdana-font-family/verdana-bold-italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* Custom CSS */
 body,html {
     height: 100%;
     width: 100%;
-    font-family: 'Helvetica Neue', sans-serif;
     font-size: 18px; /* Adjust base font size */
     font-weight: 400;
     background-image: url('../background/game_bg.jpeg'); /* Background image URL */
@@ -118,7 +124,6 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     border-radius: 12px; /* Make the corners more rounded */
     opacity: 1;
     z-index: 1000;
-    transition: opacity 0.5s ease-in-out; /* Smooth fade-out */
     max-width: 90%; /* Ensure the message box doesn't get too wide */
     width: 50%;
     max-height: 80%; /* Increased max-height for more vertical space */
@@ -127,6 +132,27 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     justify-content: center; /* Horizontally center the text */
     align-items: center; /* Vertically center the text */
     text-align: center; /* Center the text inside the box */
+    animation: fadeIn 1s ease-out, slideUp 1s ease-out; /* Add animations */
+}
+
+/* Animation for fading in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Animation for sliding up */
+@keyframes slideUp {
+    0% {
+        transform: translate(-50%, 50%); /* Start from below */
+    }
+    100% {
+        transform: translate(-50%, -50%); /* End in the center */
+    }
 }
 
 /* Additional class for correct answer */
@@ -137,6 +163,21 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
 /* Additional class for wrong answer */
 .message-box.wrong {
     background-color: rgb(255, 0, 0); /* Red background for wrong answer */
+}
+
+/* Animation for fading out when hiding */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Add this class to trigger the fade-out animation */
+.message-box.hide {
+    animation: fadeOut 1s forwards; /* Fade out over 1 second */
 }
 
 
@@ -340,6 +381,7 @@ html::-webkit-scrollbar, body::-webkit-scrollbar {
     height: 100px; /* Adjust height as needed */
     margin: 0 auto; /* Center horizontally */
     margin-top: 10px; /* Adjust top margin as needed */
+    margin-bottom: 20px;
     position: relative;
     display: flex;
     justify-content: center;

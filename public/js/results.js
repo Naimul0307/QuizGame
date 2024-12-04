@@ -3,7 +3,7 @@ const path = require('path');
 const XLSX = require('xlsx');
 // const os = require('os');
 
-const filePath = path.join(__dirname, '../public/results/user_results.xlsx'); // Path to your Excel file
+const filePath = path.join(__dirname, '../public/results/user_results.xlsx');
 
 // // Detect the user's home directory
 // const userHome = os.homedir();
@@ -63,7 +63,6 @@ function loadExcelData() {
             userRow.innerHTML = `
                 <div class="user-rank">${index + 1}</div>
                 <div class="user-name">${user.name || 'N/A'}</div>
-                <div class="user-email">${user.email || 'N/A'}</div>
                 <div class="user-score">${user.score || 0}</div>
                 <div class="user-timer">${user.timerValue || 'N/A'}</div>
                 <div class="user-date">${formattedDate}</div>
