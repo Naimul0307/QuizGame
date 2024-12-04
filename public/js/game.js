@@ -255,7 +255,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 const answerElement = document.createElement('button');
                 answerElement.classList.add('answer', 'btn', 'btn-primary', 'mb-2');
                 answerElement.textContent = answer.text;
-        
+                answerElement.classList.add('answer');
+                answerElement.dataset.correct = answer.correct;
                 // Attach click event
                 answerElement.addEventListener('click', () => {
                     handleAnswerSelection(index, answer.correct);
@@ -266,29 +267,47 @@ document.addEventListener('DOMContentLoaded', function() {
             // Enable keyboard support after rendering answers
             setupKeyboardListeners();
         }
-    
-
-        function handleAnswerSelection(index, isCorrect) {
+        
+        function handleAnswerSelection(index, correct) {
+            console.log(`Answer selected: ${index}, Correct: ${correct}`);
+        
+            // Store the selected answer's data
+            const selectedAnswer = {
+                question: questions[currentQuestionIndex].question,
+                answer: questions[currentQuestionIndex].answers[index].text,
+                correct: correct
+            };
+            userAnswers.push(selectedAnswer); // Add the selected answer to the userAnswers array
+        
             // Highlight the selected answer
             const answerButtons = answersContainer.children;
-            if (isCorrect) {
-                playBeep('correct');
-                answerButtons[index].classList.add('correct');
+            answerButtons[index].classList.add('selected'); // Add 'selected' class to the chosen answer
+        
+            // Add 'correct' or 'incorrect' class based on the answer
+            if (correct) {
+                answerButtons[index].classList.add('correct'); // Highlight the answer as correct
+                playBeep('correct'); // Play the beep sound for correct answers
             } else {
-                playBeep('incorrect');
-                answerButtons[index].classList.add('incorrect');
+                answerButtons[index].classList.add('incorrect'); // Highlight the answer as incorrect
+                playBeep('incorrect'); // Play the beep sound for wrong answers
             }
-
+        
             // Disable all buttons after selection
             for (let i = 0; i < answerButtons.length; i++) {
                 answerButtons[i].classList.add('disabled');
                 answerButtons[i].disabled = true;
             }
-
-            // Show next question after a delay
-            setTimeout(displayQuestion, 1000);
+        
+            // Wait for the next question after a short delay
+            setTimeout(function() {
+                if (shownQuestionIndices.size < questions.length) {
+                    displayQuestion(); // Display next question
+                } else {
+                    endGame(); // End game if no more questions
+                }
+            }, 1000); // Delay before showing the next question
         }
-
+        
         // Add keyboard event listeners for answers
         function setupKeyboardListeners() {
             const answerButtons = answersContainer.children;
@@ -321,15 +340,13 @@ document.addEventListener('DOMContentLoaded', function() {
             const totalQuestions = shownQuestionIndices.size;
             const correctAnswers = score;
         
-            // Check if the user answered all questions or if time ran out
-            if (totalQuestions === 0) {
+            // Check if the user answered any questions or if time ran out
+            if (correctAnswers === 0) {
                 // User didn't answer any questions, show Time's Up
                 const resultMessage = {
-                    correctAnswers: 0,
-                    totalQuestions: totalQuestions,
-                    message: "Time's up!  better next time."
+                    message: "Time's up! Better luck next time."
                 };
-                showMessage(resultMessage, "result", true);
+                showMessage(resultMessage, "result", true); // Display Time's Up message
             } else {
                 // User answered some questions correctly, show regular result
                 const resultMessage = {
@@ -337,7 +354,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     totalQuestions: totalQuestions,
                     message: `You answered ${correctAnswers} out of ${totalQuestions} questions correctly!`
                 };
-                showMessage(resultMessage, "result", true);
+                showMessage(resultMessage, "result", true); // Display result message
             }
         
             // Wait for 6 seconds after the result message, then redirect
@@ -345,7 +362,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Create the user data object
                 const user = {
                     name: userName,
-                    // email: userEmail,
                     score: score,
                     dateTime: dateTime,
                     timerValue: timerValue
@@ -390,30 +406,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Clear previous result message to avoid appending multiple times
                 resultMessageBox.innerHTML = "";  // This will clear any previous message
         
-                // Create the "Congratulations!" message element
-                const congratsMessage = document.createElement("h1");
-                congratsMessage.id = "result-message";
-                congratsMessage.classList.add("hidden");
-                congratsMessage.innerHTML = "Congratulations!";
-        
                 // Create the result summary element
                 const resultSummary = document.createElement("p");
                 resultSummary.id = "result-summary";
                 resultSummary.classList.add("hidden");
         
-                // Display custom message for Time's Up or Better Luck Next Time
-                resultSummary.innerHTML = `${message.message || `You answered <span id="correct-answers">0</span> out of <span id="total-questions">0</span> questions correctly.`}`;
+                // Check if it's a "Time's Up" message
+                if (message.message === "Time's up! Better luck next time.") {
+                    resultSummary.innerHTML = message.message;  // Show the Time's Up message
+                } else {
+                    // Create the "Congratulations!" message element
+                    const congratsMessage = document.createElement("h1");
+                    congratsMessage.id = "result-message";
+                    congratsMessage.classList.add("hidden");
+                    congratsMessage.innerHTML = "Congratulations!";
         
-                // Append both messages to the result message box
-                resultMessageBox.appendChild(congratsMessage);
+                    // Display custom message for correct answers
+                    resultSummary.innerHTML = `${message.message || `You answered <span id="correct-answers">0</span> out of <span id="total-questions">0</span> questions correctly.`}`;
+        
+                    // Append both messages to the result message box
+                    resultMessageBox.appendChild(congratsMessage);
+                    setTimeout(() => {
+                        congratsMessage.classList.remove("hidden");
+                    }, 1000);  // Delay before showing the "Congratulations!" message
+                }
+        
+                // Append the result summary message (whether Time's Up or Congratulations)
                 resultMessageBox.appendChild(resultSummary);
         
                 // Show the result message and summary with animation
                 setTimeout(() => {
-                    congratsMessage.classList.remove("hidden");
                     resultSummary.classList.remove("hidden");
         
-                    // Replace the placeholder values with actual data
+                    // Replace the placeholder values with actual data for correct answers
                     if (message.correctAnswers !== undefined && message.totalQuestions !== undefined) {
                         document.getElementById("correct-answers").textContent = message.correctAnswers || 0;
                         document.getElementById("total-questions").textContent = message.totalQuestions || 0;
@@ -424,7 +449,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     resultMessageBox.classList.add("hide");  // Apply fade-out animation for result
                 }, 10000);  // Hide after 10 seconds
-        
             } else {
                 // Handle non-result message
                 const answerMessageBox = document.getElementById("answerMessageBox");
@@ -440,6 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 1000);  // Hide after 1 second
             }
         }
+        
         
         
         // Function to calculate score (example logic)
