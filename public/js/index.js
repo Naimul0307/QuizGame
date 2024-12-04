@@ -31,35 +31,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Event listener for Save Settings button
-    if (saveSettingsBtn) {
-        saveSettingsBtn.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent form submission
-
-            // Get game time and selected unit
-            const gameTime = parseInt(gameTimeInput.value, 10);
-            const timeUnit = timeUnitSelect.value;
-
-            // Convert to seconds based on selected unit
-            const gameTimeSeconds = timeUnit === 'minutes' ? gameTime * 60 : gameTime;
-
-            const questionsCount = parseInt(questionsCountInput.value, 10);
-
-            console.log(`Game Time: ${gameTime} ${timeUnit} (${gameTimeSeconds} seconds), Questions Count: ${questionsCount}`);
-
-            // Save settings in both formats
-            localStorage.setItem('gameTimeInput', gameTime);
-            localStorage.setItem('gameTimeUnit', timeUnit);
-            localStorage.setItem('gameTimeSeconds', gameTimeSeconds);
-            localStorage.setItem('questionsCount', questionsCount);
-
-            // Show centered alert
-            showAlert('Settings saved!', 'success');
-
-            // Redirect after showing the alert message for 3 seconds
-            setTimeout(function() {
-                window.location.href = 'user.html';
-            }, 3000);
-        });
-    }
+    saveSettingsBtn.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent form submission
+    
+        // Get game time and selected unit
+        const gameTime = parseInt(gameTimeInput.value, 10);
+        const timeUnit = timeUnitSelect.value;
+    
+        // Convert to seconds based on selected unit
+        const gameTimeSeconds = timeUnit === 'minutes' ? gameTime * 60 : gameTime;
+    
+        const questionsCount = parseInt(questionsCountInput.value, 10);
+    
+        // Get the value of the inactivity redirect checkbox
+        const isInactivityRedirectEnabled = document.getElementById('inactivity-redirect').checked;
+    
+        // Save settings in localStorage
+        localStorage.setItem('gameTimeInput', gameTime);
+        localStorage.setItem('gameTimeUnit', timeUnit);
+        localStorage.setItem('gameTimeSeconds', gameTimeSeconds);
+        localStorage.setItem('questionsCount', questionsCount);
+        localStorage.setItem('inactivityRedirectEnabled', isInactivityRedirectEnabled);
+    
+        // Show centered alert
+        showAlert('Settings saved!', 'success');
+    
+        // Redirect after showing the alert message for 3 seconds
+        setTimeout(function() {
+            window.location.href = 'user.html';
+        }, 3000);
+    });
+    
 });

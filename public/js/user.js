@@ -3,15 +3,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     let inactivityTimeout;
 
+    // Get the inactivity redirect setting from localStorage
+    const isInactivityRedirectEnabled = localStorage.getItem('inactivityRedirectEnabled') === 'true';
+
     function redirectToVideoPage() {
         if (window.location.pathname !== '/info.html') {
-            window.location.href = 'user.html'; // Change this to your video page URL
+            window.location.href = 'video.html'; // Change this to your video page URL
         }
     }
 
-    // Start inactivity timer
+    // Start inactivity timer only if the redirect is enabled
     function startInactivityTimer() {
-        inactivityTimeout = setTimeout(redirectToVideoPage, 10000); // 10 seconds
+        if (isInactivityRedirectEnabled) {
+            inactivityTimeout = setTimeout(redirectToVideoPage, 10000); // 10 seconds
+        }
     }
 
     // Reset inactivity timer when the start button is pressed
@@ -24,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-
-    // Start the inactivity timer on page load
+    // Start the inactivity timer on page load if redirection is enabled
     startInactivityTimer();
 });
