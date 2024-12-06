@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let questions = [];
         let currentQuestionIndex = 0;
         let audioContext;
-        let gameTimeInSeconds = parseInt(localStorage.getItem('gameTimeSeconds')) || 20; // Default 20 seconds
+        let gameTimeInSeconds = parseInt(localStorage.getItem('gameTimeSeconds')) || 60; // Default 20 seconds
         let timer;
         let userAnswers = [];
         let questionsCount = parseInt(localStorage.getItem('questionsCount')) || 4; // Default to 4 questions
@@ -334,31 +334,25 @@ document.addEventListener('DOMContentLoaded', function() {
             const dateTime = new Date().toISOString();
         
             // Get the last timer value
-            const timerValue = timerDisplay.textContent; // Get the current displayed timer value
+            const timerValue = timerDisplay.textContent;
         
-            // Get the total number of questions answered
-            const totalQuestions = shownQuestionIndices.size;
+            // Use fixed totalQuestions from questionsCount
+            const totalQuestions = questionsCount;
             const correctAnswers = score;
         
-            // Check if the user answered any questions or if time ran out
-            if (correctAnswers === 0) {
-                // User didn't answer any questions, show Time's Up
-                const resultMessage = {
-                    message: "Time's up! Better luck next time."
-                };
-                showMessage(resultMessage, "result", true); // Display Time's Up message
-            } else {
-                // User answered some questions correctly, show regular result
-                const resultMessage = {
-                    correctAnswers: correctAnswers,
-                    totalQuestions: totalQuestions,
-                    message: `You answered ${correctAnswers} out of ${totalQuestions} questions correctly!`
-                };
-                showMessage(resultMessage, "result", true); // Display result message
-            }
+            // Determine the result message
+            const resultMessage = {
+                correctAnswers: correctAnswers,
+                totalQuestions: totalQuestions,
+                message: correctAnswers === 0
+                    ? "Time's up! Better luck next time." : `You answered ${correctAnswers} out of ${totalQuestions} questions correctly!`
+            };
+        
+            // Show the result message
+            showMessage(resultMessage, "result", true);
         
             // Wait for 6 seconds after the result message, then redirect
-            setTimeout(function() {
+            setTimeout(function () {
                 // Create the user data object
                 const user = {
                     name: userName,
@@ -398,57 +392,49 @@ document.addEventListener('DOMContentLoaded', function() {
         function showMessage(message, type, isResult = false) {
             const messageBox = document.createElement("div");
         
-            // Check if it's a result message and set the message accordingly
             if (isResult) {
                 const resultMessageBox = document.getElementById("resultMessageBox");
                 resultMessageBox.classList.remove("hidden");
         
                 // Clear previous result message to avoid appending multiple times
-                resultMessageBox.innerHTML = "";  // This will clear any previous message
+                resultMessageBox.innerHTML = ""; // Clear any previous message
+        
+                // Create the result header element
+                const headerMessage = document.createElement("h1");
+                headerMessage.id = "result-message";
+                headerMessage.classList.add("hidden");
         
                 // Create the result summary element
                 const resultSummary = document.createElement("p");
                 resultSummary.id = "result-summary";
                 resultSummary.classList.add("hidden");
         
-                // Check if it's a "Time's Up" message
-                if (message.message === "Time's up! Better luck next time.") {
-                    resultSummary.innerHTML = message.message;  // Show the Time's Up message
+                // Determine the message type
+                if (message.correctAnswers === 0) {
+                    headerMessage.innerHTML = "Time's Up!";
+                    resultSummary.innerHTML = `You answered <span id="correct-answers">0</span> out of <span id="total-questions">${message.totalQuestions || 0}</span> questions correctly.`;
                 } else {
-                    // Create the "Congratulations!" message element
-                    const congratsMessage = document.createElement("h1");
-                    congratsMessage.id = "result-message";
-                    congratsMessage.classList.add("hidden");
-                    congratsMessage.innerHTML = "Congratulations!";
-        
-                    // Display custom message for correct answers
-                    resultSummary.innerHTML = `${message.message || `You answered <span id="correct-answers">0</span> out of <span id="total-questions">0</span> questions correctly.`}`;
-        
-                    // Append both messages to the result message box
-                    resultMessageBox.appendChild(congratsMessage);
-                    setTimeout(() => {
-                        congratsMessage.classList.remove("hidden");
-                    }, 1000);  // Delay before showing the "Congratulations!" message
+                    headerMessage.innerHTML = "Congratulations!";
+                    resultSummary.innerHTML = `You answered <span id="correct-answers">${message.correctAnswers || 0}</span> out of <span id="total-questions">${message.totalQuestions || 0}</span> questions correctly.`;
                 }
         
-                // Append the result summary message (whether Time's Up or Congratulations)
+                // Append the header and summary to the result message box
+                resultMessageBox.appendChild(headerMessage);
                 resultMessageBox.appendChild(resultSummary);
         
-                // Show the result message and summary with animation
+                // Show the messages with animation
                 setTimeout(() => {
-                    resultSummary.classList.remove("hidden");
+                    headerMessage.classList.remove("hidden"); // Show the header
+                }, 1000); // Delay before showing the header
         
-                    // Replace the placeholder values with actual data for correct answers
-                    if (message.correctAnswers !== undefined && message.totalQuestions !== undefined) {
-                        document.getElementById("correct-answers").textContent = message.correctAnswers || 0;
-                        document.getElementById("total-questions").textContent = message.totalQuestions || 0;
-                    }
-                }, 1000);  // Delay before showing the result message (to allow for smoother rendering)
+                setTimeout(() => {
+                    resultSummary.classList.remove("hidden"); // Show the summary
+                }, 1000); // Delay before showing the summary
         
                 // Hide the result message after 10 seconds
                 setTimeout(() => {
-                    resultMessageBox.classList.add("hide");  // Apply fade-out animation for result
-                }, 10000);  // Hide after 10 seconds
+                    resultMessageBox.classList.add("hide"); // Apply fade-out animation
+                }, 10000); // Hide after 10 seconds
             } else {
                 // Handle non-result message
                 const answerMessageBox = document.getElementById("answerMessageBox");
@@ -460,11 +446,10 @@ document.addEventListener('DOMContentLoaded', function() {
         
                 // Hide the answer message after 1 second
                 setTimeout(() => {
-                    messageBox.classList.add("hide");  // Apply fade-out animation
-                }, 1000);  // Hide after 1 second
+                    messageBox.classList.add("hide"); // Apply fade-out animation
+                }, 1000); // Hide after 1 second
             }
         }
-        
         
         
         // Function to calculate score (example logic)
